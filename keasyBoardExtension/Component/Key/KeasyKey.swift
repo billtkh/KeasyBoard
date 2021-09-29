@@ -7,7 +7,14 @@
 
 import Foundation
 
+enum KeasyKeySize {
+    case regular
+    case large
+    case flexible
+}
+
 enum KeasyKey: String {
+    // Typing keys
     case one = "1"
     case two = "2"
     case three = "3"
@@ -47,4 +54,27 @@ enum KeasyKey: String {
     case b
     case n
     case m
+    
+    case comma = ","
+    case stop = "."
+    case slash = "/"
+    
+    // Control keys
+    case shift = "shift"
+    case backspace = "del"
+    case emoji = "😀"
+    case inputSwitch = "⚙︎"
+    case space
+    case enter
+    
+    var size: KeasyKeySize {
+        switch self {
+        case .backspace, .shift, .enter:
+            return .large
+        case .space:
+            return .flexible
+        default:
+            return .regular
+        }
+    }
 }

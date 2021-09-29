@@ -41,6 +41,14 @@ class KeasyBoardViewController: UIInputViewController {
         setupUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let heightConstraint = collectionView.heightAnchor.constraint(equalToConstant: viewModel.boardHeight)
+        heightConstraint.priority = .required - 1
+        heightConstraint.isActive = true
+    }
+    
     override func viewWillLayoutSubviews() {
 //        self.nextKeyboardButton.isHidden = !self.needsInputModeSwitchKey
         super.viewWillLayoutSubviews()
@@ -68,8 +76,8 @@ class KeasyBoardViewController: UIInputViewController {
 private extension KeasyBoardViewController {
     func setupUI() {
         let keyboardLayout = UICollectionViewFlowLayout()
-        keyboardLayout.minimumInteritemSpacing = viewModel.rowSpacing
-        keyboardLayout.minimumLineSpacing = viewModel.rowSpacing
+        keyboardLayout.minimumInteritemSpacing = viewModel.keyPadding
+        keyboardLayout.minimumLineSpacing = 0
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: keyboardLayout)
         view.addSubview(collectionView)
         
@@ -83,10 +91,6 @@ private extension KeasyBoardViewController {
             ]
         )
 
-        let heightConstraint = collectionView.heightAnchor.constraint(equalToConstant: viewModel.boardHeight)
-        heightConstraint.priority = .required - 1
-        heightConstraint.isActive = true
-
         collectionView.register(KeasyKeyCell.self, forCellWithReuseIdentifier: NSStringFromClass(KeasyKeyCell.self))
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -99,7 +103,7 @@ extension KeasyBoardViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return viewModel.sizeForItemIn(collectionView: collectionView, at: indexPath)
+        return viewModel.sizeForItem(in: collectionView, at: indexPath)
     }
 }
 

@@ -13,4 +13,8 @@ class KeasyKeyViewModel: NSObject {
     init(_ key: KeasyKey) {
         self.key = key
     }
+    
+    var size: KeasyKeySize {
+        return key.size
+    }
 }
