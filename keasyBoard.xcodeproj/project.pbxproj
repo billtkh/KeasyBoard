@@ -13,6 +13,9 @@
 		D2C08AE427040544002B1ABD /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C08AE327040544002B1ABD /* ArrayExtension.swift */; };
 		D2C08AE727040A02002B1ABD /* KeasySpacingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C08AE627040A02002B1ABD /* KeasySpacingManager.swift */; };
 		D2C08AE927045031002B1ABD /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C08AE827045031002B1ABD /* DoubleExtension.swift */; };
+		D2C08AEB27045A6C002B1ABD /* KeasyKeyPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C08AEA27045A6C002B1ABD /* KeasyKeyPair.swift */; };
+		D2C08AED27046427002B1ABD /* KeasyKeyPairViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C08AEC27046427002B1ABD /* KeasyKeyPairViewModel.swift */; };
+		D2C08AEF27046D67002B1ABD /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C08AEE27046D67002B1ABD /* ColorExtension.swift */; };
 		D2E3DFA62702C18200C1F25F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3DFA52702C18200C1F25F /* AppDelegate.swift */; };
 		D2E3DFAA2702C18200C1F25F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3DFA92702C18200C1F25F /* ViewController.swift */; };
 		D2E3DFAD2702C18200C1F25F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2E3DFAB2702C18200C1F25F /* Main.storyboard */; };
@@ -56,6 +59,9 @@
 		D2C08AE327040544002B1ABD /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		D2C08AE627040A02002B1ABD /* KeasySpacingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeasySpacingManager.swift; sourceTree = "<group>"; };
 		D2C08AE827045031002B1ABD /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
+		D2C08AEA27045A6C002B1ABD /* KeasyKeyPair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeasyKeyPair.swift; sourceTree = "<group>"; };
+		D2C08AEC27046427002B1ABD /* KeasyKeyPairViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeasyKeyPairViewModel.swift; sourceTree = "<group>"; };
+		D2C08AEE27046D67002B1ABD /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		D2E3DFA22702C18200C1F25F /* keasyBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = keasyBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2E3DFA52702C18200C1F25F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2E3DFA92702C18200C1F25F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -91,31 +97,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D2C08AD92702FD09002B1ABD /* Component */ = {
+		D2C08AD92702FD09002B1ABD /* component */ = {
 			isa = PBXGroup;
 			children = (
-				D2C08ADE2704031E002B1ABD /* Board */,
-				D2C08ADA2702FD2C002B1ABD /* Key */,
+				D2C08ADE2704031E002B1ABD /* board */,
+				D2C08ADA2702FD2C002B1ABD /* key */,
 			);
-			path = Component;
+			path = component;
 			sourceTree = "<group>";
 		};
-		D2C08ADA2702FD2C002B1ABD /* Key */ = {
+		D2C08ADA2702FD2C002B1ABD /* key */ = {
 			isa = PBXGroup;
 			children = (
 				D2E3DFCF2702F3C900C1F25F /* KeasyKey.swift */,
+				D2C08AEA27045A6C002B1ABD /* KeasyKeyPair.swift */,
 				D2C08AE127040364002B1ABD /* UI */,
 			);
-			path = Key;
+			path = key;
 			sourceTree = "<group>";
 		};
-		D2C08ADE2704031E002B1ABD /* Board */ = {
+		D2C08ADE2704031E002B1ABD /* board */ = {
 			isa = PBXGroup;
 			children = (
 				D2E3DFCB2702EFF700C1F25F /* KeasyBoard.swift */,
 				D2C08ADF27040344002B1ABD /* KeasyBoardRow.swift */,
 			);
-			path = Board;
+			path = board;
 			sourceTree = "<group>";
 		};
 		D2C08AE127040364002B1ABD /* UI */ = {
@@ -123,25 +130,27 @@
 			children = (
 				D2E3DFCD2702F3A300C1F25F /* KeasyKeyCell.swift */,
 				D2C08ADB2702FD4C002B1ABD /* KeasyKeyViewModel.swift */,
+				D2C08AEC27046427002B1ABD /* KeasyKeyPairViewModel.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
 		};
-		D2C08AE227040524002B1ABD /* Extension */ = {
+		D2C08AE227040524002B1ABD /* extension */ = {
 			isa = PBXGroup;
 			children = (
 				D2C08AE327040544002B1ABD /* ArrayExtension.swift */,
 				D2C08AE827045031002B1ABD /* DoubleExtension.swift */,
+				D2C08AEE27046D67002B1ABD /* ColorExtension.swift */,
 			);
-			path = Extension;
+			path = extension;
 			sourceTree = "<group>";
 		};
-		D2C08AE5270409E0002B1ABD /* Manager */ = {
+		D2C08AE5270409E0002B1ABD /* manager */ = {
 			isa = PBXGroup;
 			children = (
 				D2C08AE627040A02002B1ABD /* KeasySpacingManager.swift */,
 			);
-			path = Manager;
+			path = manager;
 			sourceTree = "<group>";
 		};
 		D2E3DF992702C18200C1F25F = {
@@ -181,9 +190,9 @@
 			children = (
 				D2E3DFBF2702C26500C1F25F /* KeasyBoardViewController.swift */,
 				D2E3DFD12702F8CD00C1F25F /* KeasyBoardViewModel.swift */,
-				D2C08AD92702FD09002B1ABD /* Component */,
-				D2C08AE5270409E0002B1ABD /* Manager */,
-				D2C08AE227040524002B1ABD /* Extension */,
+				D2C08AD92702FD09002B1ABD /* component */,
+				D2C08AE5270409E0002B1ABD /* manager */,
+				D2C08AE227040524002B1ABD /* extension */,
 				D2E3DFC12702C26500C1F25F /* Info.plist */,
 			);
 			path = keasyBoardExtension;
@@ -300,6 +309,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2C08AED27046427002B1ABD /* KeasyKeyPairViewModel.swift in Sources */,
 				D2E3DFCE2702F3A300C1F25F /* KeasyKeyCell.swift in Sources */,
 				D2E3DFC02702C26500C1F25F /* KeasyBoardViewController.swift in Sources */,
 				D2E3DFCC2702EFF700C1F25F /* KeasyBoard.swift in Sources */,
@@ -307,9 +317,11 @@
 				D2E3DFD22702F8CD00C1F25F /* KeasyBoardViewModel.swift in Sources */,
 				D2C08ADC2702FD4C002B1ABD /* KeasyKeyViewModel.swift in Sources */,
 				D2C08AE927045031002B1ABD /* DoubleExtension.swift in Sources */,
+				D2C08AEB27045A6C002B1ABD /* KeasyKeyPair.swift in Sources */,
 				D2E3DFD02702F3C900C1F25F /* KeasyKey.swift in Sources */,
 				D2C08AE027040344002B1ABD /* KeasyBoardRow.swift in Sources */,
 				D2C08AE727040A02002B1ABD /* KeasySpacingManager.swift in Sources */,
+				D2C08AEF27046D67002B1ABD /* ColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

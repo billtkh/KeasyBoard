@@ -10,7 +10,7 @@ import UIKit
 
 class KeasyBoardRowViewModel: NSObject {
     private var row: KeasyBoardRow
-    private(set) var keys: [KeasyKeyViewModel]
+    private(set) var keyPairs: [KeasyKeyPairViewModel]
     
     var spacingManager: KeasyBoardSpacingManager {
         return KeasyBoardSpacingManager.shared
@@ -18,7 +18,7 @@ class KeasyBoardRowViewModel: NSObject {
     
     init(row: KeasyBoardRow) {
         self.row = row
-        self.keys = row.keys.viewModels
+        self.keyPairs = row.keyPairs.viewModels
     }
     
     var index: Int {
@@ -34,11 +34,11 @@ class KeasyBoardRowViewModel: NSObject {
     }
     
     var totalMinimumSpacingBetweenKeys: CGFloat {
-        return CGFloat(row.keys.count - 1) * keyPadding
+        return CGFloat(row.keyPairs.count - 1) * keyPadding
     }
     
     func numOfKeys(size: KeasyKeySize) -> Int {
-        return keys.filter { $0.size == size }.count
+        return keyPairs.filter { $0.main.size == size }.count
     }
 }
 
@@ -69,12 +69,12 @@ class KeasyBoardViewModel: NSObject {
         return spacingManager.boardHeight
     }
     
-    func keyViewModelAt(indexPath: IndexPath) -> KeasyKeyViewModel {
-        return dataSource[indexPath.section].keys[indexPath.row]
+    func keyViewModelAt(indexPath: IndexPath) -> KeasyKeyPairViewModel {
+        return dataSource[indexPath.section].keyPairs[indexPath.row]
     }
     
     func numberOfItemsInSection(_ section: Int) -> Int {
-        return dataSource[section].keys.count
+        return dataSource[section].keyPairs.count
     }
     
     var numberOfSections: Int {
@@ -85,10 +85,11 @@ class KeasyBoardViewModel: NSObject {
         let topSpacing = section == 0 ? rowSpacing : 0
         switch dataSource[section].arrangementType {
         case .distributed:
+            let row = dataSource[section]
             let viewWidth = view.frame.width
             let cellWidth = regularKeyWidth(in: view)
-            let totalCellWidth: CGFloat = CGFloat(cellWidth * CGFloat(dataSource[section].keys.count))
-            let spacingWithinCells: CGFloat = dataSource[section].totalMinimumSpacingBetweenKeys
+            let totalCellWidth: CGFloat = CGFloat(cellWidth * CGFloat(row.keyPairs.count))
+            let spacingWithinCells: CGFloat = row.totalMinimumSpacingBetweenKeys
             var horizontalSpacing: CGFloat = CGFloat(viewWidth - totalCellWidth - spacingWithinCells) / 2
             horizontalSpacing = max(horizontalSpacing, boardPadding)
             return UIEdgeInsets(top: topSpacing, left: horizontalSpacing, bottom: rowSpacing, right: horizontalSpacing)
@@ -99,13 +100,11 @@ class KeasyBoardViewModel: NSObject {
     
     func sizeForItem(in view: UIView, at indexPath: IndexPath) -> CGSize {
         let row = dataSource[indexPath.section]
-        let key = row.keys[indexPath.row]
+        let mainKey = row.keyPairs[indexPath.row].main
         
-        let viewHeight = boardHeight - rowSpacing * Double(dataSource.count + 1) - 1
-        let numOfRow = dataSource.count
-        let height = viewHeight / Double(numOfRow)
+        let height = keyHeight
         
-        switch key.size {
+        switch mainKey.size {
         case .regular:
             let regularKeyWidth = regularKeyWidth(in: view)
             return CGSize(width: regularKeyWidth, height: height)
@@ -125,12 +124,19 @@ class KeasyBoardViewModel: NSObject {
         }
     }
     
+    var keyHeight: Double {
+        let viewHeight = boardHeight - rowSpacing * Double(dataSource.count + 1) - 1
+        let numOfRow = dataSource.count
+        let height = viewHeight / Double(numOfRow)
+        return height
+    }
+    
     /// regular key size is calculated by the first row typing keys
     func regularKeyWidth(in view: UIView) -> Double {
         guard let row = dataSource.first(where: { $0.index == 0 }) else { return 0 }
         
         let viewWidth = view.frame.width - boardPadding - boardPadding - 1
-        let numOfKey = row.keys.count
+        let numOfKey = row.keyPairs.count
         let regularWidth = (viewWidth - row.totalMinimumSpacingBetweenKeys) / Double(numOfKey)
         return regularWidth
     }
@@ -143,10 +149,10 @@ class KeasyBoardViewModel: NSObject {
         let totalMinimumSpacingWithinKeys = row.totalMinimumSpacingBetweenKeys
         
         let regularKeyWidth = regularKeyWidth(in: view)
-        let numOfRegularKey = row.keys.filter { $0.size == .regular }.count
+        let numOfRegularKey = row.keyPairs.filter { $0.main.size == .regular }.count
         let totalWidthOfRegularKeys = Double(numOfRegularKey) * regularKeyWidth
         
-        let numOfLargeKey = row.keys.filter { $0.size == .large }.count
+        let numOfLargeKey = row.keyPairs.filter { $0.main.size == .large }.count
         var largeKeyWidth = (viewWidth - totalMinimumSpacingWithinKeys - totalWidthOfRegularKeys) / Double(numOfLargeKey)
         largeKeyWidth = min(largeKeyWidth, regularKeyWidth * 2)
         return largeKeyWidth

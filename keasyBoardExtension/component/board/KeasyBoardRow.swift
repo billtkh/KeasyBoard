@@ -15,5 +15,5 @@ enum KeasyBoardRowArrangementType {
 struct KeasyBoardRow {
     var index: Int
     var arrangementType: KeasyBoardRowArrangementType
-    var keys: [KeasyKey]
+    var keyPairs: [KeasyKeyPair]
 }

@@ -8,12 +8,12 @@
 import UIKit
 
 protocol KeasyKeyCellActionDelegate: AnyObject {
-    func keyCell(_ keyCell: KeasyKeyCell, didTap keyViewModel: KeasyKeyViewModel)
+    func keyCell(_ keyCell: KeasyKeyCell, didTap keyPair: KeasyKeyPairViewModel)
 }
 
 class KeasyKeyCell: UICollectionViewCell {
     weak var actionDelegate: KeasyKeyCellActionDelegate?
-    var viewModel: KeasyKeyViewModel? {
+    var viewModel: KeasyKeyPairViewModel? {
         didSet {
             guard let viewModel = viewModel else { return }
             updateUI(viewModel: viewModel)
@@ -22,7 +22,8 @@ class KeasyKeyCell: UICollectionViewCell {
     
     private var keyView: UIView!
     
-    private var textLabel: UILabel!
+    private var mainLabel: UILabel!
+    private var subLabel: UILabel!
     
     private var leadingConstraint: NSLayoutConstraint!
     private var trailingConstraint: NSLayoutConstraint!
@@ -57,27 +58,41 @@ private extension KeasyKeyCell {
         trailingConstraint = keyView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
         trailingConstraint.isActive = true
         
-        textLabel = UILabel(frame: .zero)
-        textLabel.textColor = .white
-        textLabel.translatesAutoresizingMaskIntoConstraints = false
-        keyView.addSubview(textLabel)
+        mainLabel = UILabel(frame: .zero)
+        mainLabel.textColor = .white
+        mainLabel.translatesAutoresizingMaskIntoConstraints = false
+        keyView.addSubview(mainLabel)
         NSLayoutConstraint.activate(
             [
-                textLabel.centerXAnchor.constraint(equalTo: keyView.centerXAnchor),
-                textLabel.bottomAnchor.constraint(equalTo: keyView.bottomAnchor, constant: -4)
+                mainLabel.centerXAnchor.constraint(equalTo: keyView.centerXAnchor),
+                mainLabel.bottomAnchor.constraint(equalTo: keyView.bottomAnchor, constant: -4)
             ]
         )
         
-        keyView.backgroundColor = .systemBlue
+        subLabel = UILabel(frame: .zero)
+        subLabel.textColor = .white.withAlphaComponent(0.8)
+        subLabel.font = .systemFont(ofSize: 10)
+        subLabel.translatesAutoresizingMaskIntoConstraints = false
+        keyView.addSubview(subLabel)
+        NSLayoutConstraint.activate(
+            [
+                subLabel.leadingAnchor.constraint(equalTo: keyView.leadingAnchor, constant: 4),
+                subLabel.topAnchor.constraint(equalTo: keyView.topAnchor, constant: 4)
+            ]
+        )
+        
+        keyView.layer.cornerRadius = 5
+        keyView.backgroundColor = UIColor(rgb: 0x2B2D2F)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction))
         keyView.addGestureRecognizer(tapGesture)
     }
     
-    func updateUI(viewModel: KeasyKeyViewModel) {
-        textLabel.text = viewModel.key.rawValue
+    func updateUI(viewModel: KeasyKeyPairViewModel) {
+        mainLabel.text = viewModel.main.title
+        subLabel.text = viewModel.sub?.title
         
-        switch viewModel.key {
+        switch viewModel.main.key {
         case .shift:
             trailingConstraint.constant = -4
         case .backspace:

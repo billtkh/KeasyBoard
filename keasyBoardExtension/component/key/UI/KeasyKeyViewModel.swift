@@ -17,4 +17,8 @@ class KeasyKeyViewModel: NSObject {
     var size: KeasyKeySize {
         return key.size
     }
+    
+    var title: String {
+        return key.title
+    }
 }

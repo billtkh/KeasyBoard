@@ -127,7 +127,7 @@ extension KeasyBoardViewController: UICollectionViewDataSource {
 }
 
 extension KeasyBoardViewController: KeasyKeyCellActionDelegate {
-    func keyCell(_ keyCell: KeasyKeyCell, didTap keyViewModel: KeasyKeyViewModel) {
-        textDocumentProxy.insertText(keyViewModel.key.rawValue)
+    func keyCell(_ keyCell: KeasyKeyCell, didTap keyPair: KeasyKeyPairViewModel) {
+        textDocumentProxy.insertText(keyPair.main.title)
     }
 }

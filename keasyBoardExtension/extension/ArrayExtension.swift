@@ -14,3 +14,11 @@ extension Array where Element == KeasyKey {
         }
     }
 }
+
+extension Array where Element == KeasyKeyPair {
+    var viewModels: [KeasyKeyPairViewModel] {
+        return map { keyPair in
+            return KeasyKeyPairViewModel(keyPair)
+        }
+    }
+}
