@@ -1,0 +1,553 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D2C08ADC2702FD4C002B1ABD /* KeasyKeyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C08ADB2702FD4C002B1ABD /* KeasyKeyViewModel.swift */; };
+		D2C08ADD27030CA2002B1ABD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2E3DFAE2702C18400C1F25F /* Assets.xcassets */; };
+		D2E3DFA62702C18200C1F25F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3DFA52702C18200C1F25F /* AppDelegate.swift */; };
+		D2E3DFAA2702C18200C1F25F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3DFA92702C18200C1F25F /* ViewController.swift */; };
+		D2E3DFAD2702C18200C1F25F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2E3DFAB2702C18200C1F25F /* Main.storyboard */; };
+		D2E3DFAF2702C18400C1F25F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2E3DFAE2702C18400C1F25F /* Assets.xcassets */; };
+		D2E3DFB22702C18400C1F25F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2E3DFB02702C18400C1F25F /* LaunchScreen.storyboard */; };
+		D2E3DFC02702C26500C1F25F /* KeasyBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3DFBF2702C26500C1F25F /* KeasyBoardViewController.swift */; };
+		D2E3DFC42702C26500C1F25F /* keasyBoardExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D2E3DFBD2702C26500C1F25F /* keasyBoardExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D2E3DFCC2702EFF700C1F25F /* KeasyBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3DFCB2702EFF700C1F25F /* KeasyBoard.swift */; };
+		D2E3DFCE2702F3A300C1F25F /* KeasyKeyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3DFCD2702F3A300C1F25F /* KeasyKeyCell.swift */; };
+		D2E3DFD02702F3C900C1F25F /* KeasyKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3DFCF2702F3C900C1F25F /* KeasyKey.swift */; };
+		D2E3DFD22702F8CD00C1F25F /* KeasyBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3DFD12702F8CD00C1F25F /* KeasyBoardViewModel.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D2E3DFC22702C26500C1F25F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D2E3DF9A2702C18200C1F25F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2E3DFBC2702C26500C1F25F;
+			remoteInfo = suchengKeyboard;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D2E3DFC82702C26500C1F25F /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D2E3DFC42702C26500C1F25F /* keasyBoardExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		D2C08ADB2702FD4C002B1ABD /* KeasyKeyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeasyKeyViewModel.swift; sourceTree = "<group>"; };
+		D2E3DFA22702C18200C1F25F /* keasyBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = keasyBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2E3DFA52702C18200C1F25F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D2E3DFA92702C18200C1F25F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D2E3DFAC2702C18200C1F25F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D2E3DFAE2702C18400C1F25F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D2E3DFB12702C18400C1F25F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D2E3DFB32702C18400C1F25F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2E3DFBD2702C26500C1F25F /* keasyBoardExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = keasyBoardExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2E3DFBF2702C26500C1F25F /* KeasyBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeasyBoardViewController.swift; sourceTree = "<group>"; };
+		D2E3DFC12702C26500C1F25F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2E3DFC92702C57100C1F25F /* keasyBoard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = keasyBoard.entitlements; sourceTree = "<group>"; };
+		D2E3DFCB2702EFF700C1F25F /* KeasyBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeasyBoard.swift; sourceTree = "<group>"; };
+		D2E3DFCD2702F3A300C1F25F /* KeasyKeyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeasyKeyCell.swift; sourceTree = "<group>"; };
+		D2E3DFCF2702F3C900C1F25F /* KeasyKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeasyKey.swift; sourceTree = "<group>"; };
+		D2E3DFD12702F8CD00C1F25F /* KeasyBoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeasyBoardViewModel.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D2E3DF9F2702C18200C1F25F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2E3DFBA2702C26500C1F25F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D2C08AD92702FD09002B1ABD /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				D2C08ADA2702FD2C002B1ABD /* Key */,
+				D2E3DFCB2702EFF700C1F25F /* KeasyBoard.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		D2C08ADA2702FD2C002B1ABD /* Key */ = {
+			isa = PBXGroup;
+			children = (
+				D2E3DFCF2702F3C900C1F25F /* KeasyKey.swift */,
+				D2E3DFCD2702F3A300C1F25F /* KeasyKeyCell.swift */,
+				D2C08ADB2702FD4C002B1ABD /* KeasyKeyViewModel.swift */,
+			);
+			path = Key;
+			sourceTree = "<group>";
+		};
+		D2E3DF992702C18200C1F25F = {
+			isa = PBXGroup;
+			children = (
+				D2E3DFA42702C18200C1F25F /* keasyBoard */,
+				D2E3DFBE2702C26500C1F25F /* keasyBoardExtension */,
+				D2E3DFA32702C18200C1F25F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D2E3DFA32702C18200C1F25F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D2E3DFA22702C18200C1F25F /* keasyBoard.app */,
+				D2E3DFBD2702C26500C1F25F /* keasyBoardExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D2E3DFA42702C18200C1F25F /* keasyBoard */ = {
+			isa = PBXGroup;
+			children = (
+				D2E3DFC92702C57100C1F25F /* keasyBoard.entitlements */,
+				D2E3DFA52702C18200C1F25F /* AppDelegate.swift */,
+				D2E3DFA92702C18200C1F25F /* ViewController.swift */,
+				D2E3DFAB2702C18200C1F25F /* Main.storyboard */,
+				D2E3DFAE2702C18400C1F25F /* Assets.xcassets */,
+				D2E3DFB02702C18400C1F25F /* LaunchScreen.storyboard */,
+				D2E3DFB32702C18400C1F25F /* Info.plist */,
+			);
+			path = keasyBoard;
+			sourceTree = "<group>";
+		};
+		D2E3DFBE2702C26500C1F25F /* keasyBoardExtension */ = {
+			isa = PBXGroup;
+			children = (
+				D2E3DFBF2702C26500C1F25F /* KeasyBoardViewController.swift */,
+				D2E3DFD12702F8CD00C1F25F /* KeasyBoardViewModel.swift */,
+				D2C08AD92702FD09002B1ABD /* Component */,
+				D2E3DFC12702C26500C1F25F /* Info.plist */,
+			);
+			path = keasyBoardExtension;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D2E3DFA12702C18200C1F25F /* keasyBoard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D2E3DFB62702C18400C1F25F /* Build configuration list for PBXNativeTarget "keasyBoard" */;
+			buildPhases = (
+				D2E3DF9E2702C18200C1F25F /* Sources */,
+				D2E3DF9F2702C18200C1F25F /* Frameworks */,
+				D2E3DFA02702C18200C1F25F /* Resources */,
+				D2E3DFC82702C26500C1F25F /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D2E3DFC32702C26500C1F25F /* PBXTargetDependency */,
+			);
+			name = keasyBoard;
+			productName = keasyBoard;
+			productReference = D2E3DFA22702C18200C1F25F /* keasyBoard.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D2E3DFBC2702C26500C1F25F /* keasyBoardExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D2E3DFC52702C26500C1F25F /* Build configuration list for PBXNativeTarget "keasyBoardExtension" */;
+			buildPhases = (
+				D2E3DFB92702C26500C1F25F /* Sources */,
+				D2E3DFBA2702C26500C1F25F /* Frameworks */,
+				D2E3DFBB2702C26500C1F25F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = keasyBoardExtension;
+			productName = suchengKeyboard;
+			productReference = D2E3DFBD2702C26500C1F25F /* keasyBoardExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D2E3DF9A2702C18200C1F25F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1300;
+				LastUpgradeCheck = 1300;
+				TargetAttributes = {
+					D2E3DFA12702C18200C1F25F = {
+						CreatedOnToolsVersion = 13.0;
+					};
+					D2E3DFBC2702C26500C1F25F = {
+						CreatedOnToolsVersion = 13.0;
+					};
+				};
+			};
+			buildConfigurationList = D2E3DF9D2702C18200C1F25F /* Build configuration list for PBXProject "keasyBoard" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D2E3DF992702C18200C1F25F;
+			productRefGroup = D2E3DFA32702C18200C1F25F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D2E3DFA12702C18200C1F25F /* keasyBoard */,
+				D2E3DFBC2702C26500C1F25F /* keasyBoardExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D2E3DFA02702C18200C1F25F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2E3DFB22702C18400C1F25F /* LaunchScreen.storyboard in Resources */,
+				D2E3DFAF2702C18400C1F25F /* Assets.xcassets in Resources */,
+				D2E3DFAD2702C18200C1F25F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2E3DFBB2702C26500C1F25F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2C08ADD27030CA2002B1ABD /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D2E3DF9E2702C18200C1F25F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2E3DFAA2702C18200C1F25F /* ViewController.swift in Sources */,
+				D2E3DFA62702C18200C1F25F /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2E3DFB92702C26500C1F25F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2E3DFCE2702F3A300C1F25F /* KeasyKeyCell.swift in Sources */,
+				D2E3DFC02702C26500C1F25F /* KeasyBoardViewController.swift in Sources */,
+				D2E3DFCC2702EFF700C1F25F /* KeasyBoard.swift in Sources */,
+				D2E3DFD22702F8CD00C1F25F /* KeasyBoardViewModel.swift in Sources */,
+				D2C08ADC2702FD4C002B1ABD /* KeasyKeyViewModel.swift in Sources */,
+				D2E3DFD02702F3C900C1F25F /* KeasyKey.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D2E3DFC32702C26500C1F25F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2E3DFBC2702C26500C1F25F /* keasyBoardExtension */;
+			targetProxy = D2E3DFC22702C26500C1F25F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D2E3DFAB2702C18200C1F25F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D2E3DFAC2702C18200C1F25F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D2E3DFB02702C18400C1F25F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D2E3DFB12702C18400C1F25F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D2E3DFB42702C18400C1F25F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D2E3DFB52702C18400C1F25F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D2E3DFB72702C18400C1F25F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = keasyBoard/keasyBoard.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = keasyBoard/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.demo.keasyBoard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D2E3DFB82702C18400C1F25F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = keasyBoard/keasyBoard.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = keasyBoard/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.demo.keasyBoard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D2E3DFC62702C26500C1F25F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = keasyBoardExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = keasyBoardExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.demo.keasyBoard.keasyBoardExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D2E3DFC72702C26500C1F25F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = keasyBoardExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = keasyBoardExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.demo.keasyBoard.keasyBoardExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D2E3DF9D2702C18200C1F25F /* Build configuration list for PBXProject "keasyBoard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2E3DFB42702C18400C1F25F /* Debug */,
+				D2E3DFB52702C18400C1F25F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D2E3DFB62702C18400C1F25F /* Build configuration list for PBXNativeTarget "keasyBoard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2E3DFB72702C18400C1F25F /* Debug */,
+				D2E3DFB82702C18400C1F25F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D2E3DFC52702C26500C1F25F /* Build configuration list for PBXNativeTarget "keasyBoardExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2E3DFC62702C26500C1F25F /* Debug */,
+				D2E3DFC72702C26500C1F25F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D2E3DF9A2702C18200C1F25F /* Project object */;
+}
