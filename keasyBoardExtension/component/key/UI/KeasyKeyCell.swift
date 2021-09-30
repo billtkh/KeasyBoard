@@ -98,7 +98,7 @@ private extension KeasyKeyCell {
         NSLayoutConstraint.activate(
             [
                 primaryLabel.centerXAnchor.constraint(equalTo: keyView.centerXAnchor),
-                primaryLabel.bottomAnchor.constraint(equalTo: keyView.bottomAnchor, constant: -4)
+                primaryLabel.bottomAnchor.constraint(equalTo: keyView.bottomAnchor, constant: -2.5)
             ]
         )
         
@@ -110,7 +110,7 @@ private extension KeasyKeyCell {
         NSLayoutConstraint.activate(
             [
                 secondaryLabel.leadingAnchor.constraint(equalTo: keyView.leadingAnchor, constant: 4),
-                secondaryLabel.topAnchor.constraint(equalTo: keyView.topAnchor, constant: 4)
+                secondaryLabel.topAnchor.constraint(equalTo: keyView.topAnchor, constant: 2)
             ]
         )
         
