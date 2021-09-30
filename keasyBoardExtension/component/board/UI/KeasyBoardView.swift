@@ -12,12 +12,17 @@ class KeasyBoardView: UIView {
     var collectionView: UICollectionView!
     var viewModel: KeasyBoardViewModel
     
+    private var styleManager: KeasyStyleManager {
+        return KeasyStyleManager.shared
+    }
+    
     init(viewModel: KeasyBoardViewModel) {
         self.viewModel = viewModel
         super.init(frame: .zero)
         
         setupUI()
         setupStyle()
+        binding()
     }
     
     required init?(coder: NSCoder) {
@@ -26,13 +31,26 @@ class KeasyBoardView: UIView {
         
         setupUI()
         setupStyle()
+        binding()
     }
 }
 
-extension KeasyBoardView {
+private extension KeasyBoardView {
+    func binding() {
+        viewModel.isShiftOn.bind { [weak self] on in
+            guard let sSelf = self else { return }
+            sSelf.collectionView.reloadData()
+        }
+        
+        viewModel.isShiftLockOn.bind { [weak self] on in
+            guard let sSelf = self else { return }
+            sSelf.collectionView.reloadData()
+        }
+    }
+    
     func setupUI() {
         let keyboardLayout = UICollectionViewFlowLayout()
-        keyboardLayout.minimumInteritemSpacing = viewModel.keyPadding
+        keyboardLayout.minimumInteritemSpacing = viewModel.keySpacing
         keyboardLayout.minimumLineSpacing = 0
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: keyboardLayout)
         addSubview(collectionView)
@@ -53,7 +71,7 @@ extension KeasyBoardView {
     }
     
     func setupStyle() {
-        backgroundColor = UIColor(red: 214, green: 216, blue: 222)
+        backgroundColor = styleManager.backgroundColor
         collectionView.backgroundColor = .clear
     }
 }
@@ -82,10 +100,6 @@ extension KeasyBoardView: UICollectionViewDataSource {
         keyCell.actionDelegate = self
         
         let keyViewModel = viewModel.keyViewModelAt(indexPath: indexPath)
-        keyViewModel.isToggleOn.bind { [weak self] isToggle in
-            guard self != nil else { return }
-            keyCell.toggle(isToggle)
-        }
         keyCell.viewModel = keyViewModel
         return keyCell
     }
@@ -94,5 +108,13 @@ extension KeasyBoardView: UICollectionViewDataSource {
 extension KeasyBoardView: KeasyKeyCellActionDelegate {
     func keyCell(_ keyCell: KeasyKeyCell, didTap keyPair: KeasyKeyPairViewModel) {
         viewModel.didTap(keyPair: keyPair)
+    }
+    
+    func startSetShiftOn(_ on: Bool) {
+        viewModel.setShiftOn(on)
+    }
+    
+    func startSetShiftLockOn(_ on: Bool) {
+        viewModel.setShiftLockOn(on)
     }
 }

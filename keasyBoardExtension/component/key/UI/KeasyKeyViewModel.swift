@@ -9,7 +9,6 @@ import Foundation
 
 class KeasyKeyViewModel: NSObject {
     var key: KeasyKey
-    var isToggleOn: Observable<Bool> = .init(false)
     
     init(_ key: KeasyKey) {
         self.key = key

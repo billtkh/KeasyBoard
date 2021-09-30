@@ -9,6 +9,8 @@ import UIKit
 
 protocol KeasyKeyCellActionDelegate: AnyObject {
     func keyCell(_ keyCell: KeasyKeyCell, didTap keyPair: KeasyKeyPairViewModel)
+    func startSetShiftOn(_ on: Bool)
+    func startSetShiftLockOn(_ on: Bool)
 }
 
 class KeasyKeyCell: UICollectionViewCell {
@@ -31,6 +33,22 @@ class KeasyKeyCell: UICollectionViewCell {
     
     private var toggleView: UIView!
     
+    private var styleManager: KeasyStyleManager {
+        return KeasyStyleManager.shared
+    }
+    
+    private var spacingManager: KeasySpacingManager {
+        return KeasySpacingManager.shared
+    }
+    
+    private var rowPadding: Double {
+        return spacingManager.rowPadding
+    }
+    
+    private var keyPadding: Double {
+        return spacingManager.keyPadding
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -43,8 +61,15 @@ class KeasyKeyCell: UICollectionViewCell {
         setupUI()
     }
     
-    func toggle(_ istoggle: Bool) {
-        toggleView.backgroundColor = istoggle ? .systemGreen : .gray
+    func toggle(state: KeasyToggleState) {
+        switch state {
+        case .off:
+            toggleView.backgroundColor = styleManager.shiftOffColor
+        case .on:
+            toggleView.backgroundColor = styleManager.shiftOnColor
+        case .locked:
+            toggleView.backgroundColor = styleManager.shiftLockOnColor
+        }
     }
 }
 
@@ -55,14 +80,14 @@ private extension KeasyKeyCell {
         contentView.addSubview(keyView)
         NSLayoutConstraint.activate(
             [
-                keyView.topAnchor.constraint(equalTo: contentView.topAnchor),
-                keyView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+                keyView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: rowPadding / 2),
+                keyView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -rowPadding / 2)
             ]
         )
         
-        leadingConstraint = keyView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor)
+        leadingConstraint = keyView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: keyPadding / 2)
         leadingConstraint.isActive = true
-        trailingConstraint = keyView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
+        trailingConstraint = keyView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -keyPadding / 2)
         trailingConstraint.isActive = true
         
         primaryLabel = UILabel(frame: .zero)
@@ -90,14 +115,14 @@ private extension KeasyKeyCell {
         )
         
         keyView.layer.cornerRadius = 5
-        keyView.backgroundColor = UIColor(rgb: 0x2B2D2F)
+        keyView.backgroundColor = styleManager.keyColor
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction))
-        keyView.addGestureRecognizer(tapGesture)
+        contentView.addGestureRecognizer(tapGesture)
         
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(toggleAction))
-        longPressGesture.minimumPressDuration = 0.75
-        keyView.addGestureRecognizer(longPressGesture)
+        longPressGesture.minimumPressDuration = 0.6
+        contentView.addGestureRecognizer(longPressGesture)
         
         tapGesture.require(toFail: longPressGesture)
         
@@ -117,41 +142,52 @@ private extension KeasyKeyCell {
     }
     
     func updateUI(viewModel: KeasyKeyPairViewModel) {
-        primaryLabel.text = viewModel.main.title
-        secondaryLabel.text = viewModel.sub?.title
+        primaryLabel.text = viewModel.primaryKey.title
+        secondaryLabel.text = viewModel.secondaryKey?.title
         
-        switch viewModel.main.titleSize {
+        switch viewModel.primaryKey.titleSize {
         case .regular:
             primaryLabel.font = .systemFont(ofSize: 17)
         case .small:
             primaryLabel.font = .systemFont(ofSize: 10)
         }
         
-        switch viewModel.main.key {
+        switch viewModel.primaryKey.key {
         case .shift:
-            trailingConstraint.constant = -4
+            trailingConstraint.constant = -keyPadding
         case .delete:
-            leadingConstraint.constant = 4
+            leadingConstraint.constant = keyPadding
         default:
-            break
+            leadingConstraint.constant = keyPadding / 2
+            trailingConstraint.constant = -keyPadding / 2
         }
     }
     
     func updateToggle(viewModel: KeasyKeyPairViewModel) {
         toggleView.isHidden = viewModel.isToggleHidden
-        toggle(viewModel.isToggleOn.value)
+        toggle(state: viewModel.toggleState)
     }
     
     @objc
     func tapAction() {
         guard let viewModel = viewModel else { return }
-        actionDelegate?.keyCell(self, didTap: viewModel)
+        switch viewModel.primaryKey.key {
+        case .shift:
+            actionDelegate?.startSetShiftOn(!viewModel.isShiftOn)
+        default:
+            actionDelegate?.keyCell(self, didTap: viewModel)
+        }
     }
     
     @objc
     func toggleAction(sender: UILongPressGestureRecognizer) {
         guard sender.state == .began else { return }
         guard let viewModel = viewModel else { return }
-        viewModel.setToggle(!viewModel.isToggleOn.value)
+        switch viewModel.primaryKey.key {
+        case .shift:
+            actionDelegate?.startSetShiftLockOn(!viewModel.isShiftLockOn)
+        default:
+            actionDelegate?.keyCell(self, didTap: viewModel)
+        }
     }
 }

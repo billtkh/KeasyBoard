@@ -51,6 +51,8 @@ enum KeasyKey {
             return "😀"
         case .returnText:
             return "return"
+        case .space:
+            return ""
         default:
             return String(describing: self)
         }

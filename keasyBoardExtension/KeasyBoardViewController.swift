@@ -10,8 +10,12 @@ import UIKit
 class KeasyBoardViewController: UIInputViewController {    
     var boardView: KeasyBoardView!
     
-    private var spacingManager: KeasyBoardSpacingManager {
-        return KeasyBoardSpacingManager.shared
+    private var spacingManager: KeasySpacingManager {
+        return KeasySpacingManager.shared
+    }
+    
+    private var styleManager: KeasyStyleManager {
+        return KeasyStyleManager.shared
     }
     
     override func updateViewConstraints() {
@@ -22,6 +26,7 @@ class KeasyBoardViewController: UIInputViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initStyleManager()
         let viewModel = KeasyBoardViewModel(textDocumentProxy: textDocumentProxy)
         boardView = KeasyBoardView(viewModel: viewModel)
         setupUI()
@@ -49,6 +54,17 @@ class KeasyBoardViewController: UIInputViewController {
 }
 
 private extension KeasyBoardViewController {
+    func initStyleManager() {
+        switch traitCollection.userInterfaceStyle {
+        case .light, .unspecified:
+            styleManager.currentStyle = .light
+        case .dark:
+            styleManager.currentStyle = .dark
+        @unknown default:
+            styleManager.currentStyle = .light
+        }
+    }
+    
     func setupUI() {
         view.addSubview(boardView)
         

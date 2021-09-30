@@ -11,28 +11,45 @@ import UIKit
 class KeasyBoardViewModel: NSObject {
     private(set) var proxy: UITextDocumentProxy?
     
-    private var dataSource: [KeasyBoardRowViewModel] = {
+    var isShiftOn = Observable(false)
+    var isShiftLockOn = Observable(false)
+    
+    private lazy var dataSource: [KeasyBoardRowViewModel] = {
         return KeasyBoard.arrangement.map { row in
-            return KeasyBoardRowViewModel(row: row)
+            return KeasyBoardRowViewModel(row: row, in: self)
         }
     }()
     
     init(textDocumentProxy: UITextDocumentProxy?) {
         self.proxy = textDocumentProxy
     }
+    
+    func setShiftOn(_ on: Bool) {
+        if isShiftLockOn.value {
+            isShiftLockOn.value = false
+        }
+        
+        isShiftOn.next(on)
+    }
+    
+    func setShiftLockOn(_ on: Bool) {
+        isShiftOn.value = on
+        
+        isShiftLockOn.next(on)
+    }
 }
     
 extension KeasyBoardViewModel {
-    private var spacingManager: KeasyBoardSpacingManager {
-        return KeasyBoardSpacingManager.shared
+    private var spacingManager: KeasySpacingManager {
+        return KeasySpacingManager.shared
     }
     
-    var boardPadding: Double {
-        return spacingManager.boardPadding
+    var boardSpacing: Double {
+        return spacingManager.boardSpacing
     }
     
-    var keyPadding: Double {
-        return spacingManager.keyPadding
+    var keySpacing: Double {
+        return spacingManager.keySpacing
     }
     
     var rowSpacing: Double {
@@ -65,10 +82,10 @@ extension KeasyBoardViewModel {
             let totalCellWidth: CGFloat = CGFloat(cellWidth * CGFloat(row.keyPairs.count))
             let spacingWithinCells: CGFloat = row.totalMinimumSpacingBetweenKeys
             var horizontalSpacing: CGFloat = CGFloat(viewWidth - totalCellWidth - spacingWithinCells) / 2
-            horizontalSpacing = max(horizontalSpacing, boardPadding)
+            horizontalSpacing = max(horizontalSpacing, boardSpacing)
             return UIEdgeInsets(top: topSpacing, left: horizontalSpacing, bottom: rowSpacing, right: horizontalSpacing)
         case .mixed:
-            return UIEdgeInsets(top: topSpacing, left: boardPadding, bottom: rowSpacing, right: boardPadding)
+            return UIEdgeInsets(top: topSpacing, left: boardSpacing, bottom: rowSpacing, right: boardSpacing)
         }
     }
     
@@ -92,14 +109,14 @@ extension KeasyBoardViewModel {
             let numOfLargeKeys = row.numOfKeys(size: .large)
             let totalWidthOfLargeKeys = largeKeyWidth(in: view) * Double(numOfLargeKeys)
             
-            let viewWidth = view.frame.width - boardPadding - boardPadding
+            let viewWidth = view.frame.width - boardSpacing - boardSpacing - 0.1
             let flexibleKeyWidth = viewWidth - spacingBetweenKeys - totalWidthOfRegularKeys - totalWidthOfLargeKeys
             return CGSize(width: flexibleKeyWidth, height: height)
         }
     }
     
     var keyHeight: Double {
-        let viewHeight = boardHeight - rowSpacing * Double(dataSource.count + 1) - 1
+        let viewHeight = boardHeight - rowSpacing * Double(dataSource.count + 1) - 0.1
         let numOfRow = dataSource.count
         let height = viewHeight / Double(numOfRow)
         return height
@@ -109,7 +126,7 @@ extension KeasyBoardViewModel {
     func regularKeyWidth(in view: UIView) -> Double {
         guard let row = dataSource.first(where: { $0.index == 0 }) else { return 0 }
         
-        let viewWidth = view.frame.width - boardPadding - boardPadding - 1
+        let viewWidth = view.frame.width - boardSpacing - boardSpacing - 0.1
         let numOfKey = row.keyPairs.count
         let regularWidth = (viewWidth - row.totalMinimumSpacingBetweenKeys) / Double(numOfKey)
         return regularWidth
@@ -119,14 +136,14 @@ extension KeasyBoardViewModel {
     func largeKeyWidth(in view: UIView) -> Double {
         guard let row = dataSource.first(where: { $0.index == 3 }) else { return 0 }
         
-        let viewWidth = view.frame.width - boardPadding - boardPadding - 1
+        let viewWidth = view.frame.width - boardSpacing - boardSpacing - 0.1
         let totalMinimumSpacingWithinKeys = row.totalMinimumSpacingBetweenKeys
         
         let regularKeyWidth = regularKeyWidth(in: view)
-        let numOfRegularKey = row.keyPairs.filter { $0.main.size == .regular }.count
+        let numOfRegularKey = row.keyPairs.filter({ $0.main.size == .regular }).count
         let totalWidthOfRegularKeys = Double(numOfRegularKey) * regularKeyWidth
         
-        let numOfLargeKey = row.keyPairs.filter { $0.main.size == .large }.count
+        let numOfLargeKey = row.keyPairs.filter({ $0.main.size == .large }).count
         var largeKeyWidth = (viewWidth - totalMinimumSpacingWithinKeys - totalWidthOfRegularKeys) / Double(numOfLargeKey)
         largeKeyWidth = min(largeKeyWidth, regularKeyWidth * 2)
         return largeKeyWidth
@@ -136,9 +153,9 @@ extension KeasyBoardViewModel {
 extension KeasyBoardViewModel {
     func didTap(keyPair: KeasyKeyPairViewModel) {
         guard let proxy = proxy else { return }
-        switch keyPair.main.key {
+        switch keyPair.primaryKey.key {
         case .shift:
-            keyPair.setToggle(false)
+            break
         case .typing(let value):
             proxy.insertText(value)
         default:

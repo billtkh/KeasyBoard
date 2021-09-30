@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		D2520E4627058E8900DD43C4 /* KeasyBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2520E4527058E8900DD43C4 /* KeasyBoardView.swift */; };
+		D2520E482705AAD600DD43C4 /* KeasyStyleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2520E472705AAD600DD43C4 /* KeasyStyleManager.swift */; };
+		D2520E4A2705B3CB00DD43C4 /* KeasyFontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2520E492705B3CB00DD43C4 /* KeasyFontManager.swift */; };
 		D2C08ADC2702FD4C002B1ABD /* KeasyKeyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C08ADB2702FD4C002B1ABD /* KeasyKeyViewModel.swift */; };
 		D2C08ADD27030CA2002B1ABD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2E3DFAE2702C18400C1F25F /* Assets.xcassets */; };
 		D2C08AE027040344002B1ABD /* KeasyBoardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C08ADF27040344002B1ABD /* KeasyBoardRow.swift */; };
@@ -58,6 +60,8 @@
 
 /* Begin PBXFileReference section */
 		D2520E4527058E8900DD43C4 /* KeasyBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeasyBoardView.swift; sourceTree = "<group>"; };
+		D2520E472705AAD600DD43C4 /* KeasyStyleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeasyStyleManager.swift; sourceTree = "<group>"; };
+		D2520E492705B3CB00DD43C4 /* KeasyFontManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeasyFontManager.swift; sourceTree = "<group>"; };
 		D2C08ADB2702FD4C002B1ABD /* KeasyKeyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeasyKeyViewModel.swift; sourceTree = "<group>"; };
 		D2C08ADF27040344002B1ABD /* KeasyBoardRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeasyBoardRow.swift; sourceTree = "<group>"; };
 		D2C08AE327040544002B1ABD /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
@@ -135,9 +139,9 @@
 		D2C08ADE2704031E002B1ABD /* board */ = {
 			isa = PBXGroup;
 			children = (
-				D2520E4427058E6C00DD43C4 /* UI */,
 				D2E3DFCB2702EFF700C1F25F /* KeasyBoard.swift */,
 				D2C08ADF27040344002B1ABD /* KeasyBoardRow.swift */,
+				D2520E4427058E6C00DD43C4 /* UI */,
 			);
 			path = board;
 			sourceTree = "<group>";
@@ -146,8 +150,8 @@
 			isa = PBXGroup;
 			children = (
 				D2E3DFCD2702F3A300C1F25F /* KeasyKeyCell.swift */,
-				D2C08ADB2702FD4C002B1ABD /* KeasyKeyViewModel.swift */,
 				D2C08AEC27046427002B1ABD /* KeasyKeyPairViewModel.swift */,
+				D2C08ADB2702FD4C002B1ABD /* KeasyKeyViewModel.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -165,6 +169,8 @@
 		D2C08AE5270409E0002B1ABD /* manager */ = {
 			isa = PBXGroup;
 			children = (
+				D2520E492705B3CB00DD43C4 /* KeasyFontManager.swift */,
+				D2520E472705AAD600DD43C4 /* KeasyStyleManager.swift */,
 				D2C08AE627040A02002B1ABD /* KeasySpacingManager.swift */,
 			);
 			path = manager;
@@ -344,10 +350,12 @@
 				D2C08ADC2702FD4C002B1ABD /* KeasyKeyViewModel.swift in Sources */,
 				D2C08AE927045031002B1ABD /* DoubleExtension.swift in Sources */,
 				D2C08AEB27045A6C002B1ABD /* KeasyKeyPair.swift in Sources */,
+				D2520E4A2705B3CB00DD43C4 /* KeasyFontManager.swift in Sources */,
 				D2E3DFD02702F3C900C1F25F /* KeasyKey.swift in Sources */,
 				D2C08AF127055A6C002B1ABD /* KeasyBoardRowViewModel.swift in Sources */,
 				D2C08AE027040344002B1ABD /* KeasyBoardRow.swift in Sources */,
 				D2C08AE727040A02002B1ABD /* KeasySpacingManager.swift in Sources */,
+				D2520E482705AAD600DD43C4 /* KeasyStyleManager.swift in Sources */,
 				D2C08AEF27046D67002B1ABD /* ColorExtension.swift in Sources */,
 				D2520E4627058E8900DD43C4 /* KeasyBoardView.swift in Sources */,
 			);
@@ -508,6 +516,7 @@
 				CODE_SIGN_ENTITLEMENTS = keasyBoard/keasyBoard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9NQ9QG3G75;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = keasyBoard/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -537,6 +546,7 @@
 				CODE_SIGN_ENTITLEMENTS = keasyBoard/keasyBoard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9NQ9QG3G75;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = keasyBoard/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -562,6 +572,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9NQ9QG3G75;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = keasyBoardExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = keasyBoardExtension;
@@ -586,6 +597,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9NQ9QG3G75;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = keasyBoardExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = keasyBoardExtension;

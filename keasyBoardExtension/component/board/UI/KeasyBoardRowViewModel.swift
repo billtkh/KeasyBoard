@@ -11,13 +11,13 @@ class KeasyBoardRowViewModel: NSObject {
     private var row: KeasyBoardRow
     private(set) var keyPairs: [KeasyKeyPairViewModel]
     
-    var spacingManager: KeasyBoardSpacingManager {
-        return KeasyBoardSpacingManager.shared
+    var spacingManager: KeasySpacingManager {
+        return KeasySpacingManager.shared
     }
     
-    init(row: KeasyBoardRow) {
+    init(row: KeasyBoardRow, in board: KeasyBoardViewModel) {
         self.row = row
-        self.keyPairs = row.keyPairs.viewModels
+        self.keyPairs = row.keyPairs.map { KeasyKeyPairViewModel($0, in: board) }
     }
     
     var index: Int {
@@ -28,12 +28,12 @@ class KeasyBoardRowViewModel: NSObject {
         return row.arrangementType
     }
     
-    var keyPadding: Double {
-        return spacingManager.keyPadding
+    var keySpacing: Double {
+        return spacingManager.keySpacing
     }
     
     var totalMinimumSpacingBetweenKeys: Double {
-        return Double(row.keyPairs.count - 1) * keyPadding
+        return Double(row.keyPairs.count - 1) * keySpacing
     }
     
     func numOfKeys(size: KeasyKeySize) -> Int {
