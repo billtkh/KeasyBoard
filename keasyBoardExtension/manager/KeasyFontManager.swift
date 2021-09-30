@@ -6,8 +6,11 @@
 //
 
 import Foundation
+import UIKit
 
 class KeasyFontManager: NSObject {
     static let shared = KeasyFontManager()
     
+    var regularFont: UIFont = .systemFont(ofSize: 17)
+    var smallFont: UIFont = .systemFont(ofSize: 10)
 }

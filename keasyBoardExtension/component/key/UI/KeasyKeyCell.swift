@@ -33,22 +33,6 @@ class KeasyKeyCell: UICollectionViewCell {
     
     private var toggleView: UIView!
     
-    private var styleManager: KeasyStyleManager {
-        return KeasyStyleManager.shared
-    }
-    
-    private var spacingManager: KeasySpacingManager {
-        return KeasySpacingManager.shared
-    }
-    
-    private var rowPadding: Double {
-        return spacingManager.rowPadding
-    }
-    
-    private var keyPadding: Double {
-        return spacingManager.keyPadding
-    }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -74,6 +58,36 @@ class KeasyKeyCell: UICollectionViewCell {
 }
 
 private extension KeasyKeyCell {
+    var styleManager: KeasyStyleManager {
+        return KeasyStyleManager.shared
+    }
+    
+    var spacingManager: KeasySpacingManager {
+        return KeasySpacingManager.shared
+    }
+    
+    var rowPadding: Double {
+        return spacingManager.rowPadding
+    }
+    
+    var keyPadding: Double {
+        return spacingManager.keyPadding
+    }
+    
+    var fontManager: KeasyFontManager {
+        return KeasyFontManager.shared
+    }
+    
+    var regularFont: UIFont {
+        return fontManager.regularFont
+    }
+    
+    var smallFont: UIFont {
+        return fontManager.smallFont
+    }
+}
+
+private extension KeasyKeyCell {
     func setupUI() {
         keyView = UIView(frame: .zero)
         keyView.translatesAutoresizingMaskIntoConstraints = false
@@ -92,7 +106,7 @@ private extension KeasyKeyCell {
         
         primaryLabel = UILabel(frame: .zero)
         primaryLabel.textColor = .white
-        primaryLabel.font = .systemFont(ofSize: 17)
+        primaryLabel.font = regularFont
         primaryLabel.translatesAutoresizingMaskIntoConstraints = false
         keyView.addSubview(primaryLabel)
         NSLayoutConstraint.activate(
@@ -103,8 +117,8 @@ private extension KeasyKeyCell {
         )
         
         secondaryLabel = UILabel(frame: .zero)
-        secondaryLabel.textColor = .white.withAlphaComponent(0.8)
-        secondaryLabel.font = .systemFont(ofSize: 10)
+        secondaryLabel.textColor = .white.withAlphaComponent(0.6)
+        secondaryLabel.font = smallFont
         secondaryLabel.translatesAutoresizingMaskIntoConstraints = false
         keyView.addSubview(secondaryLabel)
         NSLayoutConstraint.activate(
@@ -147,9 +161,9 @@ private extension KeasyKeyCell {
         
         switch viewModel.primaryKey.titleSize {
         case .regular:
-            primaryLabel.font = .systemFont(ofSize: 17)
+            primaryLabel.font = regularFont
         case .small:
-            primaryLabel.font = .systemFont(ofSize: 10)
+            primaryLabel.font = smallFont
         }
         
         switch viewModel.primaryKey.key {
