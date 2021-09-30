@@ -13,21 +13,26 @@ enum KeasyKeySize {
     case flexible
 }
 
+enum KeasyKeyTitleSize {
+    case regular
+    case small
+}
+
 enum KeasyKey {
     // control keys
     case shift
-    case backspace
+    case delete
     case emoji
     case inputSwitch
     case space
-    case enter
+    case returnText
     
     // alphanumeric keys
     case typing(String)
     
     var size: KeasyKeySize {
         switch self {
-        case .backspace, .shift, .enter:
+        case .delete, .shift, .returnText:
             return .large
         case .space:
             return .flexible
@@ -44,10 +49,28 @@ enum KeasyKey {
             return "⚙︎"
         case .emoji:
             return "😀"
-        case .backspace:
-            return "del"
+        case .returnText:
+            return "return"
         default:
             return String(describing: self)
+        }
+    }
+    
+    var titleSize: KeasyKeyTitleSize {
+        switch self {
+        case .delete, .shift, .returnText, .space:
+            return .small
+        default:
+            return .regular
+        }
+    }
+    
+    var canToggle: Bool {
+        switch self {
+        case .shift:
+            return true
+        default:
+            return false
         }
     }
 }

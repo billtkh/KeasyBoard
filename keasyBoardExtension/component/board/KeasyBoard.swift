@@ -53,7 +53,7 @@ class KeasyBoard {
             KeasyKeyPair(main: .typing("b"), sub: .typing("B")),
             KeasyKeyPair(main: .typing("n"), sub: .typing("N")),
             KeasyKeyPair(main: .typing("m"), sub: .typing("M")),
-            KeasyKeyPair(main: .backspace),
+            KeasyKeyPair(main: .delete),
         ]),
         KeasyBoardRow(index: 4, arrangementType: .mixed, keyPairs: [
             KeasyKeyPair(main: .emoji),
@@ -62,7 +62,7 @@ class KeasyBoard {
             KeasyKeyPair(main: .typing(","), sub: .typing("<")),
             KeasyKeyPair(main: .typing("."), sub: .typing(">")),
             KeasyKeyPair(main: .typing("/"), sub: .typing("?")),
-            KeasyKeyPair(main: .enter),
+            KeasyKeyPair(main: .returnText),
         ]),
     ]
 }

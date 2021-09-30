@@ -8,47 +8,21 @@
 import Foundation
 import UIKit
 
-class KeasyBoardRowViewModel: NSObject {
-    private var row: KeasyBoardRow
-    private(set) var keyPairs: [KeasyKeyPairViewModel]
-    
-    var spacingManager: KeasyBoardSpacingManager {
-        return KeasyBoardSpacingManager.shared
-    }
-    
-    init(row: KeasyBoardRow) {
-        self.row = row
-        self.keyPairs = row.keyPairs.viewModels
-    }
-    
-    var index: Int {
-        return row.index
-    }
-    
-    var arrangementType: KeasyBoardRowArrangementType {
-        return row.arrangementType
-    }
-    
-    var keyPadding: CGFloat {
-        return spacingManager.keyPadding
-    }
-    
-    var totalMinimumSpacingBetweenKeys: CGFloat {
-        return CGFloat(row.keyPairs.count - 1) * keyPadding
-    }
-    
-    func numOfKeys(size: KeasyKeySize) -> Int {
-        return keyPairs.filter { $0.main.size == size }.count
-    }
-}
-
 class KeasyBoardViewModel: NSObject {
+    private(set) var proxy: UITextDocumentProxy?
+    
     private var dataSource: [KeasyBoardRowViewModel] = {
         return KeasyBoard.arrangement.map { row in
             return KeasyBoardRowViewModel(row: row)
         }
     }()
     
+    init(textDocumentProxy: UITextDocumentProxy?) {
+        self.proxy = textDocumentProxy
+    }
+}
+    
+extension KeasyBoardViewModel {
     private var spacingManager: KeasyBoardSpacingManager {
         return KeasyBoardSpacingManager.shared
     }
@@ -156,5 +130,19 @@ class KeasyBoardViewModel: NSObject {
         var largeKeyWidth = (viewWidth - totalMinimumSpacingWithinKeys - totalWidthOfRegularKeys) / Double(numOfLargeKey)
         largeKeyWidth = min(largeKeyWidth, regularKeyWidth * 2)
         return largeKeyWidth
+    }
+}
+
+extension KeasyBoardViewModel {
+    func didTap(keyPair: KeasyKeyPairViewModel) {
+        guard let proxy = proxy else { return }
+        switch keyPair.main.key {
+        case .shift:
+            keyPair.setToggle(false)
+        case .typing(let value):
+            proxy.insertText(value)
+        default:
+            break
+        }
     }
 }

@@ -20,4 +20,16 @@ class KeasyKeyPairViewModel: NSObject {
             self.sub = KeasyKeyViewModel(subKey)
         }
     }
+    
+    var isToggleHidden: Bool {
+        return main.isToggleHidden
+    }
+    
+    var isToggleOn: Observable<Bool> {
+        return main.isToggleOn
+    }
+    
+    func setToggle(_ on: Bool) {
+        main.isToggleOn.value = on
+    }
 }

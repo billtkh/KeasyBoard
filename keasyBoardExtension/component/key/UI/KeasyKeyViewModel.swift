@@ -9,6 +9,7 @@ import Foundation
 
 class KeasyKeyViewModel: NSObject {
     var key: KeasyKey
+    var isToggleOn: Observable<Bool> = .init(false)
     
     init(_ key: KeasyKey) {
         self.key = key
@@ -20,5 +21,13 @@ class KeasyKeyViewModel: NSObject {
     
     var title: String {
         return key.title
+    }
+    
+    var titleSize: KeasyKeyTitleSize {
+        return key.titleSize
+    }
+    
+    var isToggleHidden: Bool {
+        return !key.canToggle
     }
 }
