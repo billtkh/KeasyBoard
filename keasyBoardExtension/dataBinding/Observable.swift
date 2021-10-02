@@ -8,11 +8,15 @@
 import Foundation
 
 class Observable<T> {
-    var value: T
+    private(set) var value: T
 
     private var listener: ((T) -> Void)?
 
     init(_ value: T) {
+        self.value = value
+    }
+    
+    func update(_ value: T) {
         self.value = value
     }
     

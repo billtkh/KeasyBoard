@@ -26,14 +26,14 @@ class KeasyBoardViewModel: NSObject {
     
     func setShiftOn(_ on: Bool) {
         if isShiftLockOn.value {
-            isShiftLockOn.value = false
+            isShiftLockOn.update(false)
         }
         
         isShiftOn.next(on)
     }
     
     func setShiftLockOn(_ on: Bool) {
-        isShiftOn.value = on
+        isShiftOn.update(on)
         
         isShiftLockOn.next(on)
     }
