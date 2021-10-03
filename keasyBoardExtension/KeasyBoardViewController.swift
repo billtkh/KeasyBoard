@@ -27,7 +27,8 @@ class KeasyBoardViewController: UIInputViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initStyleManager()
-        let viewModel = KeasyBoardViewModel(textDocumentProxy: textDocumentProxy)
+        let viewModel = KeasyBoardViewModel(textDocumentProxy: textDocumentProxy,
+                                            needsInputModeSwitchKey: needsInputModeSwitchKey)
         boardView = KeasyBoardView(viewModel: viewModel)
         setupUI()
     }
@@ -55,18 +56,19 @@ class KeasyBoardViewController: UIInputViewController {
 
 private extension KeasyBoardViewController {
     func initStyleManager() {
-        switch traitCollection.userInterfaceStyle {
-        case .light, .unspecified:
+        switch textDocumentProxy.keyboardAppearance {
+        case .light:
             styleManager.currentStyle = .light
         case .dark:
             styleManager.currentStyle = .dark
-        @unknown default:
+        default:
             styleManager.currentStyle = .light
         }
     }
     
     func setupUI() {
-        view.addSubview(boardView)
+        guard let inputView = inputView else { return }
+        inputView.addSubview(boardView)
         
         boardView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate(

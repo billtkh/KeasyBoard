@@ -15,9 +15,20 @@ class KeasyBoardRowViewModel: NSObject {
         return KeasySpacingManager.shared
     }
     
-    init(row: KeasyBoardRow, in board: KeasyBoardViewModel) {
+    init(row: KeasyBoardRow, in board: KeasyBoardViewModel, shouldExcludeInputModeSwitchKey: Bool = false) {
         self.row = row
-        self.keyPairs = row.keyPairs.map { KeasyKeyPairViewModel($0, in: board) }
+        self.keyPairs = row.keyPairs.compactMap { keyPair in
+            if shouldExcludeInputModeSwitchKey {
+                switch keyPair.main {
+                case .inputModeSwitch:
+                    return nil
+                default:
+                    return KeasyKeyPairViewModel(keyPair, in: board)
+                }
+            } else {
+                return KeasyKeyPairViewModel(keyPair, in: board)
+            }
+        }
     }
     
     var index: Int {

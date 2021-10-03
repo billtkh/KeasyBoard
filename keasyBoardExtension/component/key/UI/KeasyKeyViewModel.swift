@@ -18,6 +18,10 @@ class KeasyKeyViewModel: NSObject {
         return key.size
     }
     
+    var text: String {
+        return key.text
+    }
+    
     var title: String {
         return key.title
     }

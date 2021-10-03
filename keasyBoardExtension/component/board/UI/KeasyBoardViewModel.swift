@@ -10,18 +10,20 @@ import UIKit
 
 class KeasyBoardViewModel: NSObject {
     private(set) var proxy: UITextDocumentProxy?
+    private(set) var needsInputModeSwitchKey: Bool
     
     var isShiftOn = Observable(false)
     var isShiftLockOn = Observable(false)
     
     private lazy var dataSource: [KeasyBoardRowViewModel] = {
         return KeasyBoard.arrangement.map { row in
-            return KeasyBoardRowViewModel(row: row, in: self)
+            return KeasyBoardRowViewModel(row: row, in: self, shouldExcludeInputModeSwitchKey: !needsInputModeSwitchKey)
         }
     }()
     
-    init(textDocumentProxy: UITextDocumentProxy?) {
+    init(textDocumentProxy: UITextDocumentProxy?, needsInputModeSwitchKey: Bool) {
         self.proxy = textDocumentProxy
+        self.needsInputModeSwitchKey = needsInputModeSwitchKey
     }
     
     func setShiftOn(_ on: Bool) {
@@ -156,8 +158,8 @@ extension KeasyBoardViewModel {
         switch keyPair.primaryKey.key {
         case .shift:
             break
-        case .typing(let value):
-            proxy.insertText(value)
+        case .typing(_):
+            proxy.insertText(keyPair.primaryKey.key.text)
         default:
             break
         }

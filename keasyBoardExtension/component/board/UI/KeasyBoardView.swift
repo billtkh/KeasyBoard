@@ -26,7 +26,7 @@ class KeasyBoardView: UIView {
     }
     
     required init?(coder: NSCoder) {
-        self.viewModel = KeasyBoardViewModel(textDocumentProxy: nil)
+        self.viewModel = KeasyBoardViewModel(textDocumentProxy: nil, needsInputModeSwitchKey: false)
         super.init(frame: .zero)
         
         setupUI()

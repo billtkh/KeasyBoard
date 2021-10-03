@@ -56,8 +56,9 @@ class KeasyBoard {
             KeasyKeyPair(main: .delete),
         ]),
         KeasyBoardRow(index: 4, arrangementType: .mixed, keyPairs: [
+            KeasyKeyPair(main: .function),
             KeasyKeyPair(main: .emoji),
-            KeasyKeyPair(main: .inputSwitch),
+            KeasyKeyPair(main: .inputModeSwitch),
             KeasyKeyPair(main: .space),
             KeasyKeyPair(main: .typing(","), sub: .typing("<")),
             KeasyKeyPair(main: .typing("."), sub: .typing(">")),

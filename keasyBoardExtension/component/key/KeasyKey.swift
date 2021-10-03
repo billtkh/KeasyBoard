@@ -20,10 +20,11 @@ enum KeasyKeyTitleSize {
 
 enum KeasyKey {
     // control keys
+    case function
     case shift
     case delete
     case emoji
-    case inputSwitch
+    case inputModeSwitch
     case space
     case returnText
     
@@ -41,11 +42,20 @@ enum KeasyKey {
         }
     }
     
+    var text: String {
+        switch self {
+        case let .typing(text):
+            return text
+        default:
+            return ""
+        }
+    }
+    
     var title: String {
         switch self {
-        case let .typing(title):
-            return title
-        case .inputSwitch:
+        case let .typing(text):
+            return text
+        case .inputModeSwitch:
             return "⚙︎"
         case .emoji:
             return "😀"
@@ -53,6 +63,8 @@ enum KeasyKey {
             return "return"
         case .space:
             return ""
+        case .function:
+            return "fn"
         default:
             return String(describing: self)
         }
@@ -60,7 +72,7 @@ enum KeasyKey {
     
     var titleSize: KeasyKeyTitleSize {
         switch self {
-        case .delete, .shift, .returnText, .space:
+        case .delete, .shift, .returnText, .space, .function:
             return .small
         default:
             return .regular
