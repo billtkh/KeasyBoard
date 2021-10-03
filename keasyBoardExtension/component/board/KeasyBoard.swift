@@ -63,7 +63,7 @@ class KeasyBoard {
             KeasyKeyPair(main: .typing(","), sub: .typing("<")),
             KeasyKeyPair(main: .typing("."), sub: .typing(">")),
             KeasyKeyPair(main: .typing("/"), sub: .typing("?")),
-            KeasyKeyPair(main: .returnText),
+            KeasyKeyPair(main: .next),
         ]),
     ]
 }

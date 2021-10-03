@@ -26,14 +26,14 @@ enum KeasyKey {
     case emoji
     case inputModeSwitch
     case space
-    case returnText
+    case next
     
     // alphanumeric keys
     case typing(String)
     
     var size: KeasyKeySize {
         switch self {
-        case .delete, .shift, .returnText:
+        case .delete, .shift, .next:
             return .large
         case .space:
             return .flexible
@@ -59,8 +59,8 @@ enum KeasyKey {
             return "⚙︎"
         case .emoji:
             return "😀"
-        case .returnText:
-            return "return"
+        case .next:
+            return "⏎"
         case .space:
             return ""
         case .function:
@@ -72,7 +72,7 @@ enum KeasyKey {
     
     var titleSize: KeasyKeyTitleSize {
         switch self {
-        case .delete, .shift, .returnText, .space, .function:
+        case .delete, .shift, .next, .space, .function:
             return .small
         default:
             return .regular
