@@ -156,8 +156,8 @@ private extension KeasyKeyCell {
     }
     
     func updateUI(viewModel: KeasyKeyPairViewModel) {
-        primaryLabel.text = viewModel.primaryKey.title.suChengCode
-        secondaryLabel.text = viewModel.secondaryKey?.title.suChengCode
+        primaryLabel.text = viewModel.primaryKey.title.cangjieCode
+        secondaryLabel.text = viewModel.secondaryKey?.title.cangjieCode
         
         switch viewModel.primaryKey.titleSize {
         case .regular:

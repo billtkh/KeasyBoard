@@ -8,7 +8,7 @@
 import Foundation
 
 extension String {
-    var suChengCode: String {
+    var cangjieCode: String {
         switch self {
         case "q":
             return "手"

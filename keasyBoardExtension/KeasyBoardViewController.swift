@@ -56,8 +56,8 @@ class KeasyBoardViewController: UIInputViewController {
 
 private extension KeasyBoardViewController {
     func initStyleManager() {
-        switch textDocumentProxy.keyboardAppearance {
-        case .light:
+        switch traitCollection.userInterfaceStyle {
+        case .light, .unspecified:
             styleManager.currentStyle = .light
         case .dark:
             styleManager.currentStyle = .dark

@@ -10,6 +10,18 @@
 		D2520E4627058E8900DD43C4 /* KeasyBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2520E4527058E8900DD43C4 /* KeasyBoardView.swift */; };
 		D2520E482705AAD600DD43C4 /* KeasyStyleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2520E472705AAD600DD43C4 /* KeasyStyleManager.swift */; };
 		D2520E4A2705B3CB00DD43C4 /* KeasyFontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2520E492705B3CB00DD43C4 /* KeasyFontManager.swift */; };
+		D2520E58270AF80900DD43C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2520E57270AF80900DD43C4 /* AppDelegate.swift */; };
+		D2520E5C270AF80900DD43C4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2520E5B270AF80900DD43C4 /* ViewController.swift */; };
+		D2520E5F270AF80900DD43C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2520E5D270AF80900DD43C4 /* Main.storyboard */; };
+		D2520E64270AF80A00DD43C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2520E63270AF80A00DD43C4 /* Assets.xcassets */; };
+		D2520E67270AF80A00DD43C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2520E65270AF80A00DD43C4 /* LaunchScreen.storyboard */; };
+		D2520E6F270AF84700DD43C4 /* simplex.txt in Resources */ = {isa = PBXBuildFile; fileRef = D2520E6D270AF84700DD43C4 /* simplex.txt */; };
+		D2520E70270AF84700DD43C4 /* cangjie.txt in Resources */ = {isa = PBXBuildFile; fileRef = D2520E6E270AF84700DD43C4 /* cangjie.txt */; };
+		D2520E75270AFFED00DD43C4 /* Simplex.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2520E72270AF86400DD43C4 /* Simplex.xcdatamodeld */; };
+		D2520E77270B04E300DD43C4 /* Simplex.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = D2520E76270B04E300DD43C4 /* Simplex.sqlite */; };
+		D2520E7A270B060A00DD43C4 /* KeasyInputMethodManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2520E79270B060A00DD43C4 /* KeasyInputMethodManager.swift */; };
+		D2520E7F270B073B00DD43C4 /* Simplex.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = D2520E7C270B073B00DD43C4 /* Simplex.sqlite-shm */; };
+		D2520E80270B073B00DD43C4 /* Simplex.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = D2520E7D270B073B00DD43C4 /* Simplex.sqlite-wal */; };
 		D2C08ADC2702FD4C002B1ABD /* KeasyKeyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C08ADB2702FD4C002B1ABD /* KeasyKeyViewModel.swift */; };
 		D2C08ADD27030CA2002B1ABD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2E3DFAE2702C18400C1F25F /* Assets.xcassets */; };
 		D2C08AE027040344002B1ABD /* KeasyBoardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C08ADF27040344002B1ABD /* KeasyBoardRow.swift */; };
@@ -63,6 +75,20 @@
 		D2520E4527058E8900DD43C4 /* KeasyBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeasyBoardView.swift; sourceTree = "<group>"; };
 		D2520E472705AAD600DD43C4 /* KeasyStyleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeasyStyleManager.swift; sourceTree = "<group>"; };
 		D2520E492705B3CB00DD43C4 /* KeasyFontManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeasyFontManager.swift; sourceTree = "<group>"; };
+		D2520E55270AF80900DD43C4 /* WordBasePopulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordBasePopulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2520E57270AF80900DD43C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D2520E5B270AF80900DD43C4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D2520E5E270AF80900DD43C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D2520E63270AF80A00DD43C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D2520E66270AF80A00DD43C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D2520E68270AF80A00DD43C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2520E6D270AF84700DD43C4 /* simplex.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = simplex.txt; sourceTree = "<group>"; };
+		D2520E6E270AF84700DD43C4 /* cangjie.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cangjie.txt; sourceTree = "<group>"; };
+		D2520E73270AF86400DD43C4 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		D2520E76270B04E300DD43C4 /* Simplex.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Simplex.sqlite; sourceTree = "<group>"; };
+		D2520E79270B060A00DD43C4 /* KeasyInputMethodManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeasyInputMethodManager.swift; sourceTree = "<group>"; };
+		D2520E7C270B073B00DD43C4 /* Simplex.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Simplex.sqlite-shm"; sourceTree = "<group>"; };
+		D2520E7D270B073B00DD43C4 /* Simplex.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Simplex.sqlite-wal"; sourceTree = "<group>"; };
 		D2C08ADB2702FD4C002B1ABD /* KeasyKeyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeasyKeyViewModel.swift; sourceTree = "<group>"; };
 		D2C08ADF27040344002B1ABD /* KeasyBoardRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeasyBoardRow.swift; sourceTree = "<group>"; };
 		D2C08AE327040544002B1ABD /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
@@ -92,6 +118,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D2520E52270AF80900DD43C4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D2E3DF9F2702C18200C1F25F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -119,13 +152,55 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
-		D2C08AD92702FD09002B1ABD /* component */ = {
+		D2520E4C270AD1FD00DD43C4 /* LocalStorage */ = {
+			isa = PBXGroup;
+			children = (
+				D2520E7C270B073B00DD43C4 /* Simplex.sqlite-shm */,
+				D2520E7D270B073B00DD43C4 /* Simplex.sqlite-wal */,
+				D2520E76270B04E300DD43C4 /* Simplex.sqlite */,
+			);
+			path = LocalStorage;
+			sourceTree = "<group>";
+		};
+		D2520E56270AF80900DD43C4 /* WordBasePopulator */ = {
+			isa = PBXGroup;
+			children = (
+				D2520E57270AF80900DD43C4 /* AppDelegate.swift */,
+				D2520E5B270AF80900DD43C4 /* ViewController.swift */,
+				D2520E74270AF87700DD43C4 /* DataModels */,
+				D2520E6C270AF83900DD43C4 /* WordBases */,
+				D2520E5D270AF80900DD43C4 /* Main.storyboard */,
+				D2520E63270AF80A00DD43C4 /* Assets.xcassets */,
+				D2520E65270AF80A00DD43C4 /* LaunchScreen.storyboard */,
+				D2520E68270AF80A00DD43C4 /* Info.plist */,
+			);
+			path = WordBasePopulator;
+			sourceTree = "<group>";
+		};
+		D2520E6C270AF83900DD43C4 /* WordBases */ = {
+			isa = PBXGroup;
+			children = (
+				D2520E6E270AF84700DD43C4 /* cangjie.txt */,
+				D2520E6D270AF84700DD43C4 /* simplex.txt */,
+			);
+			path = WordBases;
+			sourceTree = "<group>";
+		};
+		D2520E74270AF87700DD43C4 /* DataModels */ = {
+			isa = PBXGroup;
+			children = (
+				D2520E72270AF86400DD43C4 /* Simplex.xcdatamodeld */,
+			);
+			path = DataModels;
+			sourceTree = "<group>";
+		};
+		D2C08AD92702FD09002B1ABD /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				D2C08ADE2704031E002B1ABD /* board */,
 				D2C08ADA2702FD2C002B1ABD /* key */,
 			);
-			path = component;
+			path = Components;
 			sourceTree = "<group>";
 		};
 		D2C08ADA2702FD2C002B1ABD /* key */ = {
@@ -158,7 +233,7 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
-		D2C08AE227040524002B1ABD /* extension */ = {
+		D2C08AE227040524002B1ABD /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				D2C08AE327040544002B1ABD /* ArrayExtension.swift */,
@@ -166,25 +241,26 @@
 				D2C08AEE27046D67002B1ABD /* ColorExtension.swift */,
 				D2F39E352709C36200E7D0C5 /* StringExtension.swift */,
 			);
-			path = extension;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
-		D2C08AE5270409E0002B1ABD /* manager */ = {
+		D2C08AE5270409E0002B1ABD /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				D2520E79270B060A00DD43C4 /* KeasyInputMethodManager.swift */,
 				D2520E492705B3CB00DD43C4 /* KeasyFontManager.swift */,
 				D2520E472705AAD600DD43C4 /* KeasyStyleManager.swift */,
 				D2C08AE627040A02002B1ABD /* KeasySpacingManager.swift */,
 			);
-			path = manager;
+			path = Managers;
 			sourceTree = "<group>";
 		};
-		D2C08AF227056462002B1ABD /* dataBinding */ = {
+		D2C08AF227056462002B1ABD /* DataBinding */ = {
 			isa = PBXGroup;
 			children = (
 				D2C08AF327056477002B1ABD /* Observable.swift */,
 			);
-			path = dataBinding;
+			path = DataBinding;
 			sourceTree = "<group>";
 		};
 		D2E3DF992702C18200C1F25F = {
@@ -192,6 +268,7 @@
 			children = (
 				D2E3DFA42702C18200C1F25F /* keasyBoard */,
 				D2E3DFBE2702C26500C1F25F /* keasyBoardExtension */,
+				D2520E56270AF80900DD43C4 /* WordBasePopulator */,
 				D2E3DFA32702C18200C1F25F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -201,6 +278,7 @@
 			children = (
 				D2E3DFA22702C18200C1F25F /* keasyBoard.app */,
 				D2E3DFBD2702C26500C1F25F /* keasyBoardExtension.appex */,
+				D2520E55270AF80900DD43C4 /* WordBasePopulator.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -223,10 +301,11 @@
 			isa = PBXGroup;
 			children = (
 				D2E3DFBF2702C26500C1F25F /* KeasyBoardViewController.swift */,
-				D2C08AD92702FD09002B1ABD /* component */,
-				D2C08AE5270409E0002B1ABD /* manager */,
-				D2C08AE227040524002B1ABD /* extension */,
-				D2C08AF227056462002B1ABD /* dataBinding */,
+				D2C08AD92702FD09002B1ABD /* Components */,
+				D2C08AE5270409E0002B1ABD /* Managers */,
+				D2C08AE227040524002B1ABD /* Extensions */,
+				D2C08AF227056462002B1ABD /* DataBinding */,
+				D2520E4C270AD1FD00DD43C4 /* LocalStorage */,
 				D2E3DFC12702C26500C1F25F /* Info.plist */,
 			);
 			path = keasyBoardExtension;
@@ -235,6 +314,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		D2520E54270AF80900DD43C4 /* WordBasePopulator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D2520E69270AF80A00DD43C4 /* Build configuration list for PBXNativeTarget "WordBasePopulator" */;
+			buildPhases = (
+				D2520E51270AF80900DD43C4 /* Sources */,
+				D2520E52270AF80900DD43C4 /* Frameworks */,
+				D2520E53270AF80900DD43C4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WordBasePopulator;
+			productName = WordBasePopulator;
+			productReference = D2520E55270AF80900DD43C4 /* WordBasePopulator.app */;
+			productType = "com.apple.product-type.application";
+		};
 		D2E3DFA12702C18200C1F25F /* keasyBoard */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D2E3DFB62702C18400C1F25F /* Build configuration list for PBXNativeTarget "keasyBoard" */;
@@ -281,6 +377,9 @@
 				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
+					D2520E54270AF80900DD43C4 = {
+						CreatedOnToolsVersion = 13.0;
+					};
 					D2E3DFA12702C18200C1F25F = {
 						CreatedOnToolsVersion = 13.0;
 					};
@@ -304,11 +403,24 @@
 			targets = (
 				D2E3DFA12702C18200C1F25F /* keasyBoard */,
 				D2E3DFBC2702C26500C1F25F /* keasyBoardExtension */,
+				D2520E54270AF80900DD43C4 /* WordBasePopulator */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D2520E53270AF80900DD43C4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2520E67270AF80A00DD43C4 /* LaunchScreen.storyboard in Resources */,
+				D2520E70270AF84700DD43C4 /* cangjie.txt in Resources */,
+				D2520E6F270AF84700DD43C4 /* simplex.txt in Resources */,
+				D2520E64270AF80A00DD43C4 /* Assets.xcassets in Resources */,
+				D2520E5F270AF80900DD43C4 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D2E3DFA02702C18200C1F25F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -323,6 +435,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2520E77270B04E300DD43C4 /* Simplex.sqlite in Resources */,
+				D2520E7F270B073B00DD43C4 /* Simplex.sqlite-shm in Resources */,
+				D2520E80270B073B00DD43C4 /* Simplex.sqlite-wal in Resources */,
 				D2C08ADD27030CA2002B1ABD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -330,6 +445,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D2520E51270AF80900DD43C4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2520E75270AFFED00DD43C4 /* Simplex.xcdatamodeld in Sources */,
+				D2520E5C270AF80900DD43C4 /* ViewController.swift in Sources */,
+				D2520E58270AF80900DD43C4 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D2E3DF9E2702C18200C1F25F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -360,6 +485,7 @@
 				D2C08AE727040A02002B1ABD /* KeasySpacingManager.swift in Sources */,
 				D2520E482705AAD600DD43C4 /* KeasyStyleManager.swift in Sources */,
 				D2F39E362709C36200E7D0C5 /* StringExtension.swift in Sources */,
+				D2520E7A270B060A00DD43C4 /* KeasyInputMethodManager.swift in Sources */,
 				D2C08AEF27046D67002B1ABD /* ColorExtension.swift in Sources */,
 				D2520E4627058E8900DD43C4 /* KeasyBoardView.swift in Sources */,
 			);
@@ -376,6 +502,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		D2520E5D270AF80900DD43C4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D2520E5E270AF80900DD43C4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D2520E65270AF80A00DD43C4 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D2520E66270AF80A00DD43C4 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		D2E3DFAB2702C18200C1F25F /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -395,6 +537,62 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		D2520E6A270AF80A00DD43C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9NQ9QG3G75;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WordBasePopulator/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.demo.WordBasePopulator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D2520E6B270AF80A00DD43C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9NQ9QG3G75;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WordBasePopulator/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.demo.WordBasePopulator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		D2E3DFB42702C18400C1F25F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -624,6 +822,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D2520E69270AF80A00DD43C4 /* Build configuration list for PBXNativeTarget "WordBasePopulator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2520E6A270AF80A00DD43C4 /* Debug */,
+				D2520E6B270AF80A00DD43C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D2E3DF9D2702C18200C1F25F /* Build configuration list for PBXProject "keasyBoard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -652,6 +859,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D2520E72270AF86400DD43C4 /* Simplex.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D2520E73270AF86400DD43C4 /* Model.xcdatamodel */,
+			);
+			currentVersion = D2520E73270AF86400DD43C4 /* Model.xcdatamodel */;
+			path = Simplex.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D2E3DF9A2702C18200C1F25F /* Project object */;
 }
