@@ -21,9 +21,16 @@ class KeasyBoardViewModel: NSObject {
         }
     }()
     
+    private var imeManager: KeasyInputMethodManager {
+        return KeasyInputMethodManager.shared
+    }
+    
     init(textDocumentProxy: UITextDocumentProxy?, needsInputModeSwitchKey: Bool) {
         self.proxy = textDocumentProxy
         self.needsInputModeSwitchKey = needsInputModeSwitchKey
+        super.init()
+        
+        imeManager.delegate = self
     }
     
     func setShiftOn(_ on: Bool) {
@@ -159,9 +166,17 @@ extension KeasyBoardViewModel {
         case .shift:
             break
         case .typing(_):
-            proxy.insertText(keyPair.primaryKey.key.text)
+            let keyText = keyPair.primaryKey.key.text
+            imeManager.inputKey(key: keyText)
+            proxy.insertText(keyText)
         default:
             break
         }
+    }
+}
+
+extension KeasyBoardViewModel: KeasyInputMethodManagerDelegate {
+    func keysInInputBuffer(keys: String, didMatch words: [KeasyWord]) {
+        print("keys: \(keys) construct words: \(words)")
     }
 }

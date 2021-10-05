@@ -90,7 +90,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func storeWordBase(wordRows: [String]) {
         let context = persistentContainer.viewContext
         
-        let words = NSEntityDescription.entity(forEntityName: "Words", in: context)!
+        let words = NSEntityDescription.entity(forEntityName: "Word", in: context)!
         
         var index = 1
         for row in wordRows {
@@ -160,7 +160,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func clearWordBase() {
         let context = persistentContainer.viewContext
         
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Words")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Word")
         fetchRequest.includesPropertyValues = false
         
         do {

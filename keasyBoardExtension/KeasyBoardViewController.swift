@@ -26,10 +26,16 @@ class KeasyBoardViewController: UIInputViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let paths = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
+            print(paths[0])
+        
         initStyleManager()
+        
         let viewModel = KeasyBoardViewModel(textDocumentProxy: textDocumentProxy,
-                                            needsInputModeSwitchKey: needsInputModeSwitchKey)
+                                            needsInputModeSwitchKey: true)
         boardView = KeasyBoardView(viewModel: viewModel)
+        
         setupUI()
     }
     
@@ -87,3 +93,4 @@ private extension KeasyBoardViewController {
         heightConstraint.isActive = true
     }
 }
+

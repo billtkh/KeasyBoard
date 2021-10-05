@@ -18,10 +18,13 @@
 		D2520E6F270AF84700DD43C4 /* simplex.txt in Resources */ = {isa = PBXBuildFile; fileRef = D2520E6D270AF84700DD43C4 /* simplex.txt */; };
 		D2520E70270AF84700DD43C4 /* cangjie.txt in Resources */ = {isa = PBXBuildFile; fileRef = D2520E6E270AF84700DD43C4 /* cangjie.txt */; };
 		D2520E75270AFFED00DD43C4 /* Simplex.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2520E72270AF86400DD43C4 /* Simplex.xcdatamodeld */; };
-		D2520E77270B04E300DD43C4 /* Simplex.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = D2520E76270B04E300DD43C4 /* Simplex.sqlite */; };
 		D2520E7A270B060A00DD43C4 /* KeasyInputMethodManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2520E79270B060A00DD43C4 /* KeasyInputMethodManager.swift */; };
-		D2520E7F270B073B00DD43C4 /* Simplex.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = D2520E7C270B073B00DD43C4 /* Simplex.sqlite-shm */; };
-		D2520E80270B073B00DD43C4 /* Simplex.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = D2520E7D270B073B00DD43C4 /* Simplex.sqlite-wal */; };
+		D2520E83270BE98C00DD43C4 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2520E82270BE98C00DD43C4 /* Word.swift */; };
+		D2520E85270BEA0A00DD43C4 /* KeasyWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2520E84270BEA0A00DD43C4 /* KeasyWord.swift */; };
+		D2520E88270C066200DD43C4 /* Simplex.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2520E86270C066200DD43C4 /* Simplex.xcdatamodeld */; };
+		D2520E8C270C08B500DD43C4 /* Simplex.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = D2520E89270C08B500DD43C4 /* Simplex.sqlite-shm */; };
+		D2520E8D270C08B500DD43C4 /* Simplex.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = D2520E8A270C08B500DD43C4 /* Simplex.sqlite-wal */; };
+		D2520E8E270C08B500DD43C4 /* Simplex.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = D2520E8B270C08B500DD43C4 /* Simplex.sqlite */; };
 		D2C08ADC2702FD4C002B1ABD /* KeasyKeyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C08ADB2702FD4C002B1ABD /* KeasyKeyViewModel.swift */; };
 		D2C08ADD27030CA2002B1ABD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2E3DFAE2702C18400C1F25F /* Assets.xcassets */; };
 		D2C08AE027040344002B1ABD /* KeasyBoardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C08ADF27040344002B1ABD /* KeasyBoardRow.swift */; };
@@ -85,10 +88,13 @@
 		D2520E6D270AF84700DD43C4 /* simplex.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = simplex.txt; sourceTree = "<group>"; };
 		D2520E6E270AF84700DD43C4 /* cangjie.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cangjie.txt; sourceTree = "<group>"; };
 		D2520E73270AF86400DD43C4 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		D2520E76270B04E300DD43C4 /* Simplex.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Simplex.sqlite; sourceTree = "<group>"; };
 		D2520E79270B060A00DD43C4 /* KeasyInputMethodManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeasyInputMethodManager.swift; sourceTree = "<group>"; };
-		D2520E7C270B073B00DD43C4 /* Simplex.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Simplex.sqlite-shm"; sourceTree = "<group>"; };
-		D2520E7D270B073B00DD43C4 /* Simplex.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Simplex.sqlite-wal"; sourceTree = "<group>"; };
+		D2520E82270BE98C00DD43C4 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
+		D2520E84270BEA0A00DD43C4 /* KeasyWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeasyWord.swift; sourceTree = "<group>"; };
+		D2520E87270C066200DD43C4 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		D2520E89270C08B500DD43C4 /* Simplex.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Simplex.sqlite-shm"; sourceTree = "<group>"; };
+		D2520E8A270C08B500DD43C4 /* Simplex.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Simplex.sqlite-wal"; sourceTree = "<group>"; };
+		D2520E8B270C08B500DD43C4 /* Simplex.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Simplex.sqlite; sourceTree = "<group>"; };
 		D2C08ADB2702FD4C002B1ABD /* KeasyKeyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeasyKeyViewModel.swift; sourceTree = "<group>"; };
 		D2C08ADF27040344002B1ABD /* KeasyBoardRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeasyBoardRow.swift; sourceTree = "<group>"; };
 		D2C08AE327040544002B1ABD /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
@@ -155,9 +161,10 @@
 		D2520E4C270AD1FD00DD43C4 /* LocalStorage */ = {
 			isa = PBXGroup;
 			children = (
-				D2520E7C270B073B00DD43C4 /* Simplex.sqlite-shm */,
-				D2520E7D270B073B00DD43C4 /* Simplex.sqlite-wal */,
-				D2520E76270B04E300DD43C4 /* Simplex.sqlite */,
+				D2520E86270C066200DD43C4 /* Simplex.xcdatamodeld */,
+				D2520E8B270C08B500DD43C4 /* Simplex.sqlite */,
+				D2520E89270C08B500DD43C4 /* Simplex.sqlite-shm */,
+				D2520E8A270C08B500DD43C4 /* Simplex.sqlite-wal */,
 			);
 			path = LocalStorage;
 			sourceTree = "<group>";
@@ -194,33 +201,43 @@
 			path = DataModels;
 			sourceTree = "<group>";
 		};
+		D2520E81270BE94000DD43C4 /* Word */ = {
+			isa = PBXGroup;
+			children = (
+				D2520E82270BE98C00DD43C4 /* Word.swift */,
+				D2520E84270BEA0A00DD43C4 /* KeasyWord.swift */,
+			);
+			path = Word;
+			sourceTree = "<group>";
+		};
 		D2C08AD92702FD09002B1ABD /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				D2C08ADE2704031E002B1ABD /* board */,
-				D2C08ADA2702FD2C002B1ABD /* key */,
+				D2520E81270BE94000DD43C4 /* Word */,
+				D2C08ADE2704031E002B1ABD /* Board */,
+				D2C08ADA2702FD2C002B1ABD /* Key */,
 			);
 			path = Components;
 			sourceTree = "<group>";
 		};
-		D2C08ADA2702FD2C002B1ABD /* key */ = {
+		D2C08ADA2702FD2C002B1ABD /* Key */ = {
 			isa = PBXGroup;
 			children = (
 				D2E3DFCF2702F3C900C1F25F /* KeasyKey.swift */,
 				D2C08AEA27045A6C002B1ABD /* KeasyKeyPair.swift */,
 				D2C08AE127040364002B1ABD /* UI */,
 			);
-			path = key;
+			path = Key;
 			sourceTree = "<group>";
 		};
-		D2C08ADE2704031E002B1ABD /* board */ = {
+		D2C08ADE2704031E002B1ABD /* Board */ = {
 			isa = PBXGroup;
 			children = (
 				D2E3DFCB2702EFF700C1F25F /* KeasyBoard.swift */,
 				D2C08ADF27040344002B1ABD /* KeasyBoardRow.swift */,
 				D2520E4427058E6C00DD43C4 /* UI */,
 			);
-			path = board;
+			path = Board;
 			sourceTree = "<group>";
 		};
 		D2C08AE127040364002B1ABD /* UI */ = {
@@ -435,10 +452,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2520E77270B04E300DD43C4 /* Simplex.sqlite in Resources */,
-				D2520E7F270B073B00DD43C4 /* Simplex.sqlite-shm in Resources */,
-				D2520E80270B073B00DD43C4 /* Simplex.sqlite-wal in Resources */,
+				D2520E8E270C08B500DD43C4 /* Simplex.sqlite in Resources */,
+				D2520E8D270C08B500DD43C4 /* Simplex.sqlite-wal in Resources */,
 				D2C08ADD27030CA2002B1ABD /* Assets.xcassets in Resources */,
+				D2520E8C270C08B500DD43C4 /* Simplex.sqlite-shm in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,11 +492,14 @@
 				D2E3DFCC2702EFF700C1F25F /* KeasyBoard.swift in Sources */,
 				D2C08AE427040544002B1ABD /* ArrayExtension.swift in Sources */,
 				D2E3DFD22702F8CD00C1F25F /* KeasyBoardViewModel.swift in Sources */,
+				D2520E85270BEA0A00DD43C4 /* KeasyWord.swift in Sources */,
 				D2C08ADC2702FD4C002B1ABD /* KeasyKeyViewModel.swift in Sources */,
+				D2520E83270BE98C00DD43C4 /* Word.swift in Sources */,
 				D2C08AE927045031002B1ABD /* DoubleExtension.swift in Sources */,
 				D2C08AEB27045A6C002B1ABD /* KeasyKeyPair.swift in Sources */,
 				D2520E4A2705B3CB00DD43C4 /* KeasyFontManager.swift in Sources */,
 				D2E3DFD02702F3C900C1F25F /* KeasyKey.swift in Sources */,
+				D2520E88270C066200DD43C4 /* Simplex.xcdatamodeld in Sources */,
 				D2C08AF127055A6C002B1ABD /* KeasyBoardRowViewModel.swift in Sources */,
 				D2C08AE027040344002B1ABD /* KeasyBoardRow.swift in Sources */,
 				D2C08AE727040A02002B1ABD /* KeasySpacingManager.swift in Sources */,
@@ -867,6 +887,16 @@
 				D2520E73270AF86400DD43C4 /* Model.xcdatamodel */,
 			);
 			currentVersion = D2520E73270AF86400DD43C4 /* Model.xcdatamodel */;
+			path = Simplex.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		D2520E86270C066200DD43C4 /* Simplex.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D2520E87270C066200DD43C4 /* Model.xcdatamodel */,
+			);
+			currentVersion = D2520E87270C066200DD43C4 /* Model.xcdatamodel */;
 			path = Simplex.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
