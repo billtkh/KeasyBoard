@@ -112,6 +112,6 @@ extension KeasyBoardView: KeasyKeyCellActionDelegate {
     }
     
     func keyCell(_ keyCell: KeasyKeyCell, didLongPress keyPair: KeasyKeyPairViewModel) {
-        viewModel.didTap(keyPair: keyPair)
+        viewModel.didLongPress(keyPair: keyPair)
     }
 }

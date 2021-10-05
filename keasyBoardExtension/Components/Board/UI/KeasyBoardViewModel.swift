@@ -59,8 +59,6 @@ class KeasyBoardViewModel: NSObject {
     
     func setShiftOn(_ on: Bool) {
         switch currentState.value {
-        case .shiftLockOn, .shiftLockOnAndWordSelecting(_):
-            currentState.next(.normal)
         default:
             currentState.next(on ? .shiftOn : .normal)
         }
@@ -68,8 +66,6 @@ class KeasyBoardViewModel: NSObject {
     
     func setShiftLockOn(_ on: Bool) {
         switch currentState.value {
-        case let .wordSelecting(words):
-            currentState.next(on ? .shiftLockOnAndWordSelecting(words) : .wordSelecting(words))
         default:
             currentState.next(on ? .shiftLockOn : .normal)
         }
