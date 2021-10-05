@@ -8,8 +8,14 @@
 import Foundation
 import CoreData
 
+enum KeasyInputMethod: String {
+    case simplex = "Simplex"
+    case cangjie = "Cangjie"
+}
+
 protocol KeasyInputMethodManagerDelegate: AnyObject {
-    func keysInInputBuffer(keys: String, didMatch words: [KeasyWord])
+    func keysInInputBuffer(keys: String, didMatch anyWords: [KeasyWord])
+    func didEraseInputBuffer()
 }
 
 class KeasyInputMethodManager: NSObject {
@@ -23,6 +29,7 @@ class KeasyInputMethodManager: NSObject {
     
     weak var delegate: KeasyInputMethodManagerDelegate?
     
+    private(set) var currentInputMethod: KeasyInputMethod = .simplex
     private(set) var inputBuffer: String = ""
     
     private let queryQueue = DispatchQueue(label: "keasyBoard.inputMethodManager.queue")
@@ -33,20 +40,20 @@ class KeasyInputMethodManager: NSObject {
         return documentsDirectory
     }
     
-    var imeName = "Simplex"
-    lazy var wordBaseURL = documentsDirectory.appendingPathComponent("\(imeName).sqlite")
+    var ime = "IME"
+    lazy var wordBaseURL = documentsDirectory.appendingPathComponent("\(currentInputMethod.rawValue).sqlite")
 
     func preloadData() {
         let sourceSqliteURLs = [
-            Bundle.main.url(forResource: imeName, withExtension: "sqlite"),
-            Bundle.main.url(forResource: imeName, withExtension: "sqlite-wal"),
-            Bundle.main.url(forResource: imeName, withExtension: "sqlite-shm")
+            Bundle.main.url(forResource: currentInputMethod.rawValue, withExtension: "sqlite"),
+            Bundle.main.url(forResource: currentInputMethod.rawValue, withExtension: "sqlite-wal"),
+            Bundle.main.url(forResource: currentInputMethod.rawValue, withExtension: "sqlite-shm")
         ]
         
         let destSqliteURLs = [
             wordBaseURL,
-            documentsDirectory.appendingPathComponent("\(imeName).sqlite-wal"),
-            documentsDirectory.appendingPathComponent("\(imeName).sqlite-shm"),
+            documentsDirectory.appendingPathComponent("\(currentInputMethod.rawValue).sqlite-wal"),
+            documentsDirectory.appendingPathComponent("\(currentInputMethod.rawValue).sqlite-shm"),
         ]
         
         for index in 0...sourceSqliteURLs.count - 1 {
@@ -54,8 +61,8 @@ class KeasyInputMethodManager: NSObject {
             do {
                 if FileManager.default.fileExists(atPath: dest.path) {
                     print("File exists: \(dest.path)")
-                    try FileManager.default.removeItem(at: dest)
-//                    continue
+//                    try FileManager.default.removeItem(at: dest)
+                    continue
                 }
                 try FileManager.default.copyItem(at: sourceSqliteURLs[index]!, to: destSqliteURLs[index])
             } catch {
@@ -67,7 +74,7 @@ class KeasyInputMethodManager: NSObject {
     }
     
     lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: imeName)
+        let container = NSPersistentContainer(name: ime)
         
         let description = NSPersistentStoreDescription(url: wordBaseURL)
         
@@ -79,14 +86,19 @@ class KeasyInputMethodManager: NSObject {
         })
         return container
     }()
-    
+}
+
+extension KeasyInputMethodManager {
     func inputKey(key: String) {
         inputBuffer += key
         queryWord(keys: inputBuffer)
     }
-}
-
-extension KeasyInputMethodManager {
+    
+    func eraseKeyBuffer() {
+        inputBuffer = ""
+        invokeDidEraseInputBuffer()
+    }
+    
     func queryWord(keys: String) {
         queryQueue.async { [weak self] in
             print("queryWord: \(keys)")
@@ -96,7 +108,7 @@ extension KeasyInputMethodManager {
             
             let fetchRequest = Word.fetchRequest()
 //            fetchRequest.fetchLimit = 10
-            fetchRequest.predicate = NSPredicate(format: "keys = %@", keys)
+            fetchRequest.predicate = NSPredicate(format: "keys = %@", keys.lowercased())
             fetchRequest.sortDescriptors = [NSSortDescriptor.init(key: "index", ascending: true)]
 
             do {
@@ -109,9 +121,17 @@ extension KeasyInputMethodManager {
         }
     }
     
-    func invokeInputBuffer(keys: String, didMatch words: [KeasyWord]) {
-        DispatchQueue.main.sync {
-            delegate?.keysInInputBuffer(keys: keys, didMatch: words)
+    func invokeInputBuffer(keys: String, didMatch anyWords: [KeasyWord]) {
+        DispatchQueue.main.async { [weak self] in
+            guard let sSelf = self else { return }
+            sSelf.delegate?.keysInInputBuffer(keys: keys, didMatch: anyWords)
+        }
+    }
+    
+    func invokeDidEraseInputBuffer() {
+        DispatchQueue.main.async { [weak self] in
+            guard let sSelf = self else { return }
+            sSelf.delegate?.didEraseInputBuffer()
         }
     }
 }

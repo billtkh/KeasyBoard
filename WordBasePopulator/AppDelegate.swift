@@ -112,50 +112,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Could not save. \(error), \(error.userInfo)")
         }
     }
-
-    func retrieveData() {
-        //We need to create a context from this container
-        let context = persistentContainer.viewContext
-        
-        //Prepare the request of type NSFetchRequest  for the entity
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
-        
-    //        fetchRequest.fetchLimit = 1
-    //        fetchRequest.predicate = NSPredicate(format: "username = %@", "Ankur")
-    //        fetchRequest.sortDescriptors = [NSSortDescriptor.init(key: "email", ascending: false)]
-    //
-        do {
-            let result = try context.fetch(fetchRequest)
-            for data in result as! [NSManagedObject] {
-                print(data.value(forKey: "username") as! String)
-            }
-            
-        } catch {
-            print("Failed")
-        }
-    }
-
-    func updateData() {
-        let context = persistentContainer.viewContext
-        
-        let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "User")
-        fetchRequest.predicate = NSPredicate(format: "username = %@", "Ankur1")
-        do {
-            let test = try context.fetch(fetchRequest)
-
-            let objectUpdate = test[0] as! NSManagedObject
-            objectUpdate.setValue("newName", forKey: "username")
-            objectUpdate.setValue("newmail", forKey: "email")
-            objectUpdate.setValue("newpassword", forKey: "password")
-            do {
-                try context.save()
-            } catch {
-                print(error)
-            }
-        } catch {
-            print(error)
-        }
-    }
     
     func clearWordBase() {
         let context = persistentContainer.viewContext
@@ -172,29 +128,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         } catch let error as NSError {
             print("Deleted all my data in myEntity error : \(error) \(error.userInfo)")
-        }
-    }
-
-    func deleteData() {
-        let context = persistentContainer.viewContext
-
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
-        fetchRequest.predicate = NSPredicate(format: "username = %@", "Ankur3")
-
-        do {
-            let test = try context.fetch(fetchRequest)
-            
-            let objectToDelete = test[0] as! NSManagedObject
-            context.delete(objectToDelete)
-            
-            do {
-                try context.save()
-            } catch {
-                print(error)
-            }
-            
-        } catch {
-            print(error)
         }
     }
 }

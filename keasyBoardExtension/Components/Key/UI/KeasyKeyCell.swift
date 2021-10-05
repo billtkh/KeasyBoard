@@ -9,8 +9,7 @@ import UIKit
 
 protocol KeasyKeyCellActionDelegate: AnyObject {
     func keyCell(_ keyCell: KeasyKeyCell, didTap keyPair: KeasyKeyPairViewModel)
-    func startSetShiftOn(_ on: Bool)
-    func startSetShiftLockOn(_ on: Bool)
+    func keyCell(_ keyCell: KeasyKeyCell, didLongPress keyPair: KeasyKeyPairViewModel)
 }
 
 class KeasyKeyCell: UICollectionViewCell {
@@ -185,23 +184,13 @@ private extension KeasyKeyCell {
     @objc
     func tapAction() {
         guard let viewModel = viewModel else { return }
-        switch viewModel.primaryKey.key {
-        case .shift:
-            actionDelegate?.startSetShiftOn(!viewModel.isShiftOn)
-        default:
-            actionDelegate?.keyCell(self, didTap: viewModel)
-        }
+        actionDelegate?.keyCell(self, didTap: viewModel)
     }
     
     @objc
     func toggleAction(sender: UILongPressGestureRecognizer) {
         guard sender.state == .began else { return }
         guard let viewModel = viewModel else { return }
-        switch viewModel.primaryKey.key {
-        case .shift:
-            actionDelegate?.startSetShiftLockOn(!viewModel.isShiftLockOn)
-        default:
-            actionDelegate?.keyCell(self, didTap: viewModel)
-        }
+        actionDelegate?.keyCell(self, didLongPress: viewModel)
     }
 }

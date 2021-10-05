@@ -31,6 +31,12 @@ enum KeasyKey {
     // alphanumeric keys
     case typing(String)
     
+    // selection
+    case selection(KeasyWord?)
+    case endSelection
+    case previousSelectionPage
+    case nextSelectionPage
+    
     var size: KeasyKeySize {
         switch self {
         case .delete, .shift, .next:
@@ -46,6 +52,8 @@ enum KeasyKey {
         switch self {
         case let .typing(text):
             return text
+        case let .selection(word):
+            return word?.word ?? ""
         default:
             return ""
         }
@@ -55,6 +63,8 @@ enum KeasyKey {
         switch self {
         case let .typing(text):
             return text
+        case let .selection(word):
+            return word?.word ?? ""
         case .inputModeSwitch:
             return "⚙︎"
         case .emoji:

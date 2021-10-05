@@ -19,7 +19,10 @@ class KeasyKeyPairViewModel: NSObject {
     private(set) var sub: KeasyKeyViewModel?
     private(set) var board: KeasyBoardViewModel
     
-    init(_ keyPair: KeasyKeyPair, in board: KeasyBoardViewModel) {
+    var selection: KeasyKeyViewModel?
+    
+    init(_ keyPair: KeasyKeyPair,
+         in board: KeasyBoardViewModel) {
         self.keyPair = keyPair
         self.main = KeasyKeyViewModel(keyPair.main)
         self.board = board
@@ -34,6 +37,8 @@ class KeasyKeyPairViewModel: NSObject {
     }
     
     var toggleState: KeasyToggleState {
+        guard !isToggleHidden else { return .off }
+        
         if isShiftLockOn {
             return .locked
         } else if isShiftOn {
@@ -44,15 +49,17 @@ class KeasyKeyPairViewModel: NSObject {
     }
     
     var isShiftOn: Bool {
-        return board.isShiftOn.value
+        return board.currentState.value == .shiftOn
     }
     
     var isShiftLockOn: Bool {
-        return board.isShiftLockOn.value
+        return board.currentState.value == .shiftLockOn
     }
     
     var primaryKey: KeasyKeyViewModel {
-        if board.isShiftOn.value || board.isShiftLockOn.value {
+        if let selection = selection, board.isWordSelecting {
+            return selection
+        } else if isShiftLockOn || isShiftOn {
             return sub ?? main
         } else {
             return main
@@ -60,7 +67,7 @@ class KeasyKeyPairViewModel: NSObject {
     }
     
     var secondaryKey: KeasyKeyViewModel? {
-        if board.isShiftOn.value || board.isShiftLockOn.value {
+        if isShiftLockOn || isShiftOn {
             return sub == nil ? nil : main
         } else {
             return sub

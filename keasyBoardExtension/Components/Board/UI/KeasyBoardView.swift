@@ -37,14 +37,15 @@ class KeasyBoardView: UIView {
 
 private extension KeasyBoardView {
     func binding() {
-        viewModel.isShiftOn.bind { [weak self] on in
+        viewModel.currentState.bind { [weak self] state in
             guard let sSelf = self else { return }
-            sSelf.collectionView.reloadData()
-        }
-        
-        viewModel.isShiftLockOn.bind { [weak self] on in
-            guard let sSelf = self else { return }
-            sSelf.collectionView.reloadData()
+            switch state {
+            case let .wordSelecting(words), let .shiftLockOnAndWordSelecting(words):
+                sSelf.viewModel.selectingWords(words)
+                sSelf.collectionView.reloadData()
+            default:
+                sSelf.collectionView.reloadData()
+            }
         }
     }
     
@@ -110,11 +111,7 @@ extension KeasyBoardView: KeasyKeyCellActionDelegate {
         viewModel.didTap(keyPair: keyPair)
     }
     
-    func startSetShiftOn(_ on: Bool) {
-        viewModel.setShiftOn(on)
-    }
-    
-    func startSetShiftLockOn(_ on: Bool) {
-        viewModel.setShiftLockOn(on)
+    func keyCell(_ keyCell: KeasyKeyCell, didLongPress keyPair: KeasyKeyPairViewModel) {
+        viewModel.didTap(keyPair: keyPair)
     }
 }

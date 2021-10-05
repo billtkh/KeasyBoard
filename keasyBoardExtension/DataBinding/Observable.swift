@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Observable<T> {
+class Observable<T: Equatable> {
     private(set) var value: T
 
     private var listener: ((T) -> Void)?
@@ -21,6 +21,12 @@ class Observable<T> {
     }
     
     func next(_ value: T) {
+        self.value = value
+        listener?(value)
+    }
+    
+    func nextIfDifferent(_ value: T) {
+        guard value != self.value else { return }
         self.value = value
         listener?(value)
     }
