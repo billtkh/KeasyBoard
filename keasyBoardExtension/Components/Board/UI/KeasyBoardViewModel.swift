@@ -251,6 +251,10 @@ extension KeasyBoardViewModel {
                 currentState.next(.wordSelecting(words, page + 1))
             }
             
+        case .space:
+            imeManager.eraseKeyBuffer()
+            proxy.insertText(" ")
+            
         case let .typing(key):
             imeManager.inputKey(key: key)
             proxy.insertText(key)

@@ -49,11 +49,11 @@ class KeasyKeyPairViewModel: NSObject {
     }
     
     var isShiftOn: Bool {
-        return board.currentState.value == .shiftOn
+        return board.isShiftOn
     }
     
     var isShiftLockOn: Bool {
-        return board.currentState.value == .shiftLockOn
+        return board.isShiftLockOn
     }
     
     var primaryKey: KeasyKeyViewModel {
