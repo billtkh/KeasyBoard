@@ -47,6 +47,7 @@
 		D2E3DFD02702F3C900C1F25F /* KeasyKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3DFCF2702F3C900C1F25F /* KeasyKey.swift */; };
 		D2E3DFD22702F8CD00C1F25F /* KeasyBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3DFD12702F8CD00C1F25F /* KeasyBoardViewModel.swift */; };
 		D2F39E362709C36200E7D0C5 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F39E352709C36200E7D0C5 /* StringExtension.swift */; };
+		D2F39E39270C900000E7D0C5 /* ImageAsset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2F39E38270C900000E7D0C5 /* ImageAsset.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +120,7 @@
 		D2E3DFCF2702F3C900C1F25F /* KeasyKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeasyKey.swift; sourceTree = "<group>"; };
 		D2E3DFD12702F8CD00C1F25F /* KeasyBoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeasyBoardViewModel.swift; sourceTree = "<group>"; };
 		D2F39E352709C36200E7D0C5 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		D2F39E38270C900000E7D0C5 /* ImageAsset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ImageAsset.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -320,9 +322,18 @@
 				D2C08AE227040524002B1ABD /* Extensions */,
 				D2C08AF227056462002B1ABD /* DataBinding */,
 				D2520E4C270AD1FD00DD43C4 /* LocalStorage */,
+				D2F39E37270C8FDB00E7D0C5 /* Resources */,
 				D2E3DFC12702C26500C1F25F /* Info.plist */,
 			);
 			path = keasyBoardExtension;
+			sourceTree = "<group>";
+		};
+		D2F39E37270C8FDB00E7D0C5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D2F39E38270C900000E7D0C5 /* ImageAsset.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -450,6 +461,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2520E8E270C08B500DD43C4 /* Simplex.sqlite in Resources */,
+				D2F39E39270C900000E7D0C5 /* ImageAsset.xcassets in Resources */,
 				D2520E8D270C08B500DD43C4 /* Simplex.sqlite-wal in Resources */,
 				D2C08ADD27030CA2002B1ABD /* Assets.xcassets in Resources */,
 				D2520E8C270C08B500DD43C4 /* Simplex.sqlite-shm in Resources */,

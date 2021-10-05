@@ -13,18 +13,17 @@ enum KeasyBoardState: Equatable {
     case normal
     case shiftOn
     case shiftLockOn
-    case wordSelecting([KeasyWord])
-    
-    case shiftLockOnAndWordSelecting([KeasyWord])
+    case wordSelecting([KeasyWord], Int)
+    case shiftLockOnAndWordSelecting([KeasyWord], Int)
     
     static func == (lhs: KeasyBoardState, rhs: KeasyBoardState) -> Bool {
         switch (lhs, rhs) {
         case (.normal, .normal), (.shiftOn, .shiftOn), (.shiftLockOn, .shiftLockOn):
             return true
-        case (let .wordSelecting(lhsWords), let .wordSelecting(rhsWords)):
-            return lhsWords == rhsWords
-        case (let .shiftLockOnAndWordSelecting(lhsWords), let .shiftLockOnAndWordSelecting(rhsWords)):
-            return lhsWords == rhsWords
+        case (let .wordSelecting(lhsWords, lhsPage), let .wordSelecting(rhsWords, rhsPage)):
+            return lhsWords == rhsWords && lhsPage == rhsPage
+        case (let .shiftLockOnAndWordSelecting(lhsWords, lhsPage), let .shiftLockOnAndWordSelecting(rhsWords, rhsPage)):
+            return lhsWords == rhsWords && lhsPage == rhsPage
         default:
             return false
         }
@@ -33,16 +32,12 @@ enum KeasyBoardState: Equatable {
 
 class KeasyBoardViewModel: NSObject {
     private(set) var proxy: UITextDocumentProxy?
-    private(set) var needsInputModeSwitchKey: Bool
     
     var currentState = Observable(KeasyBoardState.normal)
+    var needsInputModeSwitchKey: Observable<Bool>
     
     private lazy var dataSource: [KeasyBoardRowViewModel] = {
-        return KeasyBoard.arrangement.map { row in
-            return KeasyBoardRowViewModel(row: row,
-                                          in: self,
-                                          shouldExcludeInputModeSwitchKey: !needsInputModeSwitchKey)
-        }
+        return prepareKeyboardRowViewModels(rows: KeasyBoard.arrangement)
     }()
     
     private var imeManager: KeasyInputMethodManager {
@@ -51,7 +46,7 @@ class KeasyBoardViewModel: NSObject {
     
     init(textDocumentProxy: UITextDocumentProxy?, needsInputModeSwitchKey: Bool) {
         self.proxy = textDocumentProxy
-        self.needsInputModeSwitchKey = needsInputModeSwitchKey
+        self.needsInputModeSwitchKey = Observable(needsInputModeSwitchKey)
         super.init()
         
         imeManager.delegate = self
@@ -59,6 +54,8 @@ class KeasyBoardViewModel: NSObject {
     
     func setShiftOn(_ on: Bool) {
         switch currentState.value {
+        case .shiftLockOn, .shiftLockOnAndWordSelecting(_, _):
+            currentState.next(.normal)
         default:
             currentState.next(on ? .shiftOn : .normal)
         }
@@ -71,11 +68,45 @@ class KeasyBoardViewModel: NSObject {
         }
     }
     
-    func selectingWords(_ words: [KeasyWord]) {
+    func setNeedsInputModeSwitchKey(_ needsInputModeSwitchKey: Bool) {
+        self.needsInputModeSwitchKey.nextIfDifferent(needsInputModeSwitchKey)
+    }
+    
+    func selectingWords(_ words: [KeasyWord], page: Int) {
         guard let firstRow = dataSource.first(where: { $0.index == 0 }) else { return }
+        let numOfSelection = 9
+        
+        let firstKey = page == 0 ? KeasyKey.endSelection : KeasyKey.previousSelectionPage
+        let numOfPage = Int(words.count / numOfSelection)
+        let lastKey = numOfPage == 0 ? KeasyKey.selection(nil) : page == numOfPage ? KeasyKey.firstSelectionPage : KeasyKey.nextSelectionPage
+        
+        let startIndex = page * numOfSelection
+        let endIndex = min(startIndex + numOfSelection - 1, words.count - 1)
+        var currentIndex = startIndex
         for keyPair in firstRow.keyPairs {
-            keyPair.selection = KeasyKeyViewModel(.selection(words.first))
+            if keyPair == firstRow.keyPairs.first {
+                keyPair.selection = KeasyKeyViewModel(firstKey)
+            } else if keyPair == firstRow.keyPairs.last {
+                keyPair.selection = KeasyKeyViewModel(lastKey)
+            } else if currentIndex <= endIndex {
+                keyPair.selection = KeasyKeyViewModel(.selection(words[currentIndex]))
+                currentIndex += 1
+            } else {
+                keyPair.selection = KeasyKeyViewModel(.selection(nil))
+            }
         }
+    }
+    
+    func prepareKeyboardRowViewModels(rows: [KeasyBoardRow]) -> [KeasyBoardRowViewModel] {
+        return rows.map { row in
+            return KeasyBoardRowViewModel(row: row,
+                                          in: self,
+                                          shouldExcludeInputModeSwitchKey: !needsInputModeSwitchKey.value)
+        }
+    }
+    
+    func reloadDataSource() {
+        dataSource = prepareKeyboardRowViewModels(rows: KeasyBoard.arrangement)
     }
 }
     
@@ -118,7 +149,7 @@ extension KeasyBoardViewModel {
         case .distributed:
             let row = dataSource[section]
             let viewWidth = view.frame.width
-            let cellWidth = regularKeyWidth(in: view)
+            let cellWidth = regularKeyWidth(in: view, for: 1)
             let totalCellWidth: CGFloat = CGFloat(cellWidth * CGFloat(row.keyPairs.count))
             let spacingWithinCells: CGFloat = row.totalMinimumSpacingBetweenKeys
             var horizontalSpacing: CGFloat = CGFloat(viewWidth - totalCellWidth - spacingWithinCells) / 2
@@ -130,14 +161,15 @@ extension KeasyBoardViewModel {
     }
     
     func sizeForItem(in view: UIView, at indexPath: IndexPath) -> CGSize {
-        let row = dataSource[indexPath.section]
+        let rowIndex = indexPath.section
+        let row = dataSource[rowIndex]
         let mainKey = row.keyPairs[indexPath.row].main
         
         let height = keyHeight
         
         switch mainKey.size {
         case .regular:
-            let regularKeyWidth = regularKeyWidth(in: view)
+            let regularKeyWidth = regularKeyWidth(in: view, for: min(rowIndex, 1))
             return CGSize(width: regularKeyWidth, height: height)
         case .large:
             let largeKeyWidth = largeKeyWidth(in: view)
@@ -145,7 +177,7 @@ extension KeasyBoardViewModel {
         case .flexible:
             let spacingBetweenKeys = row.totalMinimumSpacingBetweenKeys
             let numOfRegularKeys = row.numOfKeys(size: .regular)
-            let totalWidthOfRegularKeys = regularKeyWidth(in: view) * Double(numOfRegularKeys)
+            let totalWidthOfRegularKeys = regularKeyWidth(in: view, for: 1) * Double(numOfRegularKeys)
             let numOfLargeKeys = row.numOfKeys(size: .large)
             let totalWidthOfLargeKeys = largeKeyWidth(in: view) * Double(numOfLargeKeys)
             
@@ -162,9 +194,9 @@ extension KeasyBoardViewModel {
         return height
     }
     
-    /// regular key size is calculated by the first row typing keys
-    func regularKeyWidth(in view: UIView) -> Double {
-        guard let row = dataSource.first(where: { $0.index == 0 }) else { return 0 }
+    /// regular key size for row assuming key sizes are distrubuted
+    func regularKeyWidth(in view: UIView, for row: Int) -> Double {
+        guard let row = dataSource.first(where: { $0.index == row }) else { return 0 }
         
         let viewWidth = view.frame.width - boardSpacing - boardSpacing - 0.1
         let numOfKey = row.keyPairs.count
@@ -179,7 +211,7 @@ extension KeasyBoardViewModel {
         let viewWidth = view.frame.width - boardSpacing - boardSpacing - 0.1
         let totalMinimumSpacingWithinKeys = row.totalMinimumSpacingBetweenKeys
         
-        let regularKeyWidth = regularKeyWidth(in: view)
+        let regularKeyWidth = regularKeyWidth(in: view, for: 1)
         let numOfRegularKey = row.keyPairs.filter({ $0.main.size == .regular }).count
         let totalWidthOfRegularKeys = Double(numOfRegularKey) * regularKeyWidth
         
@@ -199,6 +231,25 @@ extension KeasyBoardViewModel {
         case .shift:
             setShiftOn(!isShiftOn)
             imeManager.eraseKeyBuffer()
+            
+        case .delete:
+            imeManager.eraseKeyBuffer()
+            proxy.deleteBackward()
+            
+        case .firstSelectionPage:
+            if case let .wordSelecting(words, _) = currentState.value {
+                currentState.next(.wordSelecting(words, 0))
+            }
+            
+        case .previousSelectionPage:
+            if case let .wordSelecting(words, page) = currentState.value {
+                currentState.next(.wordSelecting(words, page - 1))
+            }
+            
+        case .nextSelectionPage:
+            if case let .wordSelecting(words, page) = currentState.value {
+                currentState.next(.wordSelecting(words, page + 1))
+            }
             
         case let .typing(key):
             imeManager.inputKey(key: key)
@@ -232,7 +283,7 @@ extension KeasyBoardViewModel {
 extension KeasyBoardViewModel: KeasyInputMethodManagerDelegate {
     var isWordSelecting: Bool {
         switch currentState.value {
-        case .wordSelecting(_), .shiftLockOnAndWordSelecting(_):
+        case .wordSelecting(_, _), .shiftLockOnAndWordSelecting(_, _):
             return true
         default:
             return false
@@ -250,7 +301,7 @@ extension KeasyBoardViewModel: KeasyInputMethodManagerDelegate {
     
     var isShiftLockOn: Bool {
         switch currentState.value {
-        case .shiftLockOn, .shiftLockOnAndWordSelecting(_):
+        case .shiftLockOn, .shiftLockOnAndWordSelecting(_, _):
             return true
         default:
             return false
@@ -261,9 +312,10 @@ extension KeasyBoardViewModel: KeasyInputMethodManagerDelegate {
         if anyWords.isEmpty {
             currentState.nextIfDifferent(isShiftLockOn ? .shiftLockOn : .normal)
         } else {
-            currentState.next(isShiftLockOn ? .shiftLockOnAndWordSelecting(anyWords) : .wordSelecting(anyWords))
+            let startPage = 0
+            currentState.next(isShiftLockOn ? .shiftLockOnAndWordSelecting(anyWords, startPage) : .wordSelecting(anyWords, startPage))
         }
-        print("keys: \(keys) construct words: \(anyWords)")
+//        print("keys: \(keys) construct words: \(anyWords)")
     }
     
     func didEraseInputBuffer() {

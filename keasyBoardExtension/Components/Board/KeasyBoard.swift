@@ -10,6 +10,7 @@ import Foundation
 class KeasyBoard {
     static let arrangement: [KeasyBoardRow] = [
         KeasyBoardRow(index: 0, arrangementType: .distributed, keyPairs: [
+            KeasyKeyPair(main: .emoji),
             KeasyKeyPair(main: .typing("1"), sub: .typing("!")),
             KeasyKeyPair(main: .typing("2"), sub: .typing("@")),
             KeasyKeyPair(main: .typing("3"), sub: .typing("#")),
@@ -57,7 +58,6 @@ class KeasyBoard {
         ]),
         KeasyBoardRow(index: 4, arrangementType: .mixed, keyPairs: [
             KeasyKeyPair(main: .function),
-            KeasyKeyPair(main: .emoji),
             KeasyKeyPair(main: .inputModeSwitch),
             KeasyKeyPair(main: .space),
             KeasyKeyPair(main: .typing(","), sub: .typing("<")),

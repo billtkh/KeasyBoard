@@ -33,17 +33,31 @@ class KeasyBoardView: UIView {
         setupStyle()
         binding()
     }
+    
+    func updateNeedsInputModeSwitchKey(_ needsInputModeSwitchKey: Bool) {
+        viewModel.setNeedsInputModeSwitchKey(needsInputModeSwitchKey)
+    }
 }
 
 private extension KeasyBoardView {
     func binding() {
         viewModel.currentState.bind { [weak self] state in
-            guard let sSelf = self else { return }
-            switch state {
-            case let .wordSelecting(words), let .shiftLockOnAndWordSelecting(words):
-                sSelf.viewModel.selectingWords(words)
-                sSelf.collectionView.reloadData()
-            default:
+            DispatchQueue.main.async { [weak self] in
+                guard let sSelf = self else { return }
+                switch state {
+                case let .wordSelecting(words, page), let .shiftLockOnAndWordSelecting(words, page):
+                    sSelf.viewModel.selectingWords(words, page: page)
+                    sSelf.collectionView.reloadData()
+                default:
+                    sSelf.collectionView.reloadData()
+                }
+            }
+        }
+        
+        viewModel.needsInputModeSwitchKey.bind { [weak self] needsInputModeSwitchKey in
+            DispatchQueue.main.async { [weak self] in
+                guard let sSelf = self else { return }
+                sSelf.viewModel.reloadDataSource()
                 sSelf.collectionView.reloadData()
             }
         }

@@ -18,6 +18,5 @@ class KeasySpacingManager: NSObject {
     var keySpacing: Double = 0
     
     var rowPadding: Double = 8
-    var keyPadding: Double = 6
-    
+    var keyPadding: Double = 4
 }

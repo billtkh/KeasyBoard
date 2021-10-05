@@ -46,7 +46,7 @@ class KeasyBoardViewController: UIInputViewController {
     }
     
     override func viewWillLayoutSubviews() {
-//        self.nextKeyboardButton.isHidden = !self.needsInputModeSwitchKey
+        boardView.updateNeedsInputModeSwitchKey(needsInputModeSwitchKey)
         super.viewWillLayoutSubviews()
     }
     

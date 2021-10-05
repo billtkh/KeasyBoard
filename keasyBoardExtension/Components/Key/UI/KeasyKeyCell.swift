@@ -24,6 +24,8 @@ class KeasyKeyCell: UICollectionViewCell {
     
     private var keyView: UIView!
     
+    private var iconView: UIImageView!
+    
     private var primaryLabel: UILabel!
     private var secondaryLabel: UILabel!
     
@@ -84,6 +86,10 @@ private extension KeasyKeyCell {
     var smallFont: UIFont {
         return fontManager.smallFont
     }
+    
+    var largeFont: UIFont {
+        return fontManager.largeFont
+    }
 }
 
 private extension KeasyKeyCell {
@@ -102,6 +108,19 @@ private extension KeasyKeyCell {
         leadingConstraint.isActive = true
         trailingConstraint = keyView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -keyPadding / 2)
         trailingConstraint.isActive = true
+        
+        iconView = UIImageView(frame: .zero)
+        iconView.tintColor = .white
+        iconView.translatesAutoresizingMaskIntoConstraints = false
+        keyView.addSubview(iconView)
+        NSLayoutConstraint.activate(
+            [
+                iconView.centerXAnchor.constraint(equalTo: keyView.centerXAnchor),
+                iconView.bottomAnchor.constraint(equalTo: keyView.bottomAnchor, constant: -8),
+                iconView.widthAnchor.constraint(equalToConstant: 16),
+                iconView.heightAnchor.constraint(equalToConstant: 16),
+            ]
+        )
         
         primaryLabel = UILabel(frame: .zero)
         primaryLabel.textColor = .white
@@ -155,14 +174,23 @@ private extension KeasyKeyCell {
     }
     
     func updateUI(viewModel: KeasyKeyPairViewModel) {
-        primaryLabel.text = viewModel.primaryKey.title.cangjieCode
+        if let icon = viewModel.primaryKey.icon {
+            iconView.image = icon
+            primaryLabel.text = nil
+        } else {
+            iconView.image = nil
+            primaryLabel.text = viewModel.primaryKey.title.cangjieCode
+        }
         secondaryLabel.text = viewModel.secondaryKey?.title.cangjieCode
+        
         
         switch viewModel.primaryKey.titleSize {
         case .regular:
             primaryLabel.font = regularFont
         case .small:
             primaryLabel.font = smallFont
+        case .large:
+            primaryLabel.font = largeFont
         }
         
         switch viewModel.primaryKey.key {

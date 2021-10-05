@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum KeasyKeySize {
     case regular
@@ -16,6 +17,7 @@ enum KeasyKeySize {
 enum KeasyKeyTitleSize {
     case regular
     case small
+    case large
 }
 
 enum KeasyKey {
@@ -36,6 +38,7 @@ enum KeasyKey {
     case endSelection
     case previousSelectionPage
     case nextSelectionPage
+    case firstSelectionPage
     
     var size: KeasyKeySize {
         switch self {
@@ -68,22 +71,41 @@ enum KeasyKey {
         case .inputModeSwitch:
             return "⚙︎"
         case .emoji:
-            return "😀"
+            return "☺︎"
         case .next:
             return "⏎"
         case .space:
             return ""
         case .function:
             return "fn"
+        case .endSelection:
+            return "⌫"
+        case .previousSelectionPage:
+            return "←"
+        case .nextSelectionPage:
+            return "→"
+        case .firstSelectionPage:
+            return "⇤"
         default:
             return String(describing: self)
         }
     }
     
+    var icon: UIImage? {
+        switch self {
+        case .endSelection:
+            return UIImage(named: "icon_cancel")?.withRenderingMode(.alwaysTemplate)
+        default:
+            return nil
+        }
+    }
+    
     var titleSize: KeasyKeyTitleSize {
         switch self {
-        case .delete, .shift, .next, .space, .function:
+        case .delete, .shift, .space, .function:
             return .small
+        case .emoji, .firstSelectionPage:
+            return .large
         default:
             return .regular
         }

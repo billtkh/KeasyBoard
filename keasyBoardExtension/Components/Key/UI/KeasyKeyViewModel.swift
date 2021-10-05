@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class KeasyKeyViewModel: NSObject {
     var key: KeasyKey
@@ -24,6 +25,10 @@ class KeasyKeyViewModel: NSObject {
     
     var title: String {
         return key.title
+    }
+    
+    var icon: UIImage? {
+        return key.icon
     }
     
     var titleSize: KeasyKeyTitleSize {
