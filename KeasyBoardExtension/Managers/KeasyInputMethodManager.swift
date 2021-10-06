@@ -94,9 +94,17 @@ extension KeasyInputMethodManager {
         queryWord(keys: inputBuffer)
     }
     
-    func eraseKeyBuffer() {
+    func eraseInputBuffer() {
         inputBuffer = ""
         invokeDidEraseInputBuffer()
+    }
+    
+    func resetInputBuffer() {
+        inputBuffer = ""
+    }
+    
+    var isInputBufferEmpty: Bool {
+        return inputBuffer.isEmpty
     }
     
     func queryWord(keys: String) {

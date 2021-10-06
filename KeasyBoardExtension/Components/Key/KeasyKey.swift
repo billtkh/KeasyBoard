@@ -57,6 +57,8 @@ enum KeasyKey {
             return text
         case let .selection(word):
             return word?.word ?? ""
+        case .space:
+            return " "
         default:
             return ""
         }
@@ -71,7 +73,7 @@ enum KeasyKey {
         case .inputModeSwitch:
             return "⚙︎"
         case .emoji:
-            return "☺︎"
+            return ""
         case .next:
             return "⏎"
         case .space:
@@ -79,7 +81,7 @@ enum KeasyKey {
         case .function:
             return "fn"
         case .endSelection:
-            return "⌫"
+            return ""
         case .previousSelectionPage:
             return "←"
         case .nextSelectionPage:
@@ -93,8 +95,6 @@ enum KeasyKey {
     
     var shiftedTitle: String {
         switch self {
-        case .shift:
-            return "SHIFT"
         default:
             return title
         }
@@ -104,6 +104,8 @@ enum KeasyKey {
         switch self {
         case .endSelection:
             return UIImage(named: "icon_cancel")?.withRenderingMode(.alwaysTemplate)
+        case .emoji:
+            return UIImage(named: "icon_emoji")?.withRenderingMode(.alwaysTemplate)
         default:
             return nil
         }

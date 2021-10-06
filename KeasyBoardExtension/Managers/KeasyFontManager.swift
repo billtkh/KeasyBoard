@@ -12,6 +12,6 @@ class KeasyFontManager: NSObject {
     static let shared = KeasyFontManager()
     
     var largeFont: UIFont = .systemFont(ofSize: 20)
-    var regularFont: UIFont = .systemFont(ofSize: 17)
+    var regularFont: UIFont = .systemFont(ofSize: 15)
     var smallFont: UIFont = .systemFont(ofSize: 10)
 }

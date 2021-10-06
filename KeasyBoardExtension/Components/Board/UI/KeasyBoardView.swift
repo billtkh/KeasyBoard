@@ -9,7 +9,8 @@ import Foundation
 import UIKit
 
 class KeasyBoardView: UIView {
-    var collectionView: UICollectionView!
+    var boardView: UICollectionView!
+    var functionBar: UICollectionView!
     var viewModel: KeasyBoardViewModel
     
     private var styleManager: KeasyStyleManager {
@@ -46,7 +47,7 @@ private extension KeasyBoardView {
                 guard let sSelf = self else { return }
                 switch state {
                 default:
-                    sSelf.collectionView.reloadData()
+                    sSelf.boardView.reloadData()
                 }
             }
         }
@@ -55,11 +56,11 @@ private extension KeasyBoardView {
             DispatchQueue.main.async { [weak self] in
                 guard let sSelf = self else { return }
                 guard let selection = selection else {
-                    sSelf.collectionView.reloadData()
+                    sSelf.reloadSelectionData()
                     return
                 }
                 sSelf.viewModel.selectingWords(selection.words, page: selection.page)
-                sSelf.collectionView.reloadData()
+                sSelf.reloadSelectionData()
             }
         }
         
@@ -67,36 +68,58 @@ private extension KeasyBoardView {
             DispatchQueue.main.async { [weak self] in
                 guard let sSelf = self else { return }
                 sSelf.viewModel.reloadDataSource()
-                sSelf.collectionView.reloadData()
+                sSelf.boardView.reloadData()
             }
         }
     }
     
     func setupUI() {
+        let functionBarLayout = UICollectionViewFlowLayout()
+        functionBarLayout.minimumInteritemSpacing = viewModel.keySpacing
+        functionBarLayout.minimumLineSpacing = 0
+        functionBar = UICollectionView(frame: .zero, collectionViewLayout: functionBarLayout)
+        addSubview(functionBar)
+        
         let keyboardLayout = UICollectionViewFlowLayout()
         keyboardLayout.minimumInteritemSpacing = viewModel.keySpacing
         keyboardLayout.minimumLineSpacing = 0
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: keyboardLayout)
-        addSubview(collectionView)
+        boardView = UICollectionView(frame: .zero, collectionViewLayout: keyboardLayout)
+        addSubview(boardView)
         
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        functionBar.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate(
             [
-                collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
-                collectionView.topAnchor.constraint(equalTo: topAnchor),
-                collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-                collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
+                functionBar.leadingAnchor.constraint(equalTo: leadingAnchor),
+                functionBar.topAnchor.constraint(equalTo: topAnchor),
+                functionBar.trailingAnchor.constraint(equalTo: trailingAnchor),
+                functionBar.heightAnchor.constraint(equalToConstant: KeasySpacingManager.shared.functionBarHeight)
+            ]
+        )
+        
+        boardView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate(
+            [
+                boardView.leadingAnchor.constraint(equalTo: leadingAnchor),
+                boardView.topAnchor.constraint(equalTo: functionBar.bottomAnchor),
+                boardView.trailingAnchor.constraint(equalTo: trailingAnchor),
+                boardView.bottomAnchor.constraint(equalTo: bottomAnchor)
             ]
         )
 
-        collectionView.register(KeasyKeyCell.self, forCellWithReuseIdentifier: NSStringFromClass(KeasyKeyCell.self))
-        collectionView.delegate = self
-        collectionView.dataSource = self
+        boardView.register(KeasyKeyCell.self, forCellWithReuseIdentifier: NSStringFromClass(KeasyKeyCell.self))
+        boardView.delegate = self
+        boardView.dataSource = self
     }
     
     func setupStyle() {
         backgroundColor = styleManager.backgroundColor
-        collectionView.backgroundColor = .clear
+        boardView.backgroundColor = .clear
+    }
+    
+    func reloadSelectionData() {
+        UIView.performWithoutAnimation {
+            boardView.reloadSections(IndexSet(integer: 0))
+        }
     }
 }
 

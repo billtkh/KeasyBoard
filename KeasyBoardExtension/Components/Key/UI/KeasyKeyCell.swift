@@ -117,8 +117,8 @@ private extension KeasyKeyCell {
             [
                 iconView.centerXAnchor.constraint(equalTo: keyView.centerXAnchor),
                 iconView.bottomAnchor.constraint(equalTo: keyView.bottomAnchor, constant: -8),
-                iconView.widthAnchor.constraint(equalToConstant: 16),
-                iconView.heightAnchor.constraint(equalToConstant: 16),
+                iconView.widthAnchor.constraint(equalToConstant: 12),
+                iconView.heightAnchor.constraint(equalToConstant: 12),
             ]
         )
         
@@ -141,8 +141,8 @@ private extension KeasyKeyCell {
         keyView.addSubview(secondaryLabel)
         NSLayoutConstraint.activate(
             [
-                secondaryLabel.leadingAnchor.constraint(equalTo: keyView.leadingAnchor, constant: 4),
-                secondaryLabel.topAnchor.constraint(equalTo: keyView.topAnchor, constant: 2)
+                secondaryLabel.leadingAnchor.constraint(equalTo: keyView.leadingAnchor, constant: 2),
+                secondaryLabel.topAnchor.constraint(equalTo: keyView.topAnchor, constant: 1)
             ]
         )
         

@@ -37,6 +37,8 @@ class KeasyBoardViewModel: NSObject {
     
     var needsInputModeSwitchKey: Observable<Bool>
     
+    let numOfSelection = 9
+    
     private lazy var dataSource: [KeasyBoardRowViewModel] = {
         return prepareKeyboardRowViewModels(rows: KeasyBoard.arrangement)
     }()
@@ -56,16 +58,16 @@ class KeasyBoardViewModel: NSObject {
     func setShiftOn(_ on: Bool) {
         switch currentState.value {
         case .shiftLockOn:
-            currentState.next(.normal)
+            currentState.nextIfDifferent(.normal)
         default:
-            currentState.next(on ? .shiftOn : .normal)
+            currentState.nextIfDifferent(on ? .shiftOn : .normal)
         }
     }
     
     func setShiftLockOn(_ on: Bool) {
         switch currentState.value {
         default:
-            currentState.next(on ? .shiftLockOn : .normal)
+            currentState.nextIfDifferent(on ? .shiftLockOn : .normal)
         }
     }
     
@@ -75,13 +77,13 @@ class KeasyBoardViewModel: NSObject {
     
     func selectingWords(_ words: [KeasyWord], page: Int) {
         guard let firstRow = dataSource.first(where: { $0.index == 0 }) else { return }
-        let numOfSelection = 9
-        
-        let firstKey = page == 0 ? KeasyKey.endSelection : KeasyKey.previousSelectionPage
         let numOfPage = Int(words.count / numOfSelection)
-        let lastKey = numOfPage == 0 ? KeasyKey.selection(nil) : page == numOfPage ? KeasyKey.firstSelectionPage : KeasyKey.nextSelectionPage
+        let toPage = min(page, numOfPage)
         
-        let startIndex = page * numOfSelection
+        let firstKey = toPage == 0 ? KeasyKey.endSelection : KeasyKey.previousSelectionPage
+        let lastKey = numOfPage == 0 ? KeasyKey.selection(nil) : toPage == numOfPage ? KeasyKey.firstSelectionPage : KeasyKey.nextSelectionPage
+        
+        let startIndex = toPage * numOfSelection
         let endIndex = min(startIndex + numOfSelection - 1, words.count - 1)
         var currentIndex = startIndex
         for keyPair in firstRow.keyPairs {
@@ -129,7 +131,7 @@ extension KeasyBoardViewModel {
     }
     
     var boardHeight: Double {
-        return spacingManager.boardHeight
+        return spacingManager.boardHeight - 28.0
     }
     
     func keyViewModelAt(indexPath: IndexPath) -> KeasyKeyPairViewModel {
@@ -254,11 +256,11 @@ extension KeasyBoardViewModel {
             break
             
         case .delete:
-            imeManager.eraseKeyBuffer()
+            imeManager.eraseInputBuffer()
             proxy.deleteBackward()
             
         case .endSelection:
-            imeManager.eraseKeyBuffer()
+            imeManager.eraseInputBuffer()
             currentWordSelection.next(nil)
             
         case .firstSelectionPage:
@@ -273,25 +275,42 @@ extension KeasyBoardViewModel {
             
         case .nextSelectionPage:
             if let wordSelection = currentWordSelection.value {
-                currentWordSelection.next(KeasyBoardWordSelection(words: wordSelection.words, page: wordSelection.page + 1))
+                let numOfPage = Int(wordSelection.words.count / numOfSelection)
+                currentWordSelection.next(KeasyBoardWordSelection(words: wordSelection.words, page: min(wordSelection.page + 1, numOfPage)))
             }
             
         case .space:
             if let wordSelection = currentWordSelection.value {
-                currentWordSelection.next(KeasyBoardWordSelection(words: wordSelection.words, page: wordSelection.page + 1))
-            }
-            if proxy.documentContextBeforeInput?.last != " " {
-                proxy.insertText(" ")
+                let numOfPage = Int(wordSelection.words.count / numOfSelection)
+                
+                if wordSelection.page + 1 > numOfPage {
+                    currentWordSelection.next(KeasyBoardWordSelection(words: wordSelection.words, page: 0))
+                } else {
+                    currentWordSelection.next(KeasyBoardWordSelection(words: wordSelection.words, page: wordSelection.page + 1))
+                }
             }
             
+            let space = KeasyKey.space.text
+            if proxy.documentContextBeforeInput?.hasSuffix(space) == false || imeManager.isInputBufferEmpty {
+                proxy.insertText(space)
+            }
+            
+        case .next:
+            imeManager.eraseInputBuffer()
+            proxy.insertText("\n")
+            
         case let .typing(key):
+            if proxy.documentContextBeforeInput?.hasSuffix(KeasyKey.space.text) == true {
+                imeManager.resetInputBuffer()
+            }
+            
             imeManager.inputKey(key: key)
             proxy.insertText(key)
             
         case let .selection(word):
-            imeManager.eraseKeyBuffer()
+            imeManager.eraseInputBuffer()
             guard let word = word else { return }
-            if proxy.documentContextBeforeInput?.last == " " {
+            if proxy.documentContextBeforeInput?.hasSuffix(KeasyKey.space.text) == true {
                 proxy.deleteBackward()
             }
             for _ in Array(word.keys) {
@@ -300,7 +319,7 @@ extension KeasyBoardViewModel {
             proxy.insertText(word.word)
             
         default:
-            imeManager.eraseKeyBuffer()
+            imeManager.eraseInputBuffer()
         }
     }
     
@@ -347,6 +366,6 @@ extension KeasyBoardViewModel: KeasyInputMethodManagerDelegate {
     }
     
     func didEraseInputBuffer() {
-        currentState.next(isWordSelecting ? .normal : currentState.value)
+        currentWordSelection.next(nil)
     }
 }

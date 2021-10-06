@@ -31,7 +31,7 @@ class KeasyBoard {
             KeasyKeyPair(main: .typing("y"), sub: .typing("Y")),
             KeasyKeyPair(main: .typing("u"), sub: .typing("U")),
             KeasyKeyPair(main: .typing("i"), sub: .typing("I")),
-            KeasyKeyPair(main: .typing("o"), sub: .typing("I")),
+            KeasyKeyPair(main: .typing("o"), sub: .typing("O")),
             KeasyKeyPair(main: .typing("p"), sub: .typing("P")),
         ]),
         KeasyBoardRow(index: 2, arrangementType: .distributed, keyPairs: [
