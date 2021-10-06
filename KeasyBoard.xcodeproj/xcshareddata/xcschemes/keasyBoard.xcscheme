@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D2E3DFA12702C18200C1F25F"
-               BuildableName = "keasyBoard.app"
+               BuildableName = "KeasyBoard.app"
                BlueprintName = "KeasyBoard"
-               ReferencedContainer = "container:keasyBoard.xcodeproj">
+               ReferencedContainer = "container:KeasyBoard.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D2E3DFA12702C18200C1F25F"
-            BuildableName = "keasyBoard.app"
+            BuildableName = "KeasyBoard.app"
             BlueprintName = "KeasyBoard"
-            ReferencedContainer = "container:keasyBoard.xcodeproj">
+            ReferencedContainer = "container:KeasyBoard.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D2E3DFA12702C18200C1F25F"
-            BuildableName = "keasyBoard.app"
+            BuildableName = "KeasyBoard.app"
             BlueprintName = "KeasyBoard"
-            ReferencedContainer = "container:keasyBoard.xcodeproj">
+            ReferencedContainer = "container:KeasyBoard.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

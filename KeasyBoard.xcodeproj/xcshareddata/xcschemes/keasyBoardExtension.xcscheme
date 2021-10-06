@@ -16,9 +16,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D2E3DFBC2702C26500C1F25F"
-               BuildableName = "keasyBoardExtension.appex"
+               BuildableName = "KeasyBoardExtension.appex"
                BlueprintName = "KeasyBoardExtension"
-               ReferencedContainer = "container:keasyBoard.xcodeproj">
+               ReferencedContainer = "container:KeasyBoard.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -30,9 +30,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D2E3DFA12702C18200C1F25F"
-               BuildableName = "keasyBoard.app"
+               BuildableName = "KeasyBoard.app"
                BlueprintName = "KeasyBoard"
-               ReferencedContainer = "container:keasyBoard.xcodeproj">
+               ReferencedContainer = "container:KeasyBoard.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -66,9 +66,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D2E3DFA12702C18200C1F25F"
-            BuildableName = "keasyBoard.app"
+            BuildableName = "KeasyBoard.app"
             BlueprintName = "KeasyBoard"
-            ReferencedContainer = "container:keasyBoard.xcodeproj">
+            ReferencedContainer = "container:KeasyBoard.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <EnvironmentVariables>
@@ -92,9 +92,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D2E3DFA12702C18200C1F25F"
-            BuildableName = "keasyBoard.app"
+            BuildableName = "KeasyBoard.app"
             BlueprintName = "KeasyBoard"
-            ReferencedContainer = "container:keasyBoard.xcodeproj">
+            ReferencedContainer = "container:KeasyBoard.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

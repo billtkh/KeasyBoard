@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17633F814A2064F5C7A126CC /* Pods_KeasyBoardExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 701A7AD35613DA20A9C469F7 /* Pods_KeasyBoardExtension.framework */; };
+		4D488C6C1D06A53E9FF64FA0 /* Pods_KeasyBoard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A38371F5BE8523485E05A76A /* Pods_KeasyBoard.framework */; };
+		CE224A8B31960EEC4B4C418B /* Pods_WordBasePopulator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D22965F9109A43B9E6DF1E /* Pods_WordBasePopulator.framework */; };
 		D2520E4627058E8900DD43C4 /* KeasyBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2520E4527058E8900DD43C4 /* KeasyBoardView.swift */; };
 		D2520E482705AAD600DD43C4 /* KeasyStyleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2520E472705AAD600DD43C4 /* KeasyStyleManager.swift */; };
 		D2520E4A2705B3CB00DD43C4 /* KeasyFontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2520E492705B3CB00DD43C4 /* KeasyFontManager.swift */; };
@@ -75,6 +78,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		12D22965F9109A43B9E6DF1E /* Pods_WordBasePopulator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WordBasePopulator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		48040C229A8CC2DC83A6EF51 /* Pods-KeasyBoard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeasyBoard.debug.xcconfig"; path = "Target Support Files/Pods-KeasyBoard/Pods-KeasyBoard.debug.xcconfig"; sourceTree = "<group>"; };
+		4DF2B6A336E95766490D7FD6 /* Pods-KeasyBoardExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeasyBoardExtension.release.xcconfig"; path = "Target Support Files/Pods-KeasyBoardExtension/Pods-KeasyBoardExtension.release.xcconfig"; sourceTree = "<group>"; };
+		53E8CF4B6B9CC9AC451CBCA2 /* Pods-WordBasePopulator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordBasePopulator.debug.xcconfig"; path = "Target Support Files/Pods-WordBasePopulator/Pods-WordBasePopulator.debug.xcconfig"; sourceTree = "<group>"; };
+		701A7AD35613DA20A9C469F7 /* Pods_KeasyBoardExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KeasyBoardExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F9ADFC3B90069E183EC8B7F /* Pods-KeasyBoard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeasyBoard.release.xcconfig"; path = "Target Support Files/Pods-KeasyBoard/Pods-KeasyBoard.release.xcconfig"; sourceTree = "<group>"; };
+		8A77B8E0B31321EDDA3C40BB /* Pods-WordBasePopulator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordBasePopulator.release.xcconfig"; path = "Target Support Files/Pods-WordBasePopulator/Pods-WordBasePopulator.release.xcconfig"; sourceTree = "<group>"; };
+		A274684C78F80D50A95CCEFD /* Pods-KeasyBoardExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeasyBoardExtension.debug.xcconfig"; path = "Target Support Files/Pods-KeasyBoardExtension/Pods-KeasyBoardExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		A38371F5BE8523485E05A76A /* Pods_KeasyBoard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KeasyBoard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2520E4527058E8900DD43C4 /* KeasyBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeasyBoardView.swift; sourceTree = "<group>"; };
 		D2520E472705AAD600DD43C4 /* KeasyStyleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeasyStyleManager.swift; sourceTree = "<group>"; };
 		D2520E492705B3CB00DD43C4 /* KeasyFontManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeasyFontManager.swift; sourceTree = "<group>"; };
@@ -128,6 +140,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE224A8B31960EEC4B4C418B /* Pods_WordBasePopulator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,6 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D488C6C1D06A53E9FF64FA0 /* Pods_KeasyBoard.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,6 +156,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17633F814A2064F5C7A126CC /* Pods_KeasyBoardExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +301,8 @@
 				D2E3DFBE2702C26500C1F25F /* KeasyBoardExtension */,
 				D2520E56270AF80900DD43C4 /* WordBasePopulator */,
 				D2E3DFA32702C18200C1F25F /* Products */,
+				F2CB48010647BE92B7A6F83A /* Pods */,
+				D36A2A5AB7F1950F46553ED0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -336,6 +353,30 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		D36A2A5AB7F1950F46553ED0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A38371F5BE8523485E05A76A /* Pods_KeasyBoard.framework */,
+				701A7AD35613DA20A9C469F7 /* Pods_KeasyBoardExtension.framework */,
+				12D22965F9109A43B9E6DF1E /* Pods_WordBasePopulator.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F2CB48010647BE92B7A6F83A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				48040C229A8CC2DC83A6EF51 /* Pods-KeasyBoard.debug.xcconfig */,
+				7F9ADFC3B90069E183EC8B7F /* Pods-KeasyBoard.release.xcconfig */,
+				A274684C78F80D50A95CCEFD /* Pods-KeasyBoardExtension.debug.xcconfig */,
+				4DF2B6A336E95766490D7FD6 /* Pods-KeasyBoardExtension.release.xcconfig */,
+				53E8CF4B6B9CC9AC451CBCA2 /* Pods-WordBasePopulator.debug.xcconfig */,
+				8A77B8E0B31321EDDA3C40BB /* Pods-WordBasePopulator.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -343,6 +384,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D2520E69270AF80A00DD43C4 /* Build configuration list for PBXNativeTarget "WordBasePopulator" */;
 			buildPhases = (
+				49A60F567221B2EC7AC4CCD5 /* [CP] Check Pods Manifest.lock */,
 				D2520E51270AF80900DD43C4 /* Sources */,
 				D2520E52270AF80900DD43C4 /* Frameworks */,
 				D2520E53270AF80900DD43C4 /* Resources */,
@@ -360,10 +402,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D2E3DFB62702C18400C1F25F /* Build configuration list for PBXNativeTarget "KeasyBoard" */;
 			buildPhases = (
+				B05E9D1A3D90E18A106E3190 /* [CP] Check Pods Manifest.lock */,
 				D2E3DF9E2702C18200C1F25F /* Sources */,
 				D2E3DF9F2702C18200C1F25F /* Frameworks */,
 				D2E3DFA02702C18200C1F25F /* Resources */,
 				D2E3DFC82702C26500C1F25F /* Embed App Extensions */,
+				2A009668B09AC1A1F5DC6FCF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -379,6 +423,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D2E3DFC52702C26500C1F25F /* Build configuration list for PBXNativeTarget "KeasyBoardExtension" */;
 			buildPhases = (
+				783A0C24AD7AD73593E66613 /* [CP] Check Pods Manifest.lock */,
 				D2E3DFB92702C26500C1F25F /* Sources */,
 				D2E3DFBA2702C26500C1F25F /* Frameworks */,
 				D2E3DFBB2702C26500C1F25F /* Resources */,
@@ -469,6 +514,92 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2A009668B09AC1A1F5DC6FCF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KeasyBoard/Pods-KeasyBoard-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KeasyBoard/Pods-KeasyBoard-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KeasyBoard/Pods-KeasyBoard-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		49A60F567221B2EC7AC4CCD5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WordBasePopulator-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		783A0C24AD7AD73593E66613 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KeasyBoardExtension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B05E9D1A3D90E18A106E3190 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KeasyBoard-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D2520E51270AF80900DD43C4 /* Sources */ = {
@@ -567,6 +698,7 @@
 /* Begin XCBuildConfiguration section */
 		D2520E6A270AF80A00DD43C4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 53E8CF4B6B9CC9AC451CBCA2 /* Pods-WordBasePopulator.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -595,6 +727,7 @@
 		};
 		D2520E6B270AF80A00DD43C4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A77B8E0B31321EDDA3C40BB /* Pods-WordBasePopulator.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -739,6 +872,7 @@
 		};
 		D2E3DFB72702C18400C1F25F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48040C229A8CC2DC83A6EF51 /* Pods-KeasyBoard.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -769,6 +903,7 @@
 		};
 		D2E3DFB82702C18400C1F25F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F9ADFC3B90069E183EC8B7F /* Pods-KeasyBoard.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -799,6 +934,7 @@
 		};
 		D2E3DFC62702C26500C1F25F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A274684C78F80D50A95CCEFD /* Pods-KeasyBoardExtension.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -824,6 +960,7 @@
 		};
 		D2E3DFC72702C26500C1F25F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4DF2B6A336E95766490D7FD6 /* Pods-KeasyBoardExtension.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

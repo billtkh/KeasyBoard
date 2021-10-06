@@ -7,7 +7,8 @@
 
 import Foundation
 import UIKit
-import CloudKit
+import RxSwift
+import RxCocoa
 
 enum KeasyBoardState: Equatable {
     case normal
@@ -24,7 +25,7 @@ enum KeasyBoardState: Equatable {
     }
 }
 
-struct KeasyBoardWordSelection: Equatable {
+struct KeasyWordSelection: Equatable {
     let words: [KeasyWord]
     let page: Int
 }
@@ -32,10 +33,10 @@ struct KeasyBoardWordSelection: Equatable {
 class KeasyBoardViewModel: NSObject {
     private(set) var proxy: UITextDocumentProxy?
     
-    var currentState = Observable(KeasyBoardState.normal)
-    var currentWordSelection: Observable<KeasyBoardWordSelection?> = Observable(nil)
+    var currentState = BehaviorRelay(value: KeasyBoardState.normal)
+    var currentWordSelection: BehaviorRelay<KeasyWordSelection?> = BehaviorRelay(value: nil)
     
-    var needsInputModeSwitchKey: Observable<Bool>
+    var needsInputModeSwitchKey = BehaviorRelay(value: false)
     
     let numOfSelection = 9
     
@@ -49,7 +50,6 @@ class KeasyBoardViewModel: NSObject {
     
     init(textDocumentProxy: UITextDocumentProxy?, needsInputModeSwitchKey: Bool) {
         self.proxy = textDocumentProxy
-        self.needsInputModeSwitchKey = Observable(needsInputModeSwitchKey)
         super.init()
         
         imeManager.delegate = self
@@ -58,21 +58,21 @@ class KeasyBoardViewModel: NSObject {
     func setShiftOn(_ on: Bool) {
         switch currentState.value {
         case .shiftLockOn:
-            currentState.nextIfDifferent(.normal)
+            currentState.accept(.normal)
         default:
-            currentState.nextIfDifferent(on ? .shiftOn : .normal)
+            currentState.accept(on ? .shiftOn : .normal)
         }
     }
     
     func setShiftLockOn(_ on: Bool) {
         switch currentState.value {
         default:
-            currentState.nextIfDifferent(on ? .shiftLockOn : .normal)
+            currentState.accept(on ? .shiftLockOn : .normal)
         }
     }
     
     func setNeedsInputModeSwitchKey(_ needsInputModeSwitchKey: Bool) {
-        self.needsInputModeSwitchKey.nextIfDifferent(needsInputModeSwitchKey)
+        self.needsInputModeSwitchKey.accept(needsInputModeSwitchKey)
     }
     
     func selectingWords(_ words: [KeasyWord], page: Int) {
@@ -261,22 +261,22 @@ extension KeasyBoardViewModel {
             
         case .endSelection:
             imeManager.eraseInputBuffer()
-            currentWordSelection.next(nil)
+            currentWordSelection.accept(nil)
             
         case .firstSelectionPage:
             if let wordSelection = currentWordSelection.value {
-                currentWordSelection.next(KeasyBoardWordSelection(words: wordSelection.words, page: 0))
+                currentWordSelection.accept(KeasyWordSelection(words: wordSelection.words, page: 0))
             }
             
         case .previousSelectionPage:
             if let wordSelection = currentWordSelection.value {
-                currentWordSelection.next(KeasyBoardWordSelection(words: wordSelection.words, page: wordSelection.page - 1))
+                currentWordSelection.accept(KeasyWordSelection(words: wordSelection.words, page: wordSelection.page - 1))
             }
             
         case .nextSelectionPage:
             if let wordSelection = currentWordSelection.value {
                 let numOfPage = Int(wordSelection.words.count / numOfSelection)
-                currentWordSelection.next(KeasyBoardWordSelection(words: wordSelection.words, page: min(wordSelection.page + 1, numOfPage)))
+                currentWordSelection.accept(KeasyWordSelection(words: wordSelection.words, page: min(wordSelection.page + 1, numOfPage)))
             }
             
         case .space:
@@ -284,9 +284,9 @@ extension KeasyBoardViewModel {
                 let numOfPage = Int(wordSelection.words.count / numOfSelection)
                 
                 if wordSelection.page + 1 > numOfPage {
-                    currentWordSelection.next(KeasyBoardWordSelection(words: wordSelection.words, page: 0))
+                    currentWordSelection.accept(KeasyWordSelection(words: wordSelection.words, page: 0))
                 } else {
-                    currentWordSelection.next(KeasyBoardWordSelection(words: wordSelection.words, page: wordSelection.page + 1))
+                    currentWordSelection.accept(KeasyWordSelection(words: wordSelection.words, page: wordSelection.page + 1))
                 }
             }
             
@@ -360,12 +360,12 @@ extension KeasyBoardViewModel: KeasyInputMethodManagerDelegate {
     
     func keysInInputBuffer(keys: String, didMatch anyWords: [KeasyWord]) {
         let startPage = 0
-        currentWordSelection.nextIfDifferent(KeasyBoardWordSelection(words: anyWords, page: startPage))
+        currentWordSelection.accept(KeasyWordSelection(words: anyWords, page: startPage))
         
 //        print("keys: \(keys) construct words: \(anyWords)")
     }
     
     func didEraseInputBuffer() {
-        currentWordSelection.next(nil)
+        currentWordSelection.accept(nil)
     }
 }

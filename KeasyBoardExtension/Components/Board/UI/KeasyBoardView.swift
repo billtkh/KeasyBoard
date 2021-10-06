@@ -7,11 +7,14 @@
 
 import Foundation
 import UIKit
+import RxSwift
 
 class KeasyBoardView: UIView {
     var boardView: UICollectionView!
     var functionBar: UICollectionView!
     var viewModel: KeasyBoardViewModel
+    
+    let disposeBag = DisposeBag()
     
     private var styleManager: KeasyStyleManager {
         return KeasyStyleManager.shared
@@ -42,35 +45,45 @@ class KeasyBoardView: UIView {
 
 private extension KeasyBoardView {
     func binding() {
-        viewModel.currentState.bind { [weak self] state in
-            DispatchQueue.main.async { [weak self] in
-                guard let sSelf = self else { return }
-                switch state {
-                default:
-                    sSelf.boardView.reloadData()
-                }
-            }
-        }
-        
-        viewModel.currentWordSelection.bind { [weak self] selection in
-            DispatchQueue.main.async { [weak self] in
-                guard let sSelf = self else { return }
-                guard let selection = selection else {
-                    sSelf.reloadSelectionData()
-                    return
-                }
-                sSelf.viewModel.selectingWords(selection.words, page: selection.page)
-                sSelf.reloadSelectionData()
-            }
-        }
-        
-        viewModel.needsInputModeSwitchKey.bind { [weak self] needsInputModeSwitchKey in
-            DispatchQueue.main.async { [weak self] in
-                guard let sSelf = self else { return }
-                sSelf.viewModel.reloadDataSource()
+        _ = viewModel.currentState
+            .throttle(RxTimeInterval.milliseconds(50),
+                      scheduler: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
+            .observe(on: MainScheduler())
+            .subscribe { [weak self] state in
+            guard let sSelf = self else { return }
+            switch state {
+            default:
                 sSelf.boardView.reloadData()
             }
         }
+        .disposed(by: disposeBag)
+        
+        _ = viewModel.currentWordSelection
+            .throttle(RxTimeInterval.milliseconds(50),
+                      scheduler: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
+            .observe(on: MainScheduler())
+            .subscribe { [weak self] event in
+            guard let sSelf = self else { return }
+            guard let selection = event.element as? KeasyWordSelection else {
+                sSelf.reloadSelectionData()
+                return
+            }
+            
+            sSelf.viewModel.selectingWords(selection.words, page: selection.page)
+            sSelf.reloadSelectionData()
+        }
+        .disposed(by: disposeBag)
+        
+        _ = viewModel.needsInputModeSwitchKey
+            .throttle(RxTimeInterval.milliseconds(50),
+                      scheduler: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
+            .observe(on: MainScheduler())
+            .subscribe { [weak self] needsInputModeSwitchKey in
+            guard let sSelf = self else { return }
+            sSelf.viewModel.reloadDataSource()
+            sSelf.boardView.reloadData()
+        }
+        .disposed(by: disposeBag)
     }
     
     func setupUI() {
