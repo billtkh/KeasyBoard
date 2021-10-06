@@ -91,12 +91,23 @@ class KeasyInputMethodManager: NSObject {
 extension KeasyInputMethodManager {
     func inputKey(key: String) {
         inputBuffer += key
-        queryWord(keys: inputBuffer)
+        guard key != " " else { return }
+        queryWord(keys: inputBuffer.trimmingCharacters(in: .whitespaces))
     }
     
     func eraseInputBuffer() {
         inputBuffer = ""
         invokeDidEraseInputBuffer()
+    }
+    
+    func popInputBuffer() -> String {
+        if inputBuffer.isEmpty {
+            return ""
+        } else {
+            let last = String(inputBuffer.removeLast())
+            queryWord(keys: inputBuffer.trimmingCharacters(in: .whitespaces))
+            return last
+        }
     }
     
     func resetInputBuffer() {

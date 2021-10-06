@@ -26,7 +26,6 @@ class KeasyBoardView: UIView {
         
         setupUI()
         setupStyle()
-        binding()
     }
     
     required init?(coder: NSCoder) {
@@ -41,11 +40,10 @@ class KeasyBoardView: UIView {
     func updateNeedsInputModeSwitchKey(_ needsInputModeSwitchKey: Bool) {
         viewModel.setNeedsInputModeSwitchKey(needsInputModeSwitchKey)
     }
-}
-
-private extension KeasyBoardView {
+    
     func binding() {
         _ = viewModel.currentState
+            .distinctUntilChanged()
             .throttle(RxTimeInterval.milliseconds(50),
                       scheduler: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
             .observe(on: MainScheduler())
@@ -85,7 +83,9 @@ private extension KeasyBoardView {
         }
         .disposed(by: disposeBag)
     }
-    
+}
+
+private extension KeasyBoardView {
     func setupUI() {
         let functionBarLayout = UICollectionViewFlowLayout()
         functionBarLayout.minimumInteritemSpacing = viewModel.keySpacing

@@ -30,6 +30,11 @@ struct KeasyWordSelection: Equatable {
     let page: Int
 }
 
+protocol KeasyBoardFeedbackDelegate: AnyObject {
+    func feedbackToTap()
+    func feedbackToLongPress()
+}
+
 class KeasyBoardViewModel: NSObject {
     private(set) var proxy: UITextDocumentProxy?
     
@@ -39,6 +44,8 @@ class KeasyBoardViewModel: NSObject {
     var needsInputModeSwitchKey = BehaviorRelay(value: false)
     
     let numOfSelection = 9
+    
+    private weak var feedbackDelegate: KeasyBoardFeedbackDelegate?
     
     private lazy var dataSource: [KeasyBoardRowViewModel] = {
         return prepareKeyboardRowViewModels(rows: KeasyBoard.arrangement)
@@ -52,6 +59,7 @@ class KeasyBoardViewModel: NSObject {
         self.proxy = textDocumentProxy
         super.init()
         
+        feedbackDelegate = KeasyFeedbackManager.shared
         imeManager.delegate = self
     }
     
@@ -245,6 +253,8 @@ extension KeasyBoardViewModel {
     }
     
     func didTap(keyPair: KeasyKeyPairViewModel) {
+        feedbackDelegate?.feedbackToTap()
+        
         guard let proxy = proxy else { return }
         let primaryKey = keyPair.primaryKey.key
         
@@ -256,7 +266,7 @@ extension KeasyBoardViewModel {
             break
             
         case .delete:
-            imeManager.eraseInputBuffer()
+            _ = imeManager.popInputBuffer()
             proxy.deleteBackward()
             
         case .endSelection:
@@ -292,6 +302,7 @@ extension KeasyBoardViewModel {
             
             let space = KeasyKey.space.text
             if proxy.documentContextBeforeInput?.hasSuffix(space) == false || imeManager.isInputBufferEmpty {
+                imeManager.inputKey(key: space)
                 proxy.insertText(space)
             }
             
@@ -324,6 +335,8 @@ extension KeasyBoardViewModel {
     }
     
     func didLongPress(keyPair: KeasyKeyPairViewModel) {
+        feedbackDelegate?.feedbackToLongPress()
+        
         let primaryKey = keyPair.primaryKey.key
         switch primaryKey {
         case .shift:

@@ -36,17 +36,22 @@ class KeasyBoardViewController: UIInputViewController {
                                             needsInputModeSwitchKey: true)
         boardView = KeasyBoardView(viewModel: viewModel)
         
+        setupKeyboardHeight()
         setupUI()
+        
+        boardView.binding()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        setupKeyboardHeight()
+        
+        
+        boardView.updateNeedsInputModeSwitchKey(needsInputModeSwitchKey)
     }
     
     override func viewWillLayoutSubviews() {
-        boardView.updateNeedsInputModeSwitchKey(needsInputModeSwitchKey)
+//        boardView.updateNeedsInputModeSwitchKey(needsInputModeSwitchKey)
         super.viewWillLayoutSubviews()
     }
     

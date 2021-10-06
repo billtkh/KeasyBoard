@@ -166,7 +166,7 @@ private extension KeasyKeyCell {
         NSLayoutConstraint.activate(
             [
                 toggleView.centerXAnchor.constraint(equalTo: keyView.centerXAnchor),
-                toggleView.topAnchor.constraint(equalTo: keyView.topAnchor, constant: 6),
+                toggleView.topAnchor.constraint(equalTo: keyView.topAnchor, constant: 4),
                 toggleView.widthAnchor.constraint(equalToConstant: 8),
                 toggleView.heightAnchor.constraint(equalToConstant: 8),
             ]
