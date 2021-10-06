@@ -45,12 +45,21 @@ private extension KeasyBoardView {
             DispatchQueue.main.async { [weak self] in
                 guard let sSelf = self else { return }
                 switch state {
-                case let .wordSelecting(words, page), let .shiftLockOnAndWordSelecting(words, page):
-                    sSelf.viewModel.selectingWords(words, page: page)
-                    sSelf.collectionView.reloadData()
                 default:
                     sSelf.collectionView.reloadData()
                 }
+            }
+        }
+        
+        viewModel.currentWordSelection.bind { [weak self] selection in
+            DispatchQueue.main.async { [weak self] in
+                guard let sSelf = self else { return }
+                guard let selection = selection else {
+                    sSelf.collectionView.reloadData()
+                    return
+                }
+                sSelf.viewModel.selectingWords(selection.words, page: selection.page)
+                sSelf.collectionView.reloadData()
             }
         }
         

@@ -56,21 +56,35 @@ class KeasyKeyPairViewModel: NSObject {
         return board.isShiftLockOn
     }
     
+    var primaryTitle: String {
+        return isShiftLockOn || isShiftOn ? primaryKey.shiftedTitle : primaryKey.title
+    }
+    
+    var secondaryTitle: String? {
+        return secondaryKey?.title
+    }
+    
     var primaryKey: KeasyKeyViewModel {
-        if let selection = selection, board.isWordSelecting {
+        if isShiftLockOn || isShiftOn {
+            if let _ = selection, board.isWordSelecting {
+                return main
+            } else {
+                return sub ?? main
+            }
+        } else if let selection = selection, board.isWordSelecting {
             return selection
-        } else if isShiftLockOn || isShiftOn {
-            return sub ?? main
         } else {
             return main
         }
     }
     
     var secondaryKey: KeasyKeyViewModel? {
-        if let _ = selection, board.isWordSelecting {
-            return main
-        } else if isShiftLockOn || isShiftOn {
-            return sub == nil ? nil : main
+        if isShiftLockOn || isShiftOn {
+            if let selection = selection, board.isWordSelecting {
+                return selection
+            } else {
+                return sub == nil ? nil : main
+            }
         } else {
             return sub
         }

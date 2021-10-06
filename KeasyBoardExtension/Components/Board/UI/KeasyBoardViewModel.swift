@@ -13,27 +13,28 @@ enum KeasyBoardState: Equatable {
     case normal
     case shiftOn
     case shiftLockOn
-    case wordSelecting([KeasyWord], Int)
-    case shiftLockOnAndWordSelecting([KeasyWord], Int)
     
     static func == (lhs: KeasyBoardState, rhs: KeasyBoardState) -> Bool {
         switch (lhs, rhs) {
         case (.normal, .normal), (.shiftOn, .shiftOn), (.shiftLockOn, .shiftLockOn):
             return true
-        case (let .wordSelecting(lhsWords, lhsPage), let .wordSelecting(rhsWords, rhsPage)):
-            return lhsWords == rhsWords && lhsPage == rhsPage
-        case (let .shiftLockOnAndWordSelecting(lhsWords, lhsPage), let .shiftLockOnAndWordSelecting(rhsWords, rhsPage)):
-            return lhsWords == rhsWords && lhsPage == rhsPage
         default:
             return false
         }
     }
 }
 
+struct KeasyBoardWordSelection: Equatable {
+    let words: [KeasyWord]
+    let page: Int
+}
+
 class KeasyBoardViewModel: NSObject {
     private(set) var proxy: UITextDocumentProxy?
     
     var currentState = Observable(KeasyBoardState.normal)
+    var currentWordSelection: Observable<KeasyBoardWordSelection?> = Observable(nil)
+    
     var needsInputModeSwitchKey: Observable<Bool>
     
     private lazy var dataSource: [KeasyBoardRowViewModel] = {
@@ -54,7 +55,7 @@ class KeasyBoardViewModel: NSObject {
     
     func setShiftOn(_ on: Bool) {
         switch currentState.value {
-        case .shiftLockOn, .shiftLockOnAndWordSelecting(_, _):
+        case .shiftLockOn:
             currentState.next(.normal)
         default:
             currentState.next(on ? .shiftOn : .normal)
@@ -223,32 +224,56 @@ extension KeasyBoardViewModel {
 }
 
 extension KeasyBoardViewModel {
+    func resetShiftStateIfNeeded(tapped key: KeasyKey) {
+        if isShiftLockOn {
+            switch key {
+            case .shift:
+                setShiftLockOn(false)
+            default:
+                break
+            }
+        } else {
+            switch key {
+            case .shift:
+                setShiftOn(!isShiftOn)
+            default:
+                setShiftOn(false)
+            }
+        }
+    }
+    
     func didTap(keyPair: KeasyKeyPairViewModel) {
         guard let proxy = proxy else { return }
         let primaryKey = keyPair.primaryKey.key
         
+        resetShiftStateIfNeeded(tapped: primaryKey)
+
         switch primaryKey {
         case .shift:
-            setShiftOn(!isShiftOn)
-            imeManager.eraseKeyBuffer()
+            // do not erase input buffer for shifting
+            break
             
         case .delete:
             imeManager.eraseKeyBuffer()
             proxy.deleteBackward()
             
+        case .endSelection:
+            imeManager.eraseKeyBuffer()
+            currentWordSelection.next(nil)
+            
         case .firstSelectionPage:
-            if case let .wordSelecting(words, _) = currentState.value {
-                currentState.next(.wordSelecting(words, 0))
+            if let wordSelection = currentWordSelection.value {
+                currentWordSelection.next(KeasyBoardWordSelection(words: wordSelection.words, page: 0))
             }
             
         case .previousSelectionPage:
-            if case let .wordSelecting(words, page) = currentState.value {
-                currentState.next(.wordSelecting(words, page - 1))
+            if let wordSelection = currentWordSelection.value {
+                currentWordSelection.next(KeasyBoardWordSelection(words: wordSelection.words, page: wordSelection.page - 1))
             }
             
         case .nextSelectionPage:
-            if case let .wordSelecting(words, page) = currentState.value {
-                currentState.next(.wordSelecting(words, page + 1))
+            if let wordSelection = currentWordSelection.value {
+                currentWordSelection.next(KeasyBoardWordSelection(words: wordSelection.words, page: wordSelection.page + 1))
             }
             
         case .space:
@@ -286,12 +311,7 @@ extension KeasyBoardViewModel {
 
 extension KeasyBoardViewModel: KeasyInputMethodManagerDelegate {
     var isWordSelecting: Bool {
-        switch currentState.value {
-        case .wordSelecting(_, _), .shiftLockOnAndWordSelecting(_, _):
-            return true
-        default:
-            return false
-        }
+        return currentWordSelection.value != nil
     }
     
     var isShiftOn: Bool {
@@ -305,7 +325,7 @@ extension KeasyBoardViewModel: KeasyInputMethodManagerDelegate {
     
     var isShiftLockOn: Bool {
         switch currentState.value {
-        case .shiftLockOn, .shiftLockOnAndWordSelecting(_, _):
+        case .shiftLockOn:
             return true
         default:
             return false
@@ -313,12 +333,9 @@ extension KeasyBoardViewModel: KeasyInputMethodManagerDelegate {
     }
     
     func keysInInputBuffer(keys: String, didMatch anyWords: [KeasyWord]) {
-        if anyWords.isEmpty {
-            currentState.nextIfDifferent(isShiftLockOn ? .shiftLockOn : .normal)
-        } else {
-            let startPage = 0
-            currentState.next(isShiftLockOn ? .shiftLockOnAndWordSelecting(anyWords, startPage) : .wordSelecting(anyWords, startPage))
-        }
+        let startPage = 0
+        currentWordSelection.nextIfDifferent(KeasyBoardWordSelection(words: anyWords, page: startPage))
+        
 //        print("keys: \(keys) construct words: \(anyWords)")
     }
     

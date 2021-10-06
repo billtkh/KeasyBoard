@@ -179,9 +179,9 @@ private extension KeasyKeyCell {
             primaryLabel.text = nil
         } else {
             iconView.image = nil
-            primaryLabel.text = viewModel.primaryKey.title.cangjieCode
+            primaryLabel.text = viewModel.primaryTitle.cangjieCode
         }
-        secondaryLabel.text = viewModel.secondaryKey?.title.cangjieCode
+        secondaryLabel.text = viewModel.secondaryTitle?.cangjieCode
         
         
         switch viewModel.primaryKey.titleSize {

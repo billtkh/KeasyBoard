@@ -91,6 +91,15 @@ enum KeasyKey {
         }
     }
     
+    var shiftedTitle: String {
+        switch self {
+        case .shift:
+            return "SHIFT"
+        default:
+            return title
+        }
+    }
+    
     var icon: UIImage? {
         switch self {
         case .endSelection:

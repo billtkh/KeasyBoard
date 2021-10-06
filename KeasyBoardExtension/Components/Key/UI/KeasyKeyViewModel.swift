@@ -23,6 +23,10 @@ class KeasyKeyViewModel: NSObject {
         return key.text
     }
     
+    var shiftedTitle: String {
+        return key.shiftedTitle
+    }
+    
     var title: String {
         return key.title
     }
