@@ -66,11 +66,7 @@ class KeasyKeyPairViewModel: NSObject {
     
     var primaryKey: KeasyKeyViewModel {
         if isShiftLockOn || isShiftOn {
-            if let _ = selection, board.isWordSelecting {
-                return main
-            } else {
-                return sub ?? main
-            }
+            return sub ?? main
         } else if let selection = selection, board.isWordSelecting {
             return selection
         } else {
@@ -79,14 +75,10 @@ class KeasyKeyPairViewModel: NSObject {
     }
     
     var secondaryKey: KeasyKeyViewModel? {
-        if isShiftLockOn || isShiftOn {
-            if let selection = selection, board.isWordSelecting {
-                return selection
-            } else {
-                return sub == nil ? nil : main
-            }
+        if let selection = selection, board.isWordSelecting {
+            return isShiftLockOn || isShiftOn ? selection : main
         } else {
-            return sub
+            return isShiftLockOn || isShiftOn ? (sub == nil ? nil : main) : sub
         }
     }
 }

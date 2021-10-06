@@ -277,8 +277,12 @@ extension KeasyBoardViewModel {
             }
             
         case .space:
-            imeManager.eraseKeyBuffer()
-            proxy.insertText(" ")
+            if let wordSelection = currentWordSelection.value {
+                currentWordSelection.next(KeasyBoardWordSelection(words: wordSelection.words, page: wordSelection.page + 1))
+            }
+            if proxy.documentContextBeforeInput?.last != " " {
+                proxy.insertText(" ")
+            }
             
         case let .typing(key):
             imeManager.inputKey(key: key)
@@ -287,6 +291,9 @@ extension KeasyBoardViewModel {
         case let .selection(word):
             imeManager.eraseKeyBuffer()
             guard let word = word else { return }
+            if proxy.documentContextBeforeInput?.last == " " {
+                proxy.deleteBackward()
+            }
             for _ in Array(word.keys) {
                 proxy.deleteBackward()
             }
