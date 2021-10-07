@@ -9,6 +9,7 @@ import UIKit
 
 class KeasyBoardViewController: UIInputViewController {    
     var boardView: KeasyBoardView!
+    var didBindViewModel = false
     
     private var spacingManager: KeasySpacingManager {
         return KeasySpacingManager.shared
@@ -38,15 +39,14 @@ class KeasyBoardViewController: UIInputViewController {
         
         setupKeyboardHeight()
         setupUI()
-        
-        boardView.binding()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        KeasyFeedbackManager.shared.prepare()
         
-        
+        bindViewModel()
         boardView.updateNeedsInputModeSwitchKey(needsInputModeSwitchKey)
     }
     
@@ -66,14 +66,32 @@ class KeasyBoardViewController: UIInputViewController {
 }
 
 private extension KeasyBoardViewController {
+    func bindViewModel() {
+        guard !didBindViewModel else { return }
+        boardView.binding()
+        didBindViewModel = true
+    }
+    
     func initStyleManager() {
-        switch traitCollection.userInterfaceStyle {
-        case .light, .unspecified:
-            styleManager.currentStyle = .light
-        case .dark:
-            styleManager.currentStyle = .dark
-        default:
-            styleManager.currentStyle = .light
+        let userInterfaceStyle = traitCollection.userInterfaceStyle
+        if let keyboardAppearance = textDocumentProxy.keyboardAppearance {
+            switch (keyboardAppearance, userInterfaceStyle) {
+            case (.light, _), (.default, .light):
+                styleManager.currentStyle = .light
+            case (.dark, _), (.default, .dark):
+                styleManager.currentStyle = .dark
+            default:
+                styleManager.currentStyle = .light
+            }
+        } else {
+            switch userInterfaceStyle {
+            case .light, .unspecified:
+                styleManager.currentStyle = .light
+            case .dark:
+                styleManager.currentStyle = .dark
+            default:
+                styleManager.currentStyle = .light
+            }
         }
     }
     
@@ -84,10 +102,10 @@ private extension KeasyBoardViewController {
         boardView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate(
             [
-                boardView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                boardView.topAnchor.constraint(equalTo: view.topAnchor),
-                boardView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                boardView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+                boardView.leadingAnchor.constraint(equalTo: inputView.leadingAnchor),
+                boardView.topAnchor.constraint(equalTo: inputView.topAnchor),
+                boardView.trailingAnchor.constraint(equalTo: inputView.trailingAnchor),
+                boardView.bottomAnchor.constraint(equalTo: inputView.bottomAnchor)
             ]
         )
     }

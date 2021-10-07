@@ -57,6 +57,7 @@ class KeasyBoardView: UIView {
         .disposed(by: disposeBag)
         
         _ = viewModel.currentWordSelection
+            .distinctUntilChanged()
             .throttle(RxTimeInterval.milliseconds(50),
                       scheduler: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
             .observe(on: MainScheduler())
@@ -73,8 +74,6 @@ class KeasyBoardView: UIView {
         .disposed(by: disposeBag)
         
         _ = viewModel.needsInputModeSwitchKey
-            .throttle(RxTimeInterval.milliseconds(50),
-                      scheduler: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
             .observe(on: MainScheduler())
             .subscribe { [weak self] needsInputModeSwitchKey in
             guard let sSelf = self else { return }
@@ -126,6 +125,7 @@ private extension KeasyBoardView {
     
     func setupStyle() {
         backgroundColor = styleManager.backgroundColor
+        functionBar.backgroundColor = .clear
         boardView.backgroundColor = .clear
     }
     

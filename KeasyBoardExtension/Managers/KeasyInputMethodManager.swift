@@ -105,7 +105,11 @@ extension KeasyInputMethodManager {
             return ""
         } else {
             let last = String(inputBuffer.removeLast())
-            queryWord(keys: inputBuffer.trimmingCharacters(in: .whitespaces))
+            if inputBuffer.isEmpty {
+                invokeDidEraseInputBuffer()
+            } else {
+                queryWord(keys: inputBuffer.trimmingCharacters(in: .whitespaces))
+            }
             return last
         }
     }

@@ -139,7 +139,7 @@ extension KeasyBoardViewModel {
     }
     
     var boardHeight: Double {
-        return spacingManager.boardHeight - 28.0
+        return spacingManager.boardHeight - spacingManager.functionBarHeight
     }
     
     func keyViewModelAt(indexPath: IndexPath) -> KeasyKeyPairViewModel {
@@ -159,7 +159,7 @@ extension KeasyBoardViewModel {
         switch dataSource[section].arrangementType {
         case .distributed:
             let row = dataSource[section]
-            let viewWidth = view.frame.width
+            let viewWidth = view.frame.width - 0.1
             let cellWidth = regularKeyWidth(in: view, for: 1)
             let totalCellWidth: CGFloat = CGFloat(cellWidth * CGFloat(row.keyPairs.count))
             let spacingWithinCells: CGFloat = row.totalMinimumSpacingBetweenKeys
