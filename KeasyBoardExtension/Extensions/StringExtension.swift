@@ -10,7 +10,7 @@ import UIKit
 
 extension String {
     var cangjieCode: String {
-        switch self {
+        switch self.lowercased() {
         case "q":
             return "手"
         case "w":

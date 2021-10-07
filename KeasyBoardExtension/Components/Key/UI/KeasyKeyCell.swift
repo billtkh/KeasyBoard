@@ -117,8 +117,8 @@ private extension KeasyKeyCell {
             [
                 iconView.centerXAnchor.constraint(equalTo: keyView.centerXAnchor),
                 iconView.bottomAnchor.constraint(equalTo: keyView.bottomAnchor, constant: -8),
-                iconView.widthAnchor.constraint(equalToConstant: 12),
-                iconView.heightAnchor.constraint(equalToConstant: 12),
+                iconView.widthAnchor.constraint(equalToConstant: 16),
+                iconView.heightAnchor.constraint(equalToConstant: 16),
             ]
         )
         
@@ -153,7 +153,7 @@ private extension KeasyKeyCell {
         contentView.addGestureRecognizer(tapGesture)
         
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(toggleAction))
-        longPressGesture.minimumPressDuration = 0.6
+        longPressGesture.minimumPressDuration = 0.2
         contentView.addGestureRecognizer(longPressGesture)
         
         tapGesture.require(toFail: longPressGesture)
@@ -179,9 +179,9 @@ private extension KeasyKeyCell {
             primaryLabel.text = nil
         } else {
             iconView.image = nil
-            primaryLabel.text = viewModel.primaryTitle.cangjieCode
+            primaryLabel.text = viewModel.primaryTitle
         }
-        secondaryLabel.text = viewModel.secondaryTitle?.cangjieCode
+        secondaryLabel.text = viewModel.secondaryTitle
         
         
         switch viewModel.primaryKey.titleSize {

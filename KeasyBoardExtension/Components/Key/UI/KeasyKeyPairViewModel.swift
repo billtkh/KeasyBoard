@@ -57,18 +57,18 @@ class KeasyKeyPairViewModel: NSObject {
     }
     
     var primaryTitle: String {
-        return isShiftLockOn || isShiftOn ? primaryKey.shiftedTitle : primaryKey.title
+        return isShiftLockOn || isShiftOn ? primaryKey.shiftedTitle : primaryKey.title.cangjieCode
     }
     
     var secondaryTitle: String? {
-        return secondaryKey?.title
+        return isShiftLockOn || isShiftOn ? secondaryKey?.title.cangjieCode : secondaryKey?.title
     }
     
     var primaryKey: KeasyKeyViewModel {
-        if isShiftLockOn || isShiftOn {
-            return sub ?? main
-        } else if let selection = selection, board.isWordSelecting {
+        if let selection = selection, board.isWordSelecting {
             return selection
+        } else if isShiftLockOn || isShiftOn {
+            return sub ?? main
         } else {
             return main
         }
@@ -76,9 +76,16 @@ class KeasyKeyPairViewModel: NSObject {
     
     var secondaryKey: KeasyKeyViewModel? {
         if let selection = selection, board.isWordSelecting {
-            return isShiftLockOn || isShiftOn ? selection : main
+            return isShiftLockOn || isShiftOn ? (sub == nil ? nil : main) : main
         } else {
             return isShiftLockOn || isShiftOn ? (sub == nil ? nil : main) : sub
         }
+        
+        
+//        if let selection = selection, board.isWordSelecting {
+//            return isShiftLockOn || isShiftOn ? selection : main
+//        } else {
+//            return isShiftLockOn || isShiftOn ? (sub == nil ? nil : main) : sub
+//        }
     }
 }
