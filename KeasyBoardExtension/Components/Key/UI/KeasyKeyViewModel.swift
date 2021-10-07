@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class KeasyKeyViewModel: NSObject {
-    var key: KeasyKey
+    private(set) var key: KeasyKey
     
     init(_ key: KeasyKey) {
         self.key = key

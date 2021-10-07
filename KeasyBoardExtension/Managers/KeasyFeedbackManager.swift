@@ -23,9 +23,7 @@ class KeasyFeedbackManager: NSObject {
         lightImpactGenerator.prepare()
         heavyImpactGenerator.prepare()
     }
-}
-
-extension KeasyFeedbackManager: KeasyBoardFeedbackDelegate {
+    
     func feedbackToTap() {
 //        AudioServicesPlaySystemSound(peek)
         lightImpactGenerator.impactOccurred()

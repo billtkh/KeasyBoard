@@ -30,11 +30,6 @@ struct KeasyWordSelection: Equatable {
     let page: Int
 }
 
-protocol KeasyBoardFeedbackDelegate: AnyObject {
-    func feedbackToTap()
-    func feedbackToLongPress()
-}
-
 class KeasyBoardViewModel: NSObject {
     private(set) var proxy: UITextDocumentProxy?
     
@@ -45,21 +40,22 @@ class KeasyBoardViewModel: NSObject {
     
     let numOfSelection = 9
     
-    private weak var feedbackDelegate: KeasyBoardFeedbackDelegate?
-    
     private lazy var dataSource: [KeasyBoardRowViewModel] = {
         return prepareKeyboardRowViewModels(rows: KeasyBoard.arrangement)
     }()
-    
+
     private var imeManager: KeasyInputMethodManager {
         return KeasyInputMethodManager.shared
+    }
+    
+    private var feedbackManager: KeasyFeedbackManager {
+        return KeasyFeedbackManager.shared
     }
     
     init(textDocumentProxy: UITextDocumentProxy?, needsInputModeSwitchKey: Bool) {
         self.proxy = textDocumentProxy
         super.init()
-        
-        feedbackDelegate = KeasyFeedbackManager.shared
+
         imeManager.delegate = self
     }
     
@@ -139,10 +135,10 @@ extension KeasyBoardViewModel {
     }
     
     var boardHeight: Double {
-        return spacingManager.boardHeight - spacingManager.functionBarHeight
+        return spacingManager.boardHeight - spacingManager.barHeight
     }
     
-    func keyViewModelAt(indexPath: IndexPath) -> KeasyKeyPairViewModel {
+    func viewModelAt(indexPath: IndexPath) -> KeasyKeyPairViewModel {
         return dataSource[indexPath.section].keyPairs[indexPath.row]
     }
     
@@ -253,7 +249,7 @@ extension KeasyBoardViewModel {
     }
     
     func didTap(keyPair: KeasyKeyPairViewModel) {
-        feedbackDelegate?.feedbackToTap()
+        feedbackManager.feedbackToTap()
         
         guard let proxy = proxy else { return }
         let primaryKey = keyPair.primaryKey.key
@@ -335,7 +331,7 @@ extension KeasyBoardViewModel {
     }
     
     func didLongPress(keyPair: KeasyKeyPairViewModel) {
-        feedbackDelegate?.feedbackToLongPress()
+        feedbackManager.feedbackToLongPress()
         
         let primaryKey = keyPair.primaryKey.key
         switch primaryKey {
@@ -344,6 +340,19 @@ extension KeasyBoardViewModel {
             
         default:
             break
+        }
+    }
+    
+    func handleTab(_ tab: KeasyTabViewModel) {
+        guard let proxy = proxy else { return }
+        
+        switch tab.tab {
+        case let .inputBuffer(text):
+            imeManager.eraseInputBuffer()
+            for _ in Array(text) {
+                proxy.deleteBackward()
+            }
+            proxy.insertText(text + KeasyKey.space.text)
         }
     }
 }

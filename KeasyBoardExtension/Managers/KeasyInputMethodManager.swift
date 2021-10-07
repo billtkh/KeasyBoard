@@ -7,6 +7,8 @@
 
 import Foundation
 import CoreData
+import RxSwift
+import RxCocoa
 
 enum KeasyInputMethod: String {
     case simplex = "Simplex"
@@ -30,7 +32,7 @@ class KeasyInputMethodManager: NSObject {
     weak var delegate: KeasyInputMethodManagerDelegate?
     
     private(set) var currentInputMethod: KeasyInputMethod = .simplex
-    private(set) var inputBuffer: String = ""
+    private(set) var inputBuffer = BehaviorRelay(value: "")
     
     private let queryQueue = DispatchQueue(label: "keasyBoard.inputMethodManager.queue")
     
@@ -90,36 +92,42 @@ class KeasyInputMethodManager: NSObject {
 
 extension KeasyInputMethodManager {
     func inputKey(key: String) {
-        inputBuffer += key
+        if inputBuffer.value.isEmpty, key == " " { return }
+        
+        inputBuffer.accept(inputBuffer.value + key)
         guard key != " " else { return }
-        queryWord(keys: inputBuffer.trimmingCharacters(in: .whitespaces))
+        queryWord(keys: inputBuffer.value.trimmingCharacters(in: .whitespaces))
     }
     
     func eraseInputBuffer() {
-        inputBuffer = ""
+        inputBuffer.accept("")
         invokeDidEraseInputBuffer()
     }
     
     func popInputBuffer() -> String {
-        if inputBuffer.isEmpty {
+        if inputBuffer.value.isEmpty {
             return ""
         } else {
-            let last = String(inputBuffer.removeLast())
-            if inputBuffer.isEmpty {
+            
+            var value = inputBuffer.value
+            let last = String(value.removeLast())
+            inputBuffer.accept(value)
+            
+            if inputBuffer.value.isEmpty {
                 invokeDidEraseInputBuffer()
             } else {
-                queryWord(keys: inputBuffer.trimmingCharacters(in: .whitespaces))
+                queryWord(keys: inputBuffer.value.trimmingCharacters(in: .whitespaces))
             }
             return last
         }
     }
     
     func resetInputBuffer() {
-        inputBuffer = ""
+        inputBuffer.accept("")
     }
     
     var isInputBufferEmpty: Bool {
-        return inputBuffer.isEmpty
+        return inputBuffer.value.isEmpty
     }
     
     func queryWord(keys: String) {

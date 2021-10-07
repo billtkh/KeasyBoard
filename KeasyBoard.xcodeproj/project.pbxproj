@@ -39,6 +39,11 @@
 		D2C08AEF27046D67002B1ABD /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C08AEE27046D67002B1ABD /* ColorExtension.swift */; };
 		D2C08AF127055A6C002B1ABD /* KeasyBoardRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C08AF027055A6C002B1ABD /* KeasyBoardRowViewModel.swift */; };
 		D2C08AF427056477002B1ABD /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C08AF327056477002B1ABD /* Observable.swift */; };
+		D2DA939D270ECD1600825D8A /* KeasyTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DA939C270ECD1600825D8A /* KeasyTab.swift */; };
+		D2DA93A0270ECE0700825D8A /* KeasyTabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DA939F270ECE0700825D8A /* KeasyTabCell.swift */; };
+		D2DA93A2270ED00800825D8A /* KeasyTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DA93A1270ED00800825D8A /* KeasyTabViewModel.swift */; };
+		D2DA93A4270EDB1800825D8A /* KeasyFunctionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DA93A3270EDB1800825D8A /* KeasyFunctionBar.swift */; };
+		D2DA93A7270EDB6E00825D8A /* KeasyFunctionBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DA93A6270EDB6E00825D8A /* KeasyFunctionBarViewModel.swift */; };
 		D2E3DFA62702C18200C1F25F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3DFA52702C18200C1F25F /* AppDelegate.swift */; };
 		D2E3DFAA2702C18200C1F25F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3DFA92702C18200C1F25F /* ViewController.swift */; };
 		D2E3DFAD2702C18200C1F25F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2E3DFAB2702C18200C1F25F /* Main.storyboard */; };
@@ -118,6 +123,11 @@
 		D2C08AEE27046D67002B1ABD /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		D2C08AF027055A6C002B1ABD /* KeasyBoardRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeasyBoardRowViewModel.swift; sourceTree = "<group>"; };
 		D2C08AF327056477002B1ABD /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		D2DA939C270ECD1600825D8A /* KeasyTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeasyTab.swift; sourceTree = "<group>"; };
+		D2DA939F270ECE0700825D8A /* KeasyTabCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeasyTabCell.swift; sourceTree = "<group>"; };
+		D2DA93A1270ED00800825D8A /* KeasyTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeasyTabViewModel.swift; sourceTree = "<group>"; };
+		D2DA93A3270EDB1800825D8A /* KeasyFunctionBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeasyFunctionBar.swift; sourceTree = "<group>"; };
+		D2DA93A6270EDB6E00825D8A /* KeasyFunctionBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeasyFunctionBarViewModel.swift; sourceTree = "<group>"; };
 		D2E3DFA22702C18200C1F25F /* KeasyBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeasyBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2E3DFA52702C18200C1F25F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2E3DFA92702C18200C1F25F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -232,6 +242,7 @@
 				D2520E81270BE94000DD43C4 /* Word */,
 				D2C08ADE2704031E002B1ABD /* Board */,
 				D2C08ADA2702FD2C002B1ABD /* Key */,
+				D2DA93A5270EDB2700825D8A /* Bar */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -295,6 +306,34 @@
 				D2C08AF327056477002B1ABD /* Observable.swift */,
 			);
 			path = DataBinding;
+			sourceTree = "<group>";
+		};
+		D2DA939B270ECD0000825D8A /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+				D2DA939C270ECD1600825D8A /* KeasyTab.swift */,
+				D2DA939E270ECD1A00825D8A /* UI */,
+			);
+			path = Tab;
+			sourceTree = "<group>";
+		};
+		D2DA939E270ECD1A00825D8A /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				D2DA939F270ECE0700825D8A /* KeasyTabCell.swift */,
+				D2DA93A1270ED00800825D8A /* KeasyTabViewModel.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		D2DA93A5270EDB2700825D8A /* Bar */ = {
+			isa = PBXGroup;
+			children = (
+				D2DA93A3270EDB1800825D8A /* KeasyFunctionBar.swift */,
+				D2DA93A6270EDB6E00825D8A /* KeasyFunctionBarViewModel.swift */,
+				D2DA939B270ECD0000825D8A /* Tab */,
+			);
+			path = Bar;
 			sourceTree = "<group>";
 		};
 		D2E3DF992702C18200C1F25F = {
@@ -632,6 +671,8 @@
 				D2E3DFCE2702F3A300C1F25F /* KeasyKeyCell.swift in Sources */,
 				D2E3DFC02702C26500C1F25F /* KeasyBoardViewController.swift in Sources */,
 				D2E3DFCC2702EFF700C1F25F /* KeasyBoard.swift in Sources */,
+				D2DA93A4270EDB1800825D8A /* KeasyFunctionBar.swift in Sources */,
+				D2DA939D270ECD1600825D8A /* KeasyTab.swift in Sources */,
 				D2C08AE427040544002B1ABD /* ArrayExtension.swift in Sources */,
 				D2E3DFD22702F8CD00C1F25F /* KeasyBoardViewModel.swift in Sources */,
 				D2520E85270BEA0A00DD43C4 /* KeasyWord.swift in Sources */,
@@ -642,6 +683,7 @@
 				D2E3DFD02702F3C900C1F25F /* KeasyKey.swift in Sources */,
 				D2520E88270C066200DD43C4 /* IME.xcdatamodeld in Sources */,
 				D2C08AF127055A6C002B1ABD /* KeasyBoardRowViewModel.swift in Sources */,
+				D2DA93A0270ECE0700825D8A /* KeasyTabCell.swift in Sources */,
 				D2C08AE027040344002B1ABD /* KeasyBoardRow.swift in Sources */,
 				D2C08AE727040A02002B1ABD /* KeasySpacingManager.swift in Sources */,
 				D2520E482705AAD600DD43C4 /* KeasyStyleManager.swift in Sources */,
@@ -649,6 +691,8 @@
 				D2520E93270D99D000DD43C4 /* KeasyFeedbackManager.swift in Sources */,
 				D2520E7A270B060A00DD43C4 /* KeasyInputMethodManager.swift in Sources */,
 				D2C08AEF27046D67002B1ABD /* ColorExtension.swift in Sources */,
+				D2DA93A2270ED00800825D8A /* KeasyTabViewModel.swift in Sources */,
+				D2DA93A7270EDB6E00825D8A /* KeasyFunctionBarViewModel.swift in Sources */,
 				D2520E4627058E8900DD43C4 /* KeasyBoardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

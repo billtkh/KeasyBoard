@@ -8,9 +8,9 @@
 import Foundation
 
 extension Array where Element == KeasyKey {
-    var viewModels: [KeasyKeyViewModel] {
-        return map { key in
-            return KeasyKeyViewModel(key)
-        }
-    }
+    var viewModels: [KeasyKeyViewModel] { return map { KeasyKeyViewModel($0) } }
+}
+
+extension Array where Element == KeasyTab {
+    var viewModels: [KeasyTabViewModel] { return map { KeasyTabViewModel($0) } }
 }

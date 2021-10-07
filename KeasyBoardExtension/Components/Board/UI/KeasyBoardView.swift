@@ -10,14 +10,19 @@ import UIKit
 import RxSwift
 
 class KeasyBoardView: UIView {
-    var boardView: UICollectionView!
-    var functionBar: UICollectionView!
+    var collectionView: UICollectionView!
+    var functionBar: KeasyFunctionBar!
+    
     var viewModel: KeasyBoardViewModel
     
     let disposeBag = DisposeBag()
     
     private var styleManager: KeasyStyleManager {
         return KeasyStyleManager.shared
+    }
+    
+    private var imeManager: KeasyInputMethodManager {
+        return KeasyInputMethodManager.shared
     }
     
     init(viewModel: KeasyBoardViewModel) {
@@ -34,7 +39,6 @@ class KeasyBoardView: UIView {
         
         setupUI()
         setupStyle()
-        binding()
     }
     
     func updateNeedsInputModeSwitchKey(_ needsInputModeSwitchKey: Bool) {
@@ -51,7 +55,7 @@ class KeasyBoardView: UIView {
             guard let sSelf = self else { return }
             switch state {
             default:
-                sSelf.boardView.reloadData()
+                sSelf.collectionView.reloadData()
             }
         }
         .disposed(by: disposeBag)
@@ -78,25 +82,25 @@ class KeasyBoardView: UIView {
             .subscribe { [weak self] needsInputModeSwitchKey in
             guard let sSelf = self else { return }
             sSelf.viewModel.reloadDataSource()
-            sSelf.boardView.reloadData()
+            sSelf.collectionView.reloadData()
         }
         .disposed(by: disposeBag)
+        
+        functionBar.binding()
     }
 }
 
 private extension KeasyBoardView {
     func setupUI() {
-        let functionBarLayout = UICollectionViewFlowLayout()
-        functionBarLayout.minimumInteritemSpacing = viewModel.keySpacing
-        functionBarLayout.minimumLineSpacing = 0
-        functionBar = UICollectionView(frame: .zero, collectionViewLayout: functionBarLayout)
+        functionBar = KeasyFunctionBar(viewModel: KeasyFunctionBarViewModel(board: viewModel))
+        functionBar.delegate = self
         addSubview(functionBar)
         
         let keyboardLayout = UICollectionViewFlowLayout()
         keyboardLayout.minimumInteritemSpacing = viewModel.keySpacing
         keyboardLayout.minimumLineSpacing = 0
-        boardView = UICollectionView(frame: .zero, collectionViewLayout: keyboardLayout)
-        addSubview(boardView)
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: keyboardLayout)
+        addSubview(collectionView)
         
         functionBar.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate(
@@ -104,34 +108,34 @@ private extension KeasyBoardView {
                 functionBar.leadingAnchor.constraint(equalTo: leadingAnchor),
                 functionBar.topAnchor.constraint(equalTo: topAnchor),
                 functionBar.trailingAnchor.constraint(equalTo: trailingAnchor),
-                functionBar.heightAnchor.constraint(equalToConstant: KeasySpacingManager.shared.functionBarHeight)
+                functionBar.heightAnchor.constraint(equalToConstant: KeasySpacingManager.shared.barHeight)
             ]
         )
         
-        boardView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate(
             [
-                boardView.leadingAnchor.constraint(equalTo: leadingAnchor),
-                boardView.topAnchor.constraint(equalTo: functionBar.bottomAnchor),
-                boardView.trailingAnchor.constraint(equalTo: trailingAnchor),
-                boardView.bottomAnchor.constraint(equalTo: bottomAnchor)
+                collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+                collectionView.topAnchor.constraint(equalTo: functionBar.bottomAnchor),
+                collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+                collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
             ]
         )
 
-        boardView.register(KeasyKeyCell.self, forCellWithReuseIdentifier: NSStringFromClass(KeasyKeyCell.self))
-        boardView.delegate = self
-        boardView.dataSource = self
+        collectionView.register(KeasyKeyCell.self, forCellWithReuseIdentifier: NSStringFromClass(KeasyKeyCell.self))
+        collectionView.delegate = self
+        collectionView.dataSource = self
     }
     
     func setupStyle() {
         backgroundColor = styleManager.backgroundColor
         functionBar.backgroundColor = .clear
-        boardView.backgroundColor = .clear
+        collectionView.backgroundColor = .clear
     }
     
     func reloadSelectionData() {
         UIView.performWithoutAnimation {
-            boardView.reloadSections(IndexSet(integer: 0))
+            collectionView.reloadSections(IndexSet(integer: 0))
         }
     }
 }
@@ -159,8 +163,8 @@ extension KeasyBoardView: UICollectionViewDataSource {
         guard let keyCell = collectionView.dequeueReusableCell(withReuseIdentifier: NSStringFromClass(KeasyKeyCell.self), for: indexPath) as? KeasyKeyCell else { return UICollectionViewCell(frame: .zero) }
         keyCell.actionDelegate = self
         
-        let keyViewModel = viewModel.keyViewModelAt(indexPath: indexPath)
-        keyCell.viewModel = keyViewModel
+        let viewModel = viewModel.viewModelAt(indexPath: indexPath)
+        keyCell.viewModel = viewModel
         return keyCell
     }
 }
@@ -172,5 +176,11 @@ extension KeasyBoardView: KeasyKeyCellActionDelegate {
     
     func keyCell(_ keyCell: KeasyKeyCell, didLongPress keyPair: KeasyKeyPairViewModel) {
         viewModel.didLongPress(keyPair: keyPair)
+    }
+}
+
+extension KeasyBoardView: KeasyFunctionBarActionDelegate {
+    func functionBar(_ functionBar: KeasyFunctionBar, didInvoke tab: KeasyTabViewModel) {
+        viewModel.handleTab(tab)
     }
 }

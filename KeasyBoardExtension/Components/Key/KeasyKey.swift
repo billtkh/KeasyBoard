@@ -39,7 +39,9 @@ enum KeasyKey {
     case previousSelectionPage
     case nextSelectionPage
     case firstSelectionPage
+}
     
+extension KeasyKey {
     var size: KeasyKeySize {
         switch self {
         case .delete, .shift, .next:

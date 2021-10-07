@@ -36,13 +36,13 @@ class KeasyBoardViewController: UIInputViewController {
         let viewModel = KeasyBoardViewModel(textDocumentProxy: textDocumentProxy,
                                             needsInputModeSwitchKey: true)
         boardView = KeasyBoardView(viewModel: viewModel)
-        
-        setupKeyboardHeight()
         setupUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        setupKeyboardHeight()
         
         KeasyFeedbackManager.shared.prepare()
         
@@ -61,7 +61,7 @@ class KeasyBoardViewController: UIInputViewController {
     
     override func textDidChange(_ textInput: UITextInput?) {
         // The app has just changed the document's contents, the document context has been updated.
-        
+        KeasyInputMethodManager.shared.eraseInputBuffer()
     }
 }
 

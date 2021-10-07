@@ -21,14 +21,7 @@ class KeasyStyleManager: NSObject {
 
 extension KeasyStyleManager {
     var backgroundColor: UIColor {
-        switch currentStyle {
-        case .light:
-            return UIColor(red: 214, green: 216, blue: 222)
-        case .dark:
-            return UIColor(red: 43, green: 43, blue: 43)
-        default:
-            return UIColor(red: 214, green: 216, blue: 222)
-        }
+        return .clear
     }
     
     var keyColor: UIColor {

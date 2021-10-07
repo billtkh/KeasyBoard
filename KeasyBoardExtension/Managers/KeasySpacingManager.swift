@@ -12,7 +12,10 @@ class KeasySpacingManager: NSObject {
     static let shared = KeasySpacingManager()
     
     var boardHeight = UIScreen.main.bounds.height * 0.3
-    var functionBarHeight = 28.0
+    
+    var barHeight = 28.0
+    var barVerticalPadding = 6.0
+    var barHorizontalPadding = 8.0
     
     var boardSpacing: Double = 0
     var rowSpacing: Double = 0
