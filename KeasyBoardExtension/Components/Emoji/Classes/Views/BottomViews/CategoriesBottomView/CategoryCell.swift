@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-private let HighlightedBackgroundViewSize = CGFloat(30)
+private let HighlightedBackgroundViewSize = CGFloat(25)
 private let ImageActiveTintColor = UIColor(red: 95/255, green: 94/255, blue: 95/255, alpha: 1)
 private let ImageNonActiveTintColor = UIColor(red: 161/255, green: 165/255, blue: 172/255, alpha: 1)
 

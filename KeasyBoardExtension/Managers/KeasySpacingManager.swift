@@ -15,8 +15,8 @@ class KeasySpacingManager: NSObject {
     let currentDeviceHeight = UIScreen.main.bounds.height
     let scale: Double
     
-    private var baseBoardHeight = 250.0
-    private var minBoardHeight = 230.0
+    private var baseBoardHeight = 260.0
+    private var minBoardHeight = 240.0
     
     private var baseNarrow = 6.0
     private var baseCommon = 8.0
@@ -29,7 +29,8 @@ class KeasySpacingManager: NSObject {
     private var baseRowSpacing: Double = 0
     private var baseKeySpacing: Double = 0
     
-    private var baseRowPadding: Double = 7
+    private var baseRowPadding: Double = 10
+    
     private var baseKeyPadding: Double = 5
     
     private var baseToggleWidth: Double = 8
