@@ -104,6 +104,7 @@ private extension KeasyKeyCell {
     func setupUI() {
         keyView = UIView(frame: .zero)
         keyView.translatesAutoresizingMaskIntoConstraints = false
+        keyView.isUserInteractionEnabled = false
         contentView.addSubview(keyView)
         NSLayoutConstraint.activate(
             [
@@ -156,6 +157,7 @@ private extension KeasyKeyCell {
         
         keyView.layer.cornerRadius = 5
         keyView.backgroundColor = styleManager.keyColor
+        contentView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.001)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction))
         contentView.addGestureRecognizer(tapGesture)
