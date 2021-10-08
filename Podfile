@@ -16,7 +16,6 @@ target 'KeasyBoardExtension' do
   # Pods for KeasyBoardExtension
   pod 'RxSwift', '6.2.0'
   pod 'RxCocoa', '6.2.0'
-  pod 'ISEmojiView'
   
 end
 

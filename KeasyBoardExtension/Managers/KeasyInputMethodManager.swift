@@ -95,7 +95,14 @@ extension KeasyInputMethodManager {
         if inputBuffer.value.isEmpty, key == " " { return }
         
         inputBuffer.accept(inputBuffer.value + key)
+        
         guard key != " " else { return }
+        
+        guard Character(key).isLetter else {
+            eraseInputBuffer()
+            return
+        }
+        
         queryWord(keys: inputBuffer.value.trimmingCharacters(in: .whitespaces))
     }
     

@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 import RxSwift
-import ISEmojiView
 
 class KeasyBoardView: UIView {
     var collectionView: UICollectionView!
@@ -114,6 +113,8 @@ class KeasyBoardView: UIView {
 
 private extension KeasyBoardView {
     func setupUI() {
+        clipsToBounds = false
+        
         functionBar = KeasyFunctionBar(viewModel: KeasyFunctionBarViewModel(board: viewModel))
         functionBar.delegate = self
         addSubview(functionBar)
@@ -177,6 +178,8 @@ private extension KeasyBoardView {
     
     func setEmojiPicker(isHidden: Bool) {
         emojiPicker.isHidden = isHidden
+        collectionView.isHidden = !isHidden
+        functionBar.isHidden = !isHidden
     }
 }
 

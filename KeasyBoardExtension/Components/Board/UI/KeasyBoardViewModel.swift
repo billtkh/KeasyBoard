@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 import RxSwift
 import RxCocoa
-import ISEmojiView
 
 enum KeasyBoardState: Equatable {
     case normal
