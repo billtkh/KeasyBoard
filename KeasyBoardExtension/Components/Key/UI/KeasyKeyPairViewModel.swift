@@ -75,7 +75,7 @@ class KeasyKeyPairViewModel: NSObject {
     }
     
     var secondaryKey: KeasyKeyViewModel? {
-        if let selection = selection, board.isWordSelecting {
+        if let _ = selection, board.isWordSelecting {
             return isShiftLockOn || isShiftOn ? (sub == nil ? nil : main) : main
         } else {
             return isShiftLockOn || isShiftOn ? (sub == nil ? nil : main) : sub

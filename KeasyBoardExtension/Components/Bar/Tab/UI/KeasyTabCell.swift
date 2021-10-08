@@ -54,11 +54,19 @@ private extension KeasyTabCell {
     }
     
     var horizontalPadding: Double {
-        return spacingManager.barHorizontalPadding
+        return spacingManager.space(.barHorizontalPadding)
     }
     
     var verticalPadding: Double {
-        return spacingManager.barVerticalPadding
+        return spacingManager.space(.barVerticalPadding)
+    }
+    
+    var narrowSpacing: Double {
+        return spacingManager.space(.narrow)
+    }
+    
+    var commonSpacing: Double {
+        return spacingManager.space(.common)
     }
     
     var fontManager: KeasyFontManager {
@@ -102,7 +110,7 @@ private extension KeasyTabCell {
         NSLayoutConstraint.activate(
             [
                 iconView.centerXAnchor.constraint(equalTo: tabView.centerXAnchor),
-                iconView.bottomAnchor.constraint(equalTo: tabView.bottomAnchor, constant: -8),
+                iconView.bottomAnchor.constraint(equalTo: tabView.bottomAnchor, constant: -narrowSpacing),
                 iconView.widthAnchor.constraint(equalToConstant: 12),
                 iconView.heightAnchor.constraint(equalToConstant: 12),
             ]

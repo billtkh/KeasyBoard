@@ -46,8 +46,10 @@ class KeasyFunctionBar: UIView {
         
         let keyboardLayout = UICollectionViewFlowLayout()
         keyboardLayout.minimumInteritemSpacing = viewModel.keySpacing
+        keyboardLayout.scrollDirection = .horizontal
         keyboardLayout.minimumLineSpacing = 0
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: keyboardLayout)
+        collectionView.showsHorizontalScrollIndicator = false
         addSubview(collectionView)
         
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -56,7 +58,7 @@ class KeasyFunctionBar: UIView {
                 collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
                 collectionView.topAnchor.constraint(equalTo: topAnchor),
                 collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-                collectionView.heightAnchor.constraint(equalToConstant: KeasySpacingManager.shared.barHeight)
+                collectionView.heightAnchor.constraint(equalToConstant: KeasySpacingManager.shared.space(.barHeight))
             ]
         )
         

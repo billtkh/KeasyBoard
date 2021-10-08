@@ -34,7 +34,7 @@ class KeasyBoardView: UIView {
     }
     
     required init?(coder: NSCoder) {
-        self.viewModel = KeasyBoardViewModel(textDocumentProxy: nil, needsInputModeSwitchKey: false)
+        self.viewModel = KeasyBoardViewModel(inputViewController: nil, textDocumentProxy: nil, needsInputModeSwitchKey: false)
         super.init(frame: .zero)
         
         setupUI()
@@ -78,6 +78,9 @@ class KeasyBoardView: UIView {
         .disposed(by: disposeBag)
         
         _ = viewModel.needsInputModeSwitchKey
+            .distinctUntilChanged()
+            .debounce(RxTimeInterval.milliseconds(10),
+                      scheduler: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
             .observe(on: MainScheduler())
             .subscribe { [weak self] needsInputModeSwitchKey in
             guard let sSelf = self else { return }
@@ -108,7 +111,7 @@ private extension KeasyBoardView {
                 functionBar.leadingAnchor.constraint(equalTo: leadingAnchor),
                 functionBar.topAnchor.constraint(equalTo: topAnchor),
                 functionBar.trailingAnchor.constraint(equalTo: trailingAnchor),
-                functionBar.heightAnchor.constraint(equalToConstant: KeasySpacingManager.shared.barHeight)
+                functionBar.heightAnchor.constraint(equalToConstant: KeasySpacingManager.shared.space(.barHeight))
             ]
         )
         
@@ -171,11 +174,11 @@ extension KeasyBoardView: UICollectionViewDataSource {
 
 extension KeasyBoardView: KeasyKeyCellActionDelegate {
     func keyCell(_ keyCell: KeasyKeyCell, didTap keyPair: KeasyKeyPairViewModel) {
-        viewModel.didTap(keyPair: keyPair)
+        viewModel.didTap(keyPair: keyPair, from: keyCell)
     }
     
     func keyCell(_ keyCell: KeasyKeyCell, didLongPress keyPair: KeasyKeyPairViewModel) {
-        viewModel.didLongPress(keyPair: keyPair)
+        viewModel.didLongPress(keyPair: keyPair, from: keyCell)
     }
 }
 

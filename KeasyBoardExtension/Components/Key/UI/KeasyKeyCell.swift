@@ -68,11 +68,19 @@ private extension KeasyKeyCell {
     }
     
     var rowPadding: Double {
-        return spacingManager.rowPadding
+        return spacingManager.space(.rowPadding)
     }
     
     var keyPadding: Double {
-        return spacingManager.keyPadding
+        return spacingManager.space(.keyPadding)
+    }
+    
+    var commonSpacing: Double {
+        return spacingManager.space(.common)
+    }
+    
+    var narrowSpacing: Double {
+        return spacingManager.space(.narrow)
     }
     
     var fontManager: KeasyFontManager {
@@ -116,7 +124,7 @@ private extension KeasyKeyCell {
         NSLayoutConstraint.activate(
             [
                 iconView.centerXAnchor.constraint(equalTo: keyView.centerXAnchor),
-                iconView.bottomAnchor.constraint(equalTo: keyView.bottomAnchor, constant: -8),
+                iconView.bottomAnchor.constraint(equalTo: keyView.bottomAnchor, constant: -narrowSpacing),
                 iconView.widthAnchor.constraint(equalToConstant: 16),
                 iconView.heightAnchor.constraint(equalToConstant: 16),
             ]
@@ -167,8 +175,8 @@ private extension KeasyKeyCell {
             [
                 toggleView.centerXAnchor.constraint(equalTo: keyView.centerXAnchor),
                 toggleView.topAnchor.constraint(equalTo: keyView.topAnchor, constant: 4),
-                toggleView.widthAnchor.constraint(equalToConstant: 8),
-                toggleView.heightAnchor.constraint(equalToConstant: 8),
+                toggleView.widthAnchor.constraint(equalToConstant: spacingManager.space(.toggleWidth)),
+                toggleView.heightAnchor.constraint(equalToConstant: spacingManager.space(.toggleWidth)),
             ]
         )
     }

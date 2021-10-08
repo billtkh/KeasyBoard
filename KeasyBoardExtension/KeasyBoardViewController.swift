@@ -28,12 +28,15 @@ class KeasyBoardViewController: UIInputViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let paths = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
-            print(paths[0])
+        let paths = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory,
+                                                        FileManager.SearchPathDomainMask.userDomainMask,
+                                                        true)
+        print(paths[0])
         
         initStyleManager()
         
-        let viewModel = KeasyBoardViewModel(textDocumentProxy: textDocumentProxy,
+        let viewModel = KeasyBoardViewModel(inputViewController: self,
+                                            textDocumentProxy: textDocumentProxy,
                                             needsInputModeSwitchKey: true)
         boardView = KeasyBoardView(viewModel: viewModel)
         setupUI()
@@ -51,7 +54,6 @@ class KeasyBoardViewController: UIInputViewController {
     }
     
     override func viewWillLayoutSubviews() {
-//        boardView.updateNeedsInputModeSwitchKey(needsInputModeSwitchKey)
         super.viewWillLayoutSubviews()
     }
     
@@ -111,7 +113,7 @@ private extension KeasyBoardViewController {
     }
     
     func setupKeyboardHeight() {
-        let heightConstraint = boardView.heightAnchor.constraint(equalToConstant: spacingManager.boardHeight)
+        let heightConstraint = boardView.heightAnchor.constraint(equalToConstant: spacingManager.space(.boardHeight))
         heightConstraint.priority = .required - 1
         heightConstraint.isActive = true
     }

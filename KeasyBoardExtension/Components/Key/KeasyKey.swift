@@ -117,7 +117,7 @@ extension KeasyKey {
         switch self {
         case .delete, .shift, .space, .function:
             return .small
-        case .emoji, .firstSelectionPage:
+        case .emoji, .firstSelectionPage, .inputModeSwitch:
             return .large
         default:
             return .regular

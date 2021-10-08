@@ -32,6 +32,7 @@ struct KeasyWordSelection: Equatable {
 
 class KeasyBoardViewModel: NSObject {
     private(set) var proxy: UITextDocumentProxy?
+    private(set) var inputViewController: UIInputViewController?
     
     var currentState = BehaviorRelay(value: KeasyBoardState.normal)
     var currentWordSelection: BehaviorRelay<KeasyWordSelection?> = BehaviorRelay(value: nil)
@@ -52,7 +53,8 @@ class KeasyBoardViewModel: NSObject {
         return KeasyFeedbackManager.shared
     }
     
-    init(textDocumentProxy: UITextDocumentProxy?, needsInputModeSwitchKey: Bool) {
+    init(inputViewController: UIInputViewController?, textDocumentProxy: UITextDocumentProxy?, needsInputModeSwitchKey: Bool) {
+        self.inputViewController = inputViewController
         self.proxy = textDocumentProxy
         super.init()
 
@@ -123,19 +125,19 @@ extension KeasyBoardViewModel {
     }
     
     var boardSpacing: Double {
-        return spacingManager.boardSpacing
+        return spacingManager.space(.boardSpacing)
     }
     
     var keySpacing: Double {
-        return spacingManager.keySpacing
+        return spacingManager.space(.keySpacing)
     }
     
     var rowSpacing: Double {
-        return spacingManager.rowSpacing
+        return spacingManager.space(.rowSpacing)
     }
     
     var boardHeight: Double {
-        return spacingManager.boardHeight - spacingManager.barHeight
+        return spacingManager.space(.boardHeight) - spacingManager.space(.barHeight)
     }
     
     func viewModelAt(indexPath: IndexPath) -> KeasyKeyPairViewModel {
@@ -248,7 +250,7 @@ extension KeasyBoardViewModel {
         }
     }
     
-    func didTap(keyPair: KeasyKeyPairViewModel) {
+    func didTap(keyPair: KeasyKeyPairViewModel, from view: UIView) {
         feedbackManager.feedbackToTap()
         
         guard let proxy = proxy else { return }
@@ -259,6 +261,10 @@ extension KeasyBoardViewModel {
         switch primaryKey {
         case .shift:
             // do not erase input buffer for shifting
+            break
+            
+        case .inputModeSwitch:
+            inputViewController?.advanceToNextInputMode()
             break
             
         case .delete:
@@ -330,7 +336,7 @@ extension KeasyBoardViewModel {
         }
     }
     
-    func didLongPress(keyPair: KeasyKeyPairViewModel) {
+    func didLongPress(keyPair: KeasyKeyPairViewModel, from view: UIView) {
         feedbackManager.feedbackToLongPress()
         
         let primaryKey = keyPair.primaryKey.key

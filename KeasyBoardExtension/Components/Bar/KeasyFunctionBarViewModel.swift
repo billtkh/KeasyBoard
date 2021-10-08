@@ -64,19 +64,19 @@ extension KeasyFunctionBarViewModel {
     }
     
     var boardSpacing: Double {
-        return spacingManager.boardSpacing
+        return spacingManager.space(.boardSpacing)
     }
     
     var keySpacing: Double {
-        return spacingManager.keySpacing
+        return spacingManager.space(.keySpacing)
     }
     
     var rowSpacing: Double {
-        return spacingManager.rowSpacing
+        return spacingManager.space(.rowSpacing)
     }
     
     var boardHeight: Double {
-        return spacingManager.boardHeight - spacingManager.barHeight
+        return spacingManager.space(.boardHeight) - spacingManager.space(.barHeight)
     }
     
     func viewModelAt(indexPath: IndexPath) -> KeasyTabViewModel {
@@ -96,11 +96,11 @@ extension KeasyFunctionBarViewModel {
     }
     
     func sizeForItem(in view: UIView, at indexPath: IndexPath) -> CGSize {
-        let tabHeight = spacingManager.barHeight
+        let tabHeight = spacingManager.space(.barHeight)
         let tab = dataSource[indexPath.row]
         let font = tab.titleFont
         let contentWidth = tab.title.widthOfString(usingFont: font)
-        let tabWidth = contentWidth + spacingManager.barHorizontalPadding + spacingManager.barHorizontalPadding
+        let tabWidth = contentWidth + spacingManager.space(.barHorizontalPadding) + spacingManager.space(.barHorizontalPadding)
         let minWidth = max(tabHeight, tabWidth)
         return CGSize(width: minWidth, height: tabHeight)
     }

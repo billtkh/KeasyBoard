@@ -40,7 +40,7 @@ class KeasyBoardRowViewModel: NSObject {
     }
     
     var keySpacing: Double {
-        return spacingManager.keySpacing
+        return spacingManager.space(.keySpacing)
     }
     
     var totalMinimumSpacingBetweenKeys: Double {
