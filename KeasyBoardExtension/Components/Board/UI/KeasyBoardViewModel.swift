@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import RxSwift
 import RxCocoa
+import ISEmojiView
 
 enum KeasyBoardState: Equatable {
     case normal
@@ -36,6 +37,7 @@ class KeasyBoardViewModel: NSObject {
     
     var currentState = BehaviorRelay(value: KeasyBoardState.normal)
     var currentWordSelection: BehaviorRelay<KeasyWordSelection?> = BehaviorRelay(value: nil)
+    var shouldDisplayEmojiPicker = BehaviorRelay(value: false)
     
     var needsInputModeSwitchKey = BehaviorRelay(value: false)
     
@@ -267,13 +269,16 @@ extension KeasyBoardViewModel {
             inputViewController?.advanceToNextInputMode()
             break
             
+        case .emoji:
+            imeManager.eraseInputBuffer()
+            shouldDisplayEmojiPicker.accept(true)
+            
         case .delete:
             _ = imeManager.popInputBuffer()
             proxy.deleteBackward()
             
         case .endSelection:
             imeManager.eraseInputBuffer()
-            currentWordSelection.accept(nil)
             
         case .firstSelectionPage:
             if let wordSelection = currentWordSelection.value {
@@ -395,5 +400,21 @@ extension KeasyBoardViewModel: KeasyInputMethodManagerDelegate {
     
     func didEraseInputBuffer() {
         currentWordSelection.accept(nil)
+    }
+}
+
+extension KeasyBoardViewModel: EmojiViewDelegate {
+    func emojiViewDidSelectEmoji(_ emoji: String, emojiView: EmojiView) {
+        guard let proxy = proxy else { return }
+        proxy.insertText(emoji)
+    }
+    
+    func emojiViewDidPressChangeKeyboardButton(_ emojiView: EmojiView) {
+        shouldDisplayEmojiPicker.accept(false)
+    }
+    
+    func emojiViewDidPressDeleteBackwardButton(_ emojiView: EmojiView) {
+        guard let proxy = proxy else { return }
+        proxy.deleteBackward()
     }
 }

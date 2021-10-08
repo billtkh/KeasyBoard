@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import RxSwift
+import ISEmojiView
 
 class KeasyBoardView: UIView {
     var collectionView: UICollectionView!
@@ -24,6 +25,15 @@ class KeasyBoardView: UIView {
     private var imeManager: KeasyInputMethodManager {
         return KeasyInputMethodManager.shared
     }
+    
+    private lazy var emojiPicker: EmojiView = {
+        let keyboardSettings = KeyboardSettings(bottomType: .categories)
+        keyboardSettings.countOfRecentsEmojis = 10
+        keyboardSettings.needToShowAbcButton = true
+        let emojiView = EmojiView(keyboardSettings: keyboardSettings)
+        setupEmojiPicker(emojiView)
+        return emojiView
+    }()
     
     init(viewModel: KeasyBoardViewModel) {
         self.viewModel = viewModel
@@ -52,11 +62,11 @@ class KeasyBoardView: UIView {
                       scheduler: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
             .observe(on: MainScheduler())
             .subscribe { [weak self] state in
-            guard let sSelf = self else { return }
-            switch state {
-            default:
-                sSelf.collectionView.reloadData()
-            }
+                guard let sSelf = self else { return }
+                switch state {
+                default:
+                    sSelf.collectionView.reloadData()
+                }
         }
         .disposed(by: disposeBag)
         
@@ -66,11 +76,11 @@ class KeasyBoardView: UIView {
                       scheduler: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
             .observe(on: MainScheduler())
             .subscribe { [weak self] event in
-            guard let sSelf = self else { return }
-            guard let selection = event.element as? KeasyWordSelection else {
-                sSelf.reloadSelectionData()
-                return
-            }
+                guard let sSelf = self else { return }
+                guard let selection = event.element as? KeasyWordSelection else {
+                    sSelf.reloadSelectionData()
+                    return
+                }
             
             sSelf.viewModel.selectingWords(selection.words, page: selection.page)
             sSelf.reloadSelectionData()
@@ -83,11 +93,20 @@ class KeasyBoardView: UIView {
                       scheduler: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
             .observe(on: MainScheduler())
             .subscribe { [weak self] needsInputModeSwitchKey in
-            guard let sSelf = self else { return }
-            sSelf.viewModel.reloadDataSource()
-            sSelf.collectionView.reloadData()
-        }
+                guard let sSelf = self else { return }
+                sSelf.viewModel.reloadDataSource()
+                sSelf.collectionView.reloadData()
+            }
         .disposed(by: disposeBag)
+        
+        _ = viewModel.shouldDisplayEmojiPicker
+            .distinctUntilChanged()
+            .observe(on: MainScheduler())
+            .subscribe { [weak self] shouldDisplay in
+                guard let sSelf = self else { return }
+                guard let shouldDisplay = shouldDisplay.element else { return }
+                sSelf.setEmojiPicker(isHidden: !shouldDisplay)
+            }
         
         functionBar.binding()
     }
@@ -121,13 +140,27 @@ private extension KeasyBoardView {
                 collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
                 collectionView.topAnchor.constraint(equalTo: functionBar.bottomAnchor),
                 collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-                collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
+                collectionView.heightAnchor.constraint(equalToConstant: KeasySpacingManager.shared.space(.boardHeight) - KeasySpacingManager.shared.space(.barHeight))
             ]
         )
 
         collectionView.register(KeasyKeyCell.self, forCellWithReuseIdentifier: NSStringFromClass(KeasyKeyCell.self))
         collectionView.delegate = self
         collectionView.dataSource = self
+    }
+    
+    func setupEmojiPicker(_ emojiView: EmojiView) {
+        emojiView.delegate = viewModel
+        emojiView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(emojiView)
+        NSLayoutConstraint.activate(
+            [
+                emojiView.leadingAnchor.constraint(equalTo: leadingAnchor),
+                emojiView.topAnchor.constraint(equalTo: topAnchor),
+                emojiView.trailingAnchor.constraint(equalTo: trailingAnchor),
+                emojiView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            ]
+        )
     }
     
     func setupStyle() {
@@ -140,6 +173,10 @@ private extension KeasyBoardView {
         UIView.performWithoutAnimation {
             collectionView.reloadSections(IndexSet(integer: 0))
         }
+    }
+    
+    func setEmojiPicker(isHidden: Bool) {
+        emojiPicker.isHidden = isHidden
     }
 }
 
