@@ -99,7 +99,6 @@
 		D2DA947D27102CD300825D8A /* EmojiView_SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DA944827102CD300825D8A /* EmojiView_SwiftUI.swift */; };
 		D2E3DFA62702C18200C1F25F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3DFA52702C18200C1F25F /* AppDelegate.swift */; };
 		D2E3DFAA2702C18200C1F25F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3DFA92702C18200C1F25F /* ViewController.swift */; };
-		D2E3DFAD2702C18200C1F25F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2E3DFAB2702C18200C1F25F /* Main.storyboard */; };
 		D2E3DFAF2702C18400C1F25F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2E3DFAE2702C18400C1F25F /* Assets.xcassets */; };
 		D2E3DFB22702C18400C1F25F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2E3DFB02702C18400C1F25F /* LaunchScreen.storyboard */; };
 		D2E3DFC02702C26500C1F25F /* KeasyBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3DFBF2702C26500C1F25F /* KeasyBoardViewController.swift */; };
@@ -110,8 +109,54 @@
 		D2E3DFD22702F8CD00C1F25F /* KeasyBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3DFD12702F8CD00C1F25F /* KeasyBoardViewModel.swift */; };
 		D2F39E362709C36200E7D0C5 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F39E352709C36200E7D0C5 /* StringExtension.swift */; };
 		D2F39E39270C900000E7D0C5 /* ImageAsset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2F39E38270C900000E7D0C5 /* ImageAsset.xcassets */; };
-		D2F83779272686A7005B73F8 /* KeasyBoardViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F83778272686A7005B73F8 /* KeasyBoardViewTests.swift */; };
-		D2F8378327268E3D005B73F8 /* BoardViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8378227268E3D005B73F8 /* BoardViewBuilder.swift */; };
+		D2F839BC272695F2005B73F8 /* KeasyBoardViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F83778272686A7005B73F8 /* KeasyBoardViewTests.swift */; };
+		D2F839BD272696F7005B73F8 /* KeasyWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2520E84270BEA0A00DD43C4 /* KeasyWord.swift */; };
+		D2F839BE272696F7005B73F8 /* KeasyBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3DFCB2702EFF700C1F25F /* KeasyBoard.swift */; };
+		D2F839BF272696F7005B73F8 /* KeasyBoardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C08ADF27040344002B1ABD /* KeasyBoardRow.swift */; };
+		D2F839C0272696F7005B73F8 /* KeasyBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2520E4527058E8900DD43C4 /* KeasyBoardView.swift */; };
+		D2F839C1272696F7005B73F8 /* KeasyBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3DFD12702F8CD00C1F25F /* KeasyBoardViewModel.swift */; };
+		D2F839C2272696F7005B73F8 /* KeasyBoardRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C08AF027055A6C002B1ABD /* KeasyBoardRowViewModel.swift */; };
+		D2F839C3272696F7005B73F8 /* KeasyKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3DFCF2702F3C900C1F25F /* KeasyKey.swift */; };
+		D2F839C4272696F7005B73F8 /* KeasyKeyPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C08AEA27045A6C002B1ABD /* KeasyKeyPair.swift */; };
+		D2F839C5272696F7005B73F8 /* KeasyKeyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3DFCD2702F3A300C1F25F /* KeasyKeyCell.swift */; };
+		D2F839C6272696F7005B73F8 /* KeasyKeyPairViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C08AEC27046427002B1ABD /* KeasyKeyPairViewModel.swift */; };
+		D2F839C7272696F7005B73F8 /* KeasyKeyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C08ADB2702FD4C002B1ABD /* KeasyKeyViewModel.swift */; };
+		D2F839C8272696F7005B73F8 /* KeasyFunctionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DA93A3270EDB1800825D8A /* KeasyFunctionBar.swift */; };
+		D2F839C9272696F7005B73F8 /* KeasyFunctionBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DA93A6270EDB6E00825D8A /* KeasyFunctionBarViewModel.swift */; };
+		D2F839CA272696F7005B73F8 /* KeasyTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DA939C270ECD1600825D8A /* KeasyTab.swift */; };
+		D2F839CB272696F7005B73F8 /* KeasyTabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DA939F270ECE0700825D8A /* KeasyTabCell.swift */; };
+		D2F839CC272696F7005B73F8 /* KeasyTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DA93A1270ED00800825D8A /* KeasyTabViewModel.swift */; };
+		D2F839CD272696F7005B73F8 /* EmojiCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DA940827102CD300825D8A /* EmojiCategory.swift */; };
+		D2F839CE272696F7005B73F8 /* KeyboardSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DA940927102CD300825D8A /* KeyboardSettings.swift */; };
+		D2F839CF272696F7005B73F8 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DA940A27102CD300825D8A /* Category.swift */; };
+		D2F839D0272696F7005B73F8 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DA940B27102CD300825D8A /* Emoji.swift */; };
+		D2F839D1272696F7005B73F8 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DA940D27102CD300825D8A /* Bundle.swift */; };
+		D2F839D2272696F7005B73F8 /* EmojiCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DA941027102CD300825D8A /* EmojiCollectionView.swift */; };
+		D2F839D3272696F7005B73F8 /* EmojiCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DA941127102CD300825D8A /* EmojiCollectionCell.swift */; };
+		D2F839D4272696F7005B73F8 /* EmojiPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DA941327102CD300825D8A /* EmojiPopView.swift */; };
+		D2F839D5272696F7005B73F8 /* PageControlBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DA941627102CD300825D8A /* PageControlBottomView.swift */; };
+		D2F839D6272696F7005B73F8 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DA941827102CD300825D8A /* CategoryCell.swift */; };
+		D2F839D7272696F7005B73F8 /* CategoriesBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DA941927102CD300825D8A /* CategoriesBottomView.swift */; };
+		D2F839D8272696F7005B73F8 /* EmojiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DA941B27102CD300825D8A /* EmojiView.swift */; };
+		D2F839D9272696F7005B73F8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DA941D27102CD300825D8A /* Constants.swift */; };
+		D2F839DA272696F7005B73F8 /* RecentEmojisManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DA941E27102CD300825D8A /* RecentEmojisManager.swift */; };
+		D2F839DB272696F7005B73F8 /* EmojiLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DA941F27102CD300825D8A /* EmojiLoader.swift */; };
+		D2F839DC272696F7005B73F8 /* EmojiView_SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DA944827102CD300825D8A /* EmojiView_SwiftUI.swift */; };
+		D2F839DD27269709005B73F8 /* KeasyInputMethodManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2520E79270B060A00DD43C4 /* KeasyInputMethodManager.swift */; };
+		D2F839DE27269709005B73F8 /* KeasyFontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2520E492705B3CB00DD43C4 /* KeasyFontManager.swift */; };
+		D2F839DF27269709005B73F8 /* KeasyStyleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2520E472705AAD600DD43C4 /* KeasyStyleManager.swift */; };
+		D2F839E027269709005B73F8 /* KeasySpacingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C08AE627040A02002B1ABD /* KeasySpacingManager.swift */; };
+		D2F839E127269709005B73F8 /* KeasyFeedbackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2520E92270D99D000DD43C4 /* KeasyFeedbackManager.swift */; };
+		D2F839E227269709005B73F8 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C08AE327040544002B1ABD /* ArrayExtension.swift */; };
+		D2F839E327269709005B73F8 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C08AE827045031002B1ABD /* DoubleExtension.swift */; };
+		D2F839E427269709005B73F8 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C08AEE27046D67002B1ABD /* ColorExtension.swift */; };
+		D2F839E527269709005B73F8 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F39E352709C36200E7D0C5 /* StringExtension.swift */; };
+		D2F839E627269724005B73F8 /* IME.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2520E86270C066200DD43C4 /* IME.xcdatamodeld */; };
+		D2F839E727269725005B73F8 /* IME.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2520E86270C066200DD43C4 /* IME.xcdatamodeld */; };
+		D2F839EA27269C41005B73F8 /* BoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F839E927269C41005B73F8 /* BoardViewController.swift */; };
+		D2F839EB2726A0B1005B73F8 /* CategoriesBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2DA944627102CD300825D8A /* CategoriesBottomView.xib */; };
+		D2F839EC2726A0B1005B73F8 /* PageControlBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2DA944427102CD300825D8A /* PageControlBottomView.xib */; };
+		D2F839ED2726A0B1005B73F8 /* EmojiCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2DA944527102CD300825D8A /* EmojiCollectionView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +173,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = D2E3DFA12702C18200C1F25F;
 			remoteInfo = KeasyBoard;
+		};
+		D2F8396C272694AE005B73F8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D2E3DF9A2702C18200C1F25F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2520E54270AF80900DD43C4;
+			remoteInfo = WordBasePopulator;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -247,7 +299,6 @@
 		D2E3DFA22702C18200C1F25F /* KeasyBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeasyBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2E3DFA52702C18200C1F25F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2E3DFA92702C18200C1F25F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D2E3DFAC2702C18200C1F25F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D2E3DFAE2702C18400C1F25F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D2E3DFB12702C18400C1F25F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D2E3DFB32702C18400C1F25F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -263,7 +314,7 @@
 		D2F39E38270C900000E7D0C5 /* ImageAsset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ImageAsset.xcassets; sourceTree = "<group>"; };
 		D2F83776272686A7005B73F8 /* KeasyBoardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeasyBoardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2F83778272686A7005B73F8 /* KeasyBoardViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeasyBoardViewTests.swift; sourceTree = "<group>"; };
-		D2F8378227268E3D005B73F8 /* BoardViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewBuilder.swift; sourceTree = "<group>"; };
+		D2F839E927269C41005B73F8 /* BoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewController.swift; sourceTree = "<group>"; };
 		F26F81F47BBEDDA1922FC289 /* Pods-KeasyBoardTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeasyBoardTests.release.xcconfig"; path = "Target Support Files/Pods-KeasyBoardTests/Pods-KeasyBoardTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -420,7 +471,6 @@
 		D2C08AE5270409E0002B1ABD /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				D2520E79270B060A00DD43C4 /* KeasyInputMethodManager.swift */,
 				D2520E492705B3CB00DD43C4 /* KeasyFontManager.swift */,
 				D2520E472705AAD600DD43C4 /* KeasyStyleManager.swift */,
 				D2C08AE627040A02002B1ABD /* KeasySpacingManager.swift */,
@@ -659,10 +709,12 @@
 				D2E3DFC92702C57100C1F25F /* keasyBoard.entitlements */,
 				D2E3DFA52702C18200C1F25F /* AppDelegate.swift */,
 				D2E3DFA92702C18200C1F25F /* ViewController.swift */,
-				D2E3DFAB2702C18200C1F25F /* Main.storyboard */,
 				D2E3DFAE2702C18400C1F25F /* Assets.xcassets */,
 				D2E3DFB02702C18400C1F25F /* LaunchScreen.storyboard */,
 				D2E3DFB32702C18400C1F25F /* Info.plist */,
+				D2C08AD92702FD09002B1ABD /* Components */,
+				D2C08AE5270409E0002B1ABD /* Managers */,
+				D2C08AE227040524002B1ABD /* Extensions */,
 			);
 			path = KeasyBoard;
 			sourceTree = "<group>";
@@ -671,9 +723,7 @@
 			isa = PBXGroup;
 			children = (
 				D2E3DFBF2702C26500C1F25F /* KeasyBoardViewController.swift */,
-				D2C08AD92702FD09002B1ABD /* Components */,
-				D2C08AE5270409E0002B1ABD /* Managers */,
-				D2C08AE227040524002B1ABD /* Extensions */,
+				D2F839E827269A31005B73F8 /* Managers */,
 				D2520E4C270AD1FD00DD43C4 /* LocalStorage */,
 				D2F39E37270C8FDB00E7D0C5 /* Resources */,
 				D2E3DFC12702C26500C1F25F /* Info.plist */,
@@ -692,7 +742,6 @@
 		D2F83777272686A7005B73F8 /* KeasyBoardTests */ = {
 			isa = PBXGroup;
 			children = (
-				D2F8378227268E3D005B73F8 /* BoardViewBuilder.swift */,
 				D2F8377F272686F1005B73F8 /* Board */,
 			);
 			path = KeasyBoardTests;
@@ -702,8 +751,17 @@
 			isa = PBXGroup;
 			children = (
 				D2F83778272686A7005B73F8 /* KeasyBoardViewTests.swift */,
+				D2F839E927269C41005B73F8 /* BoardViewController.swift */,
 			);
 			path = Board;
+			sourceTree = "<group>";
+		};
+		D2F839E827269A31005B73F8 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				D2520E79270B060A00DD43C4 /* KeasyInputMethodManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		D36A2A5AB7F1950F46553ED0 /* Frameworks */ = {
@@ -806,6 +864,7 @@
 			);
 			dependencies = (
 				D2F8377B272686A7005B73F8 /* PBXTargetDependency */,
+				D2F8396D272694AE005B73F8 /* PBXTargetDependency */,
 			);
 			name = KeasyBoardTests;
 			productName = KeasyBoardTests;
@@ -875,9 +934,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2F839EC2726A0B1005B73F8 /* PageControlBottomView.xib in Resources */,
 				D2E3DFB22702C18400C1F25F /* LaunchScreen.storyboard in Resources */,
+				D2F839EB2726A0B1005B73F8 /* CategoriesBottomView.xib in Resources */,
 				D2E3DFAF2702C18400C1F25F /* Assets.xcassets in Resources */,
-				D2E3DFAD2702C18200C1F25F /* Main.storyboard in Resources */,
+				D2F839ED2726A0B1005B73F8 /* EmojiCollectionView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1079,6 +1140,48 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2F839DD27269709005B73F8 /* KeasyInputMethodManager.swift in Sources */,
+				D2F839DE27269709005B73F8 /* KeasyFontManager.swift in Sources */,
+				D2F839DF27269709005B73F8 /* KeasyStyleManager.swift in Sources */,
+				D2F839E027269709005B73F8 /* KeasySpacingManager.swift in Sources */,
+				D2F839E127269709005B73F8 /* KeasyFeedbackManager.swift in Sources */,
+				D2F839E227269709005B73F8 /* ArrayExtension.swift in Sources */,
+				D2F839E327269709005B73F8 /* DoubleExtension.swift in Sources */,
+				D2F839E427269709005B73F8 /* ColorExtension.swift in Sources */,
+				D2F839E527269709005B73F8 /* StringExtension.swift in Sources */,
+				D2F839BD272696F7005B73F8 /* KeasyWord.swift in Sources */,
+				D2F839BE272696F7005B73F8 /* KeasyBoard.swift in Sources */,
+				D2F839BF272696F7005B73F8 /* KeasyBoardRow.swift in Sources */,
+				D2F839C0272696F7005B73F8 /* KeasyBoardView.swift in Sources */,
+				D2F839C1272696F7005B73F8 /* KeasyBoardViewModel.swift in Sources */,
+				D2F839C2272696F7005B73F8 /* KeasyBoardRowViewModel.swift in Sources */,
+				D2F839C3272696F7005B73F8 /* KeasyKey.swift in Sources */,
+				D2F839C4272696F7005B73F8 /* KeasyKeyPair.swift in Sources */,
+				D2F839C5272696F7005B73F8 /* KeasyKeyCell.swift in Sources */,
+				D2F839C6272696F7005B73F8 /* KeasyKeyPairViewModel.swift in Sources */,
+				D2F839C7272696F7005B73F8 /* KeasyKeyViewModel.swift in Sources */,
+				D2F839C8272696F7005B73F8 /* KeasyFunctionBar.swift in Sources */,
+				D2F839C9272696F7005B73F8 /* KeasyFunctionBarViewModel.swift in Sources */,
+				D2F839CA272696F7005B73F8 /* KeasyTab.swift in Sources */,
+				D2F839CB272696F7005B73F8 /* KeasyTabCell.swift in Sources */,
+				D2F839CC272696F7005B73F8 /* KeasyTabViewModel.swift in Sources */,
+				D2F839CD272696F7005B73F8 /* EmojiCategory.swift in Sources */,
+				D2F839CE272696F7005B73F8 /* KeyboardSettings.swift in Sources */,
+				D2F839E727269725005B73F8 /* IME.xcdatamodeld in Sources */,
+				D2F839CF272696F7005B73F8 /* Category.swift in Sources */,
+				D2F839D0272696F7005B73F8 /* Emoji.swift in Sources */,
+				D2F839D1272696F7005B73F8 /* Bundle.swift in Sources */,
+				D2F839D2272696F7005B73F8 /* EmojiCollectionView.swift in Sources */,
+				D2F839D3272696F7005B73F8 /* EmojiCollectionCell.swift in Sources */,
+				D2F839D4272696F7005B73F8 /* EmojiPopView.swift in Sources */,
+				D2F839D5272696F7005B73F8 /* PageControlBottomView.swift in Sources */,
+				D2F839D6272696F7005B73F8 /* CategoryCell.swift in Sources */,
+				D2F839D7272696F7005B73F8 /* CategoriesBottomView.swift in Sources */,
+				D2F839D8272696F7005B73F8 /* EmojiView.swift in Sources */,
+				D2F839D9272696F7005B73F8 /* Constants.swift in Sources */,
+				D2F839DA272696F7005B73F8 /* RecentEmojisManager.swift in Sources */,
+				D2F839DB272696F7005B73F8 /* EmojiLoader.swift in Sources */,
+				D2F839DC272696F7005B73F8 /* EmojiView_SwiftUI.swift in Sources */,
 				D2E3DFAA2702C18200C1F25F /* ViewController.swift in Sources */,
 				D2E3DFA62702C18200C1F25F /* AppDelegate.swift in Sources */,
 			);
@@ -1138,8 +1241,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2F8378327268E3D005B73F8 /* BoardViewBuilder.swift in Sources */,
-				D2F83779272686A7005B73F8 /* KeasyBoardViewTests.swift in Sources */,
+				D2F839BC272695F2005B73F8 /* KeasyBoardViewTests.swift in Sources */,
+				D2F839E627269724005B73F8 /* IME.xcdatamodeld in Sources */,
+				D2F839EA27269C41005B73F8 /* BoardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1155,6 +1259,11 @@
 			isa = PBXTargetDependency;
 			target = D2E3DFA12702C18200C1F25F /* KeasyBoard */;
 			targetProxy = D2F8377A272686A7005B73F8 /* PBXContainerItemProxy */;
+		};
+		D2F8396D272694AE005B73F8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2520E54270AF80900DD43C4 /* WordBasePopulator */;
+			targetProxy = D2F8396C272694AE005B73F8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1173,14 +1282,6 @@
 				D2520E66270AF80A00DD43C4 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		D2E3DFAB2702C18200C1F25F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D2E3DFAC2702C18200C1F25F /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		D2E3DFB02702C18400C1F25F /* LaunchScreen.storyboard */ = {
@@ -1383,7 +1484,6 @@
 				INFOPLIST_FILE = keasyBoard/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1414,7 +1514,6 @@
 				INFOPLIST_FILE = keasyBoard/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

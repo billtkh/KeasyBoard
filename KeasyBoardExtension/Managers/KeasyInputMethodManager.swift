@@ -66,7 +66,11 @@ class KeasyInputMethodManager: NSObject {
 //                    try FileManager.default.removeItem(at: dest)
                     continue
                 }
-                try FileManager.default.copyItem(at: sourceSqliteURLs[index]!, to: destSqliteURLs[index])
+                if let url = sourceSqliteURLs[index] {
+                    try FileManager.default.copyItem(at: url, to: destSqliteURLs[index])
+                } else {
+                    print("Preload data url not found!")
+                }
             } catch {
                 print("Could not preload data")
             }

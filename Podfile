@@ -6,7 +6,9 @@ target 'KeasyBoard' do
   use_frameworks!
 
   # Pods for KeasyBoard
-
+  pod 'RxSwift', '6.2.0'
+  pod 'RxCocoa', '6.2.0'
+  
 end
 
 target 'KeasyBoardExtension' do

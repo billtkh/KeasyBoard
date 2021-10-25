@@ -6,12 +6,12 @@
 //
 
 import XCTest
-@testable import KeasyBoardExtension
+@testable import KeasyBoard
 import UIKit
 
 class KeasyBoardTests: XCTestCase {
     
-    let builder = BoardViewBuilder()
+    var window = UIWindow(frame: UIScreen.main.bounds)
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -21,7 +21,23 @@ class KeasyBoardTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testBoardView() throws {
-        let sut = builder.createSUT()
+    func test_boardView_collectionView_setup() throws {
+        let sut = createSUT()
+        
+        XCTAssertNotNil(sut.boardView.collectionView.delegate)
+        XCTAssertNotNil(sut.boardView.collectionView.dataSource)
+        XCTAssertNotNil(sut.boardView.viewModel.numberOfSections)
     }
 }
+
+extension KeasyBoardTests {
+    func createSUT() -> BoardViewController {
+        let sut = BoardViewController()
+        window.rootViewController = sut
+        window.makeKeyAndVisible()
+        sut.loadViewIfNeeded()
+        sut.boardView.binding()
+        return sut
+    }
+}
+
