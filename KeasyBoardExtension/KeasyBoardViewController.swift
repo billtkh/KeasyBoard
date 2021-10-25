@@ -35,10 +35,9 @@ class KeasyBoardViewController: UIInputViewController {
         
         initStyleManager()
         
-        let viewModel = KeasyBoardViewModel(inputViewController: self,
-                                            textDocumentProxy: textDocumentProxy,
-                                            needsInputModeSwitchKey: true)
-        boardView = KeasyBoardView(viewModel: viewModel)
+        boardView = KeasyBoardView.createBoardView(inputViewController: inputViewController,
+                                                   textDocumentProxy: textDocumentProxy)
+        
         setupUI()
     }
     

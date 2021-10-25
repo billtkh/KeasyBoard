@@ -43,7 +43,9 @@ class KeasyBoardView: UIView {
     }
     
     required init?(coder: NSCoder) {
-        self.viewModel = KeasyBoardViewModel(inputViewController: nil, textDocumentProxy: nil, needsInputModeSwitchKey: false)
+        self.viewModel = KeasyBoardViewModel(inputViewController: nil,
+                                             textDocumentProxy: nil,
+                                             needsInputModeSwitchKey: false)
         super.init(frame: .zero)
         
         setupUI()
@@ -225,5 +227,15 @@ extension KeasyBoardView: KeasyKeyCellActionDelegate {
 extension KeasyBoardView: KeasyFunctionBarActionDelegate {
     func functionBar(_ functionBar: KeasyFunctionBar, didInvoke tab: KeasyTabViewModel) {
         viewModel.handleTab(tab)
+    }
+}
+
+extension KeasyBoardView {
+    static func createBoardView(inputViewController: UIInputViewController?,
+                                textDocumentProxy: UITextDocumentProxy?) -> KeasyBoardView {
+        let viewModel = KeasyBoardViewModel(inputViewController: inputViewController,
+                                            textDocumentProxy: textDocumentProxy,
+                                            needsInputModeSwitchKey: true)
+        return KeasyBoardView(viewModel: viewModel)
     }
 }

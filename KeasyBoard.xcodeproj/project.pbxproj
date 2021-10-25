@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		17633F814A2064F5C7A126CC /* Pods_KeasyBoardExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 701A7AD35613DA20A9C469F7 /* Pods_KeasyBoardExtension.framework */; };
 		4D488C6C1D06A53E9FF64FA0 /* Pods_KeasyBoard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A38371F5BE8523485E05A76A /* Pods_KeasyBoard.framework */; };
+		B7F299A28E8C223DDDCA5AC2 /* Pods_KeasyBoardTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8848CF5C4747CF023FBC843C /* Pods_KeasyBoardTests.framework */; };
 		CE224A8B31960EEC4B4C418B /* Pods_WordBasePopulator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D22965F9109A43B9E6DF1E /* Pods_WordBasePopulator.framework */; };
 		D2520E4627058E8900DD43C4 /* KeasyBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2520E4527058E8900DD43C4 /* KeasyBoardView.swift */; };
 		D2520E482705AAD600DD43C4 /* KeasyStyleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2520E472705AAD600DD43C4 /* KeasyStyleManager.swift */; };
@@ -109,6 +110,8 @@
 		D2E3DFD22702F8CD00C1F25F /* KeasyBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3DFD12702F8CD00C1F25F /* KeasyBoardViewModel.swift */; };
 		D2F39E362709C36200E7D0C5 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F39E352709C36200E7D0C5 /* StringExtension.swift */; };
 		D2F39E39270C900000E7D0C5 /* ImageAsset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2F39E38270C900000E7D0C5 /* ImageAsset.xcassets */; };
+		D2F83779272686A7005B73F8 /* KeasyBoardViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F83778272686A7005B73F8 /* KeasyBoardViewTests.swift */; };
+		D2F8378327268E3D005B73F8 /* BoardViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8378227268E3D005B73F8 /* BoardViewBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +121,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = D2E3DFBC2702C26500C1F25F;
 			remoteInfo = suchengKeyboard;
+		};
+		D2F8377A272686A7005B73F8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D2E3DF9A2702C18200C1F25F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2E3DFA12702C18200C1F25F;
+			remoteInfo = KeasyBoard;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -136,12 +146,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0813F86007F285DC81CA16FF /* Pods-KeasyBoardTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeasyBoardTests.debug.xcconfig"; path = "Target Support Files/Pods-KeasyBoardTests/Pods-KeasyBoardTests.debug.xcconfig"; sourceTree = "<group>"; };
 		12D22965F9109A43B9E6DF1E /* Pods_WordBasePopulator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WordBasePopulator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48040C229A8CC2DC83A6EF51 /* Pods-KeasyBoard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeasyBoard.debug.xcconfig"; path = "Target Support Files/Pods-KeasyBoard/Pods-KeasyBoard.debug.xcconfig"; sourceTree = "<group>"; };
 		4DF2B6A336E95766490D7FD6 /* Pods-KeasyBoardExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeasyBoardExtension.release.xcconfig"; path = "Target Support Files/Pods-KeasyBoardExtension/Pods-KeasyBoardExtension.release.xcconfig"; sourceTree = "<group>"; };
 		53E8CF4B6B9CC9AC451CBCA2 /* Pods-WordBasePopulator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordBasePopulator.debug.xcconfig"; path = "Target Support Files/Pods-WordBasePopulator/Pods-WordBasePopulator.debug.xcconfig"; sourceTree = "<group>"; };
 		701A7AD35613DA20A9C469F7 /* Pods_KeasyBoardExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KeasyBoardExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F9ADFC3B90069E183EC8B7F /* Pods-KeasyBoard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeasyBoard.release.xcconfig"; path = "Target Support Files/Pods-KeasyBoard/Pods-KeasyBoard.release.xcconfig"; sourceTree = "<group>"; };
+		8848CF5C4747CF023FBC843C /* Pods_KeasyBoardTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KeasyBoardTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A77B8E0B31321EDDA3C40BB /* Pods-WordBasePopulator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordBasePopulator.release.xcconfig"; path = "Target Support Files/Pods-WordBasePopulator/Pods-WordBasePopulator.release.xcconfig"; sourceTree = "<group>"; };
 		A274684C78F80D50A95CCEFD /* Pods-KeasyBoardExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeasyBoardExtension.debug.xcconfig"; path = "Target Support Files/Pods-KeasyBoardExtension/Pods-KeasyBoardExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		A38371F5BE8523485E05A76A /* Pods_KeasyBoard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KeasyBoard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -249,6 +261,10 @@
 		D2E3DFD12702F8CD00C1F25F /* KeasyBoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeasyBoardViewModel.swift; sourceTree = "<group>"; };
 		D2F39E352709C36200E7D0C5 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		D2F39E38270C900000E7D0C5 /* ImageAsset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ImageAsset.xcassets; sourceTree = "<group>"; };
+		D2F83776272686A7005B73F8 /* KeasyBoardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeasyBoardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2F83778272686A7005B73F8 /* KeasyBoardViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeasyBoardViewTests.swift; sourceTree = "<group>"; };
+		D2F8378227268E3D005B73F8 /* BoardViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewBuilder.swift; sourceTree = "<group>"; };
+		F26F81F47BBEDDA1922FC289 /* Pods-KeasyBoardTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeasyBoardTests.release.xcconfig"; path = "Target Support Files/Pods-KeasyBoardTests/Pods-KeasyBoardTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -273,6 +289,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				17633F814A2064F5C7A126CC /* Pods_KeasyBoardExtension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2F83773272686A7005B73F8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B7F299A28E8C223DDDCA5AC2 /* Pods_KeasyBoardTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -611,6 +635,7 @@
 				D2E3DFA42702C18200C1F25F /* KeasyBoard */,
 				D2E3DFBE2702C26500C1F25F /* KeasyBoardExtension */,
 				D2520E56270AF80900DD43C4 /* WordBasePopulator */,
+				D2F83777272686A7005B73F8 /* KeasyBoardTests */,
 				D2E3DFA32702C18200C1F25F /* Products */,
 				F2CB48010647BE92B7A6F83A /* Pods */,
 				D36A2A5AB7F1950F46553ED0 /* Frameworks */,
@@ -623,6 +648,7 @@
 				D2E3DFA22702C18200C1F25F /* KeasyBoard.app */,
 				D2E3DFBD2702C26500C1F25F /* KeasyBoardExtension.appex */,
 				D2520E55270AF80900DD43C4 /* WordBasePopulator.app */,
+				D2F83776272686A7005B73F8 /* KeasyBoardTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -663,12 +689,30 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		D2F83777272686A7005B73F8 /* KeasyBoardTests */ = {
+			isa = PBXGroup;
+			children = (
+				D2F8378227268E3D005B73F8 /* BoardViewBuilder.swift */,
+				D2F8377F272686F1005B73F8 /* Board */,
+			);
+			path = KeasyBoardTests;
+			sourceTree = "<group>";
+		};
+		D2F8377F272686F1005B73F8 /* Board */ = {
+			isa = PBXGroup;
+			children = (
+				D2F83778272686A7005B73F8 /* KeasyBoardViewTests.swift */,
+			);
+			path = Board;
+			sourceTree = "<group>";
+		};
 		D36A2A5AB7F1950F46553ED0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				A38371F5BE8523485E05A76A /* Pods_KeasyBoard.framework */,
 				701A7AD35613DA20A9C469F7 /* Pods_KeasyBoardExtension.framework */,
 				12D22965F9109A43B9E6DF1E /* Pods_WordBasePopulator.framework */,
+				8848CF5C4747CF023FBC843C /* Pods_KeasyBoardTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -682,6 +726,8 @@
 				4DF2B6A336E95766490D7FD6 /* Pods-KeasyBoardExtension.release.xcconfig */,
 				53E8CF4B6B9CC9AC451CBCA2 /* Pods-WordBasePopulator.debug.xcconfig */,
 				8A77B8E0B31321EDDA3C40BB /* Pods-WordBasePopulator.release.xcconfig */,
+				0813F86007F285DC81CA16FF /* Pods-KeasyBoardTests.debug.xcconfig */,
+				F26F81F47BBEDDA1922FC289 /* Pods-KeasyBoardTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -746,6 +792,26 @@
 			productReference = D2E3DFBD2702C26500C1F25F /* KeasyBoardExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		D2F83775272686A7005B73F8 /* KeasyBoardTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D2F8377E272686A7005B73F8 /* Build configuration list for PBXNativeTarget "KeasyBoardTests" */;
+			buildPhases = (
+				F4CEDF3D80D2C5DB99734AB9 /* [CP] Check Pods Manifest.lock */,
+				D2F83772272686A7005B73F8 /* Sources */,
+				D2F83773272686A7005B73F8 /* Frameworks */,
+				D2F83774272686A7005B73F8 /* Resources */,
+				70117E46164850884809F497 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D2F8377B272686A7005B73F8 /* PBXTargetDependency */,
+			);
+			name = KeasyBoardTests;
+			productName = KeasyBoardTests;
+			productReference = D2F83776272686A7005B73F8 /* KeasyBoardTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -765,6 +831,10 @@
 					D2E3DFBC2702C26500C1F25F = {
 						CreatedOnToolsVersion = 13.0;
 					};
+					D2F83775272686A7005B73F8 = {
+						CreatedOnToolsVersion = 13.0;
+						TestTargetID = D2E3DFA12702C18200C1F25F;
+					};
 				};
 			};
 			buildConfigurationList = D2E3DF9D2702C18200C1F25F /* Build configuration list for PBXProject "KeasyBoard" */;
@@ -783,6 +853,7 @@
 				D2E3DFA12702C18200C1F25F /* KeasyBoard */,
 				D2E3DFBC2702C26500C1F25F /* KeasyBoardExtension */,
 				D2520E54270AF80900DD43C4 /* WordBasePopulator */,
+				D2F83775272686A7005B73F8 /* KeasyBoardTests */,
 			);
 		};
 /* End PBXProject section */
@@ -859,6 +930,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D2F83774272686A7005B73F8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -901,6 +979,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		70117E46164850884809F497 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KeasyBoardTests/Pods-KeasyBoardTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KeasyBoardTests/Pods-KeasyBoardTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KeasyBoardTests/Pods-KeasyBoardTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		783A0C24AD7AD73593E66613 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -939,6 +1034,28 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-KeasyBoard-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F4CEDF3D80D2C5DB99734AB9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KeasyBoardTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1017,6 +1134,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D2F83772272686A7005B73F8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2F8378327268E3D005B73F8 /* BoardViewBuilder.swift in Sources */,
+				D2F83779272686A7005B73F8 /* KeasyBoardViewTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1024,6 +1150,11 @@
 			isa = PBXTargetDependency;
 			target = D2E3DFBC2702C26500C1F25F /* KeasyBoardExtension */;
 			targetProxy = D2E3DFC22702C26500C1F25F /* PBXContainerItemProxy */;
+		};
+		D2F8377B272686A7005B73F8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2E3DFA12702C18200C1F25F /* KeasyBoard */;
+			targetProxy = D2F8377A272686A7005B73F8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1351,6 +1482,54 @@
 			};
 			name = Release;
 		};
+		D2F8377C272686A7005B73F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0813F86007F285DC81CA16FF /* Pods-KeasyBoardTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9NQ9QG3G75;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.demo.KeasyBoardTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KeasyBoard.app/KeasyBoard";
+			};
+			name = Debug;
+		};
+		D2F8377D272686A7005B73F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F26F81F47BBEDDA1922FC289 /* Pods-KeasyBoardTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9NQ9QG3G75;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.demo.KeasyBoardTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KeasyBoard.app/KeasyBoard";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1386,6 +1565,15 @@
 			buildConfigurations = (
 				D2E3DFC62702C26500C1F25F /* Debug */,
 				D2E3DFC72702C26500C1F25F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D2F8377E272686A7005B73F8 /* Build configuration list for PBXNativeTarget "KeasyBoardTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2F8377C272686A7005B73F8 /* Debug */,
+				D2F8377D272686A7005B73F8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
