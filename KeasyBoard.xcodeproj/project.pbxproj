@@ -151,7 +151,6 @@
 		D2F839E327269709005B73F8 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C08AE827045031002B1ABD /* DoubleExtension.swift */; };
 		D2F839E427269709005B73F8 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C08AEE27046D67002B1ABD /* ColorExtension.swift */; };
 		D2F839E527269709005B73F8 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F39E352709C36200E7D0C5 /* StringExtension.swift */; };
-		D2F839E627269724005B73F8 /* IME.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2520E86270C066200DD43C4 /* IME.xcdatamodeld */; };
 		D2F839E727269725005B73F8 /* IME.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2520E86270C066200DD43C4 /* IME.xcdatamodeld */; };
 		D2F839EA27269C41005B73F8 /* BoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F839E927269C41005B73F8 /* BoardViewController.swift */; };
 		D2F839EB2726A0B1005B73F8 /* CategoriesBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2DA944627102CD300825D8A /* CategoriesBottomView.xib */; };
@@ -1242,7 +1241,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2F839BC272695F2005B73F8 /* KeasyBoardViewTests.swift in Sources */,
-				D2F839E627269724005B73F8 /* IME.xcdatamodeld in Sources */,
 				D2F839EA27269C41005B73F8 /* BoardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

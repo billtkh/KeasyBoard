@@ -36,7 +36,6 @@ extension KeasyBoardTests {
         window.rootViewController = sut
         window.makeKeyAndVisible()
         sut.loadViewIfNeeded()
-        sut.boardView.binding()
         return sut
     }
 }

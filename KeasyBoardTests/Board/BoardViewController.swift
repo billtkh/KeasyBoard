@@ -10,11 +10,9 @@ import UIKit
 
 class BoardViewController: UIViewController {
     
-    let boardView: KeasyBoardView
+    var boardView: KeasyBoardView!
     
     init() {
-        self.boardView = KeasyBoardView.createBoardView(inputViewController: nil,
-                                                        textDocumentProxy: nil)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -28,6 +26,8 @@ class BoardViewController: UIViewController {
     }
     
     func setupUI() {
+        boardView = KeasyBoardView.createBoardView(inputViewController: nil,
+                                                        textDocumentProxy: nil)
         view.addSubview(boardView)
         
         boardView.translatesAutoresizingMaskIntoConstraints = false
